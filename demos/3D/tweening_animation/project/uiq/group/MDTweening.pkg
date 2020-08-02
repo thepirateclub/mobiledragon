@@ -1,0 +1,26 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MDTweening"},(0x00000002),1,0,0
+
+
+; S2U information: Added UIQ 2.x as a requisite
+; Supports UIQ 2.x
+;(0x101F617B), 2, 0, 0, {"UIQ20ProductID"}
+(0x101F80BE), 1, 0, 0, {"SonyEricssonP80xPlatformProductID"}
+
+;
+; Files to install
+;
+"\symbian\UIQ_21\epoc32\release\armi\urel\MDTweening.app"         			  -"!:\system\apps\MDTweening\MDTweening.app"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDTweening\MDTweening.rsc"         -"!:\system\apps\MDTweening\MDTweening.rsc"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDTweening\MDTweening.aif"         -"!:\system\apps\MDTweening\MDTweening.aif"
+
+"..\HSS.DLL"         		-"!:\system\apps\MDTweening\HSS.DLL"
+
+"..\..\..\target\uiq\pdtweening.dat"         -"!:\system\apps\MDTweening\pdtweening.dat"
+"..\..\..\target\uiq\pdtweening.fat"         -"!:\system\apps\MDTweening\pdtweening.fat"

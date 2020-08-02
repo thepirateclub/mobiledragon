@@ -1,0 +1,9 @@
+
+PRJ_EXPORTS
+
+..\..\..\target\uiq\pdportween.dat \Epoc32\Wins\c\system\apps\MDPortTween\pdportween.dat
+..\..\..\target\uiq\pdportween.fat \Epoc32\Wins\c\system\apps\MDPortTween\pdportween.fat
+
+PRJ_MMPFILES
+
+MDPortTween.mmp

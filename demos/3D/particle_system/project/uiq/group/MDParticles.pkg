@@ -1,0 +1,26 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MDParticles"},(0x00000006),1,0,0
+
+
+; S2U information: Added UIQ 2.x as a requisite
+; Supports UIQ 2.x
+;(0x101F617B), 2, 0, 0, {"UIQ20ProductID"}
+(0x101F80BE), 1, 0, 0, {"SonyEricssonP80xPlatformProductID"}
+
+;
+; Files to install
+;
+"\symbian\UIQ_21\epoc32\release\armi\urel\MDParticles.app"         			  -"!:\system\apps\MDParticles\MDParticles.app"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDParticles\MDParticles.rsc"         -"!:\system\apps\MDParticles\MDParticles.rsc"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDParticles\MDParticles.aif"         -"!:\system\apps\MDParticles\MDParticles.aif"
+
+"..\HSS.DLL"         		-"!:\system\apps\MDParticles\HSS.DLL"
+
+"..\..\..\target\uiq\pdparticles.dat"         -"!:\system\apps\MDParticles\pdparticles.dat"
+"..\..\..\target\uiq\pdparticles.fat"         -"!:\system\apps\MDParticles\pdparticles.fat"

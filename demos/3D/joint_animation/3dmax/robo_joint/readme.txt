@@ -1,0 +1,1 @@
+Place file Roboid.txt in 3D Max directory.

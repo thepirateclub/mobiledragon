@@ -1,0 +1,26 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MD2DScene"},(0x00000008),1,0,0
+
+
+; S2U information: Added UIQ 2.x as a requisite
+; Supports UIQ 2.x
+;(0x101F617B), 2, 0, 0, {"UIQ20ProductID"}
+(0x101F80BE), 1, 0, 0, {"SonyEricssonP80xPlatformProductID"}
+
+;
+; Files to install
+;
+"\symbian\UIQ_21\epoc32\release\armi\urel\MD2DScene.app"         			  -"!:\system\apps\MD2DScene\MD2DScene.app"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MD2DScene\MD2DScene.rsc"         -"!:\system\apps\MD2DScene\MD2DScene.rsc"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MD2DScene\MD2DScene.aif"         -"!:\system\apps\MD2DScene\MD2DScene.aif"
+
+"..\HSS.DLL"         		-"!:\system\apps\MD2DScene\HSS.DLL"
+
+"..\..\..\target\uiq\pd2dscene.dat"         -"!:\system\apps\MD2DScene\pd2dscene.dat"
+"..\..\..\target\uiq\pd2dscene.fat"         -"!:\system\apps\MD2DScene\pd2dscene.fat"

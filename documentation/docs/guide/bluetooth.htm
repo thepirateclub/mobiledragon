@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>MobileDragon Bluetooth API</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="keywords" content="MobileDragon, mobile games, game development, 3d mobile games, 2d mobile games, game engine, smartphone, PocketPC, Palm OS, Symbian OS, Windows Mobile, HeroCraft Hitech, games">
+<link href="../reference_manual/doxygen.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<table width="75%" border="0" align="center" cellpadding="2" cellspacing="0"  bgcolor="#868686">
+  <tr>
+    <td width="100%">
+	<table width="100%" border="0"  cellpadding="0" cellspacing="2" bgcolor="#F4F4FB">
+    <tr>
+        <td width="6%"><img src="../../data/mdicon.gif" width="44" height="44" align="right"></td>
+    	  <td width="94%" ><p align="center"><strong><font size="5">MobileDragon 
+              Bluetooth API</font></strong></p></td>
+    </tr>
+    </table>
+	</td>
+  </tr>
+</table>
+<p></p>
+
+<table width="75%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td> 
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Overview:</strong></font></p>
+      <p align="justify">MobileDragon provides simple support for Bluetooth networking. 
+        It allows to perform simple game service advertisement, discovery and 
+        connection establishment. It relies on RFCOMM protocol and allows to send 
+        and receive data packets 126 bytes size.</p>
+      <p align="justify">There are two main classes in MobileDragon that provide 
+        the Bluetooth support.</p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>BtNetwork:</strong></font></p>
+      <p align="justify">BtNetwork class manages service discovery and advertisement, 
+        and connection establishment. You don’t have to create the instances of 
+        this class, use “btnet” member of System object instead.<br>
+        <br>
+        The first very thing to do is to initialize btnet object. To do this, 
+        call BtNetwork <font face="Courier New, Courier, mono">Init()</font> method 
+        providing a unique service id. </p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Bluetooth service uuid for this application.</font><font face="Courier New, Courier, mono"><br>
+        BtUUID my_uuid = { 0xca, 0x6b, 0x52, 0xfa, 0xec, 0x3d, 0x4f, 0x8f, <br>
+        0xb6, 0x7d, 0x74, 0xd3, 0x8a, 0x9c, 0x76, 0x0a };</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Initialize bluetooth module.</font><br>
+        system-&gt;btnet.Init( &amp; my_uuid );</font></p>
+      <p align="justify"> Then switch the device to specified working mode. Each 
+        active Bluetooth device can be in one of two modes: “slave” or “master”.</p>
+      <p align="justify">Slave devices capable to listen for inbound connection 
+        from master device, accept single inbound connection and exchange data 
+        with master device. Slave devices can advertise themselves running the 
+        service that master device is interested about.</p>
+      <p align="justify">Master device controls the entire communication, it can 
+        perform device discovery and query each found slave device for which services 
+        are running there. Master device can initiate connections to up to 7 slave 
+        devices simultaneously.</p>
+      <p align="justify">Switching device to slave mode: </p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Switch to slave mode.</font><font face="Courier New, Courier, mono"><br>
+        system-&gt;btnet.StartSlave();</font></p>
+      <p align="justify"> Switching device to slave mode automatically start game 
+        service advertisement and listening for inbound connection. The uuid is 
+        used for service advertisement.</p>
+      <p align="justify"> Switching device to master mode:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Switch to master mode</font><font face="Courier New, Courier, mono"><br>
+        system-&gt;btnet.StartMaster();</font></p>
+      <p align="justify"> Master device then can initiate discovery:<br>
+        <br>
+        <font color="#009900" face="Courier New, Courier, mono">// If master initiated 
+        succesfully - start to discover slave devices</font><font face="Courier New, Courier, mono"><br>
+        system-&gt;btnet.StartDiscoverSlaves();</font></p>
+      <p align="justify">The device discovery and service inquiry sequence starts, 
+        searching for slave running game service with specified uuid. This is 
+        asynchronous process and can take up to one minute. You can poll btnet 
+        for results of discovery:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Check if discovery is finished.</font><font face="Courier New, Courier, mono"><br>
+        vector&lt;BtHost&gt; found_hosts;<br>
+        Bool finished = system-&gt;btnet.GetDiscoveredSlaves( &amp;found_hosts 
+        );</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono">GetDiscoveredSlaves()</font> 
+        returns True when discovery process is finished and fills the vector found_hosts 
+        with BtHost objects identifying slave devices running this game service. 
+        BtHost structure contains device name, device Bluetooth address and RFCOMM 
+        service channel number.</p>
+      <p align="justify">It’s time to establish connection to discovered slave 
+        device.</p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp; </p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>IBtConnection:</strong></font></p>
+      <p align="justify">IBtConnection class is an interface for Bluetooth endpoint 
+        connection. It provides methods for data exchange and determining connection 
+        status.</p>
+      <p align="justify">Master initiate connection as follows:</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        try to connect</font><font face="Courier New, Courier, mono"><br>
+        IBtConnection * new_connection = system-&gt;btnet.ConnectSlave( found_hosts[0] 
+        );</font></p>
+      <p align="justify">This returns new connection IBtConnection interface pointer 
+        or NULL if a connection cannot be established.</p>
+      <p align="justify"> Slave only accepts single connection.</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Check if there is an inbound connection accepted.</font><font face="Courier New, Courier, mono"><br>
+        IBtConnection * new_connection = system-&gt;btnet.GetInboundConnection();</font></p>
+      <p align="justify">This returns new connection IBtConnection interface pointer 
+        or NULL if there is no inbound connection accepted.</p>
+      <p align="justify"> There are two methods to determine connection state: 
+        <br>
+        <br>
+        <font color="#009900" face="Courier New, Courier, mono">// Determine that 
+        </font><font face="Courier New, Courier, mono"><font color="#009900">connection</font></font> 
+        <font color="#009900" face="Courier New, Courier, mono">is not broken.</font><font face="Courier New, Courier, mono"><br>
+        new_connection-&gt;IsConnected(); </font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Determine that previously connected connection disconnected.</font><br>
+        new_connection-&gt;IsDisconnected();</font></p>
+      <p align="justify">To send data packets to remote host use:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Check if connection output buffer is ready to write</font><font face="Courier New, Courier, mono"><br>
+        <font color="#0000FF">if</font>( connection-&gt;StartWrite() )<br>
+        {<br>
+        <font color="#009900">// Write some stuff.</font><br>
+        connection-&gt;Write( buffer, n );</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Send data to remote host.</font><br>
+        connection-&gt;EndWrite();<br>
+        }</font></p>
+      <p align="justify"> Calling connection <font face="Courier New, Courier, mono">EndWrite()</font> 
+        sends 126 bytes size packet to remote host.<br>
+        To receive data packets from remote host use:<br>
+        <br>
+        <font color="#009900" face="Courier New, Courier, mono">// Check if connection 
+        input buffer holds inbound data packet.</font><font face="Courier New, Courier, mono"><br>
+        <font color="#0000FF">if</font>( connection-&gt;StartRead() )<br>
+        {<br>
+        <font color="#009900">// Read entire packet from connection buffer.</font><br>
+        connection-&gt;Read( buffer, Bt_Packet_Size );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Drops data in input buffer and became ready to accept new one.</font><font face="Courier New, Courier, mono"><br>
+        connection-&gt;EndRead();<br>
+        }</font></p>
+      <p align="justify"> To finish with connection object use BtNetwork <font face="Courier New, Courier, mono">CloseConnection() 
+        </font>method, passing <br>
+        valid pointer to IBtConnection interface.<br>
+        <br>
+        <font face="Courier New, Courier, mono">system-&gt;btnet.CloseConnection( 
+        connection );<br>
+        connection = NULL;</font></p>
+      <p align="justify"> <br>
+        To shutdown Bluetooth module call <font face="Courier New, Courier, mono">StartShutdown()</font>. 
+        This will initiate bluetooh shutdown sequence, all connection will be 
+        closed, advertisement stopped and discovery finished. This process can 
+        take some time, so poll BtNetwork <font face="Courier New, Courier, mono">IsShotdownComplete()</font> 
+        method to determine if it is finished.</p>
+      <p align="justify"> Also switching between master and slaves not possible. 
+        You must first perform shutdown and then repeat initialization sequence.</p>
+ <p align="center">&nbsp;</p>
+  	  <p align="center">&nbsp;</p>
+      <p align="center" class="memTemplItemLeft"><font size="1"><strong>Copyright 
+        2005-2006 Herocraft Hitech Co. Ltd. </strong></font></p>
+      
+      </td>
+  </tr>
+</table>
+
+
+</body>
+</html>

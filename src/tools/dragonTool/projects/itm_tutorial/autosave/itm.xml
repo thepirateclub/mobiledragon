@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <herotool.GONode>
+    <herotool.gameobjects.Dummy>
+      <String name="itm"/>
+      <boolean visible="true"/>
+      <int size="0"/>
+    </herotool.gameobjects.Dummy>
+    <int connectionsCount="0"/>
+    <int childCount="6"/>
+    <herotool.GONode>
+      <herotool.gameobjects.Time>
+        <String name="Time"/>
+        <boolean visible="true"/>
+        <int size="0"/>
+      </herotool.gameobjects.Time>
+      <int connectionsCount="0"/>
+      <int childCount="0"/>
+    </herotool.GONode>
+    <herotool.GONode>
+      <herotool.gameobjects.Grid>
+        <String name="grid"/>
+        <boolean visible="false"/>
+        <int size="0"/>
+        <double tx="0.0"/>
+        <double ty="0.0"/>
+        <double sx="16.0"/>
+        <double sy="16.0"/>
+        <double angle="0.0"/>
+        <double pivotX="0.0"/>
+        <double pivotY="0.0"/>
+        <boolean displayPivot="true"/>
+        <float opacity="0.0"/>
+        <boolean snap="false"/>
+        <int checkerColor1_r="253"/>
+        <int checkerColor1_g="253"/>
+        <int checkerColor1_b="253"/>
+        <int checkerColor2_r="202"/>
+        <int checkerColor2_g="204"/>
+        <int checkerColor2_b="202"/>
+      </herotool.gameobjects.Grid>
+      <int connectionsCount="0"/>
+      <int childCount="0"/>
+    </herotool.GONode>
+    <herotool.GONode>
+      <dragontool.TransformZ>
+        <String name="palDay1"/>
+        <boolean visible="true"/>
+        <int size="0"/>
+        <double tx="0.0"/>
+        <double ty="0.0"/>
+        <double sx="1.0"/>
+        <double sy="1.0"/>
+        <double angle="-0.0"/>
+        <double pivotX="0.0"/>
+        <double pivotY="0.0"/>
+        <boolean displayPivot="false"/>
+        <float opacity="1.0"/>
+        <int zOrder="7"/>
+        <int tint_r="255"/>
+        <int tint_g="255"/>
+        <int tint_b="255"/>
+      </dragontool.TransformZ>
+      <int connectionsCount="0"/>
+      <int childCount="2"/>
+      <herotool.GONode>
+        <dragontool.TransformZ>
+          <String name="grass"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="2"/>
+          <int tint_r="255"/>
+          <int tint_g="255"/>
+          <int tint_b="255"/>
+        </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode>
+          <herotool.gameobjects.Sprite>
+            <String name="grass"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\grass.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode>
+        <dragontool.TransformZ>
+          <String name="road"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="3"/>
+          <int tint_r="255"/>
+          <int tint_g="255"/>
+          <int tint_b="255"/>
+        </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode>
+          <herotool.gameobjects.Sprite>
+            <String name="road"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\road.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+    </herotool.GONode>
+    <herotool.GONode>
+      <dragontool.TransformZ>
+        <String name="palDay2"/>
+        <boolean visible="true"/>
+        <int size="0"/>
+        <double tx="0.0"/>
+        <double ty="0.0"/>
+        <double sx="1.0"/>
+        <double sy="1.0"/>
+        <double angle="-0.0"/>
+        <double pivotX="0.0"/>
+        <double pivotY="0.0"/>
+        <boolean displayPivot="false"/>
+        <float opacity="1.0"/>
+        <int zOrder="6"/>
+        <int tint_r="255"/>
+        <int tint_g="255"/>
+        <int tint_b="255"/>
+      </dragontool.TransformZ>
+      <int connectionsCount="0"/>
+      <int childCount="2"/>
+      <herotool.GONode>
+        <dragontool.TransformZ>
+          <String name="post"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="4"/>
+          <int tint_r="255"/>
+          <int tint_g="255"/>
+          <int tint_b="255"/>
+        </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode>
+          <herotool.gameobjects.Sprite>
+            <String name="stolb_day"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\stolb_day.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode>
+        <dragontool.TransformZ>
+          <String name="flower"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="7.0"/>
+          <double ty="-2.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="1"/>
+          <int tint_r="255"/>
+          <int tint_g="255"/>
+          <int tint_b="255"/>
+        </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode>
+          <herotool.gameobjects.Sprite>
+            <String name="flower"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\flower.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+    </herotool.GONode>
+    <herotool.GONode>
+      <dragontool.TransformZ>
+        <String name="palNight1"/>
+        <boolean visible="false"/>
+        <int size="0"/>
+        <double tx="0.0"/>
+        <double ty="0.0"/>
+        <double sx="1.0"/>
+        <double sy="1.0"/>
+        <double angle="-0.0"/>
+        <double pivotX="0.0"/>
+        <double pivotY="0.0"/>
+        <boolean displayPivot="false"/>
+        <float opacity="1.0"/>
+        <int zOrder="12"/>
+        <int tint_r="255"/>
+        <int tint_g="255"/>
+        <int tint_b="255"/>
+      </dragontool.TransformZ>
+      <int connectionsCount="0"/>
+      <int childCount="2"/>
+      <herotool.GONode>
+        <dragontool.TransformZ>
+          <String name="grassNight"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="10"/>
+          <int tint_r="255"/>
+          <int tint_g="255"/>
+          <int tint_b="255"/>

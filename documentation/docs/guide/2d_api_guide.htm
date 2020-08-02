@@ -1,0 +1,387 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>MobileDragon 2D API Guide</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="keywords" content="MobileDragon, mobile games, game development, 3d mobile games, 2d mobile games, game engine, smartphone, PocketPC, Palm OS, Symbian OS, Windows Mobile, HeroCraft Hitech, games">
+<link href="../reference_manual/doxygen.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<table width="75%" border="0" align="center" cellpadding="2" cellspacing="0"  bgcolor="#868686">
+  <tr>
+    <td width="100%">
+	<table width="100%" border="0"  cellpadding="0" cellspacing="2" bgcolor="#F4F4FB">
+    <tr>
+        <td width="6%"><img src="../../data/mdicon.gif" width="44" height="44" align="right"></td>
+    	  <td width="94%" ><p align="center"><strong><font size="5">MobileDragon 
+              2D API Guide</font></strong></p></td>
+    </tr>
+    </table>
+	</td>
+  </tr>
+</table>
+<p></p>
+
+<table width="75%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td>
+	<p align="justify" class="memTemplItemLeft"><font size="3"><strong>Overview</strong></font></p>
+      <p align="justify">The Mobile Dragon 2D API gives you the set of functions 
+        and classes for drawing 2D scenes. The 2D API is capable to draw points 
+        and lines primitives, 2d sprites, play 2d animation, display tile maps. 
+        The API is developed to work with DragonTool exported 2d sprite graphics 
+        data files. </p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Render2D</strong></font></p>
+      <p align="justify">Render2D class is the main class responsible for drawing 
+        2d scenes. This class provides methods necessary for drawing points and 
+        lines primitives and sprites. It also manages images loading. An instance 
+        of the Rended2D class must present in every MobileDragon 2d application.<br>
+        Create Render2D instance in your MDGame derived class constructor and 
+        assign it’s pointer to render2d member of System class instance. For example:</p>
+      <p align="justify"><font face="Courier New, Courier, mono">GameProject::GameProject(System* 
+        system_)<br>
+        {<br>
+        <font color="#009900"> // Remember System object pointer.</font><br>
+        system = system_;<br>
+        <br>
+        <font color="#009900">// Create Render2D class instance and save it's 
+        addreess<br>
+        // pointer in Sysem object instance.</font><br>
+        system-&gt;render2d = render = <font color="#0000FF">new</font> Render2D;<br>
+        }</font></p>
+      <p align="justify"> Let’s take up with general Render2D features: </p>
+      <p align="justify"> <strong>Clearing the backbuffer:</strong></p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Define clear color.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;SetClearColor(Color(0,0,128,0));</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Clearing color backbuffer.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;Clear(Render2D_Clear_Color);</font></p>
+      <p align="justify"> <strong>Determine screen dimensions:</strong></p>
+      <p align="justify"> Render2D provides a way to determine screen dimensions.<br>
+        For example:</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Get screen width.</font><font face="Courier New, Courier, mono"><br>
+        Fixed screen_width = render-&gt;GetScreenWidth();</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Get screen height.</font><font face="Courier New, Courier, mono"><br>
+        Fixed screen_height = render-&gt;GetScreenHeight();</font></p>
+      <p align="justify"> <strong>Working with viewport and display origin:</strong></p>
+      <p align="justify"> You can specify the rectangle “viewport” area on the 
+        device screen. All drawings will be <br>
+        clipped to this viewport area. <br>
+        For example:</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Set render viewport to top half of display area.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;SetViewport(0,0, screen_width, screen_height / 2);</font></p>
+      <p align="justify"> or<br>
+        <br>
+        <font face="Courier New, Courier, mono">Rectangle vp_rect(0, 0, screen_width, 
+        screen_height / 2);<br>
+        render-&gt;SetViewport( vp_rect );</font></p>
+      <p align="justify"> Also you can determine and specify viewport origin in 
+        global coordinates:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Determine current vieport origin.</font><font face="Courier New, Courier, mono"><br>
+        Int origin_x, origin_y;<br>
+        render-&gt;GetOrigin( &amp;origin_x, &amp;origin_y );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Move origin 50 points down and 60 points left.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;SetOrigin( origin_x + 50, origin_y - 60 );</font></p>
+      <p align="justify">or</p>
+      <p align="justify"><font face="Courier New, Courier, mono">render-&gt;MoveOrigin( 
+        50, -60 );</font></p>
+      <p align="justify"> <strong>Scaling:</strong></p>
+      <p align="justify"> You can specify scaling factor for viewport drawing 
+        operations:<br>
+        <br>
+        <font color="#009900" face="Courier New, Courier, mono">// Determine current 
+        scaling factor.</font><font face="Courier New, Courier, mono"><br>
+        Fixed x_scale,y_scale;<br>
+        render-&gt;GetScale( &amp;x_scale, &amp;y_scale );</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Doble the scaling factor.</font><br>
+        render-&gt;SetScale( x_scale * 2, y_scale * 2);</font></p>
+      <p align="justify"> <strong>Transparency:</strong></p>
+      <p align="justify"> You can specify alpha transparency value for all subsequent 
+        drawing operations:<br>
+        <br>
+        <font color="#009900" face="Courier New, Courier, mono">// Get current 
+        transparency settings. </font><font face="Courier New, Courier, mono"><br>
+        Byte alpha = render-&gt;GetAlpha();<br>
+        <br>
+        <font color="#009900">// Set transparency to 50%. </font><br>
+        render-&gt;SetAlpha( 128 );</font></p>
+      <p align="justify"> <strong>Gamma correction:</strong></p>
+      <p align="justify"> Render2D provides methods to perform gamma correction. 
+        Two methods are provided:<br>
+        <font face="Courier New, Courier, mono">GetColorGamma()</font> to retrieve 
+        current gamma correction value, and <font face="Courier New, Courier, mono">SetColorGamma()</font><br>
+        to set new gamma corretion level. Gamma correction value ranges from 0 
+        ( total darknesss) to 2 (maximum brightness).</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">/// 
+        Get color gamma level.</font><font face="Courier New, Courier, mono"><br>
+        Fixed gamma = render-&gt;GetColorGamma();</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">/// 
+        Set new color gamma level.</font><br>
+        render-&gt;SetColorGamma( 1.5 );</font></p>
+      <p align="justify"><strong>Drawing:</strong></p>
+      <p align="justify"> Render2D provides methods for drawing points and lines 
+        primitives:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Draw green point at position 5 , 5.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;DrawPoint( 5, 5, Color( 0, 255, 0 ) );<br>
+        <br>
+        <font color="#009900">// Draw red line from screen top-left corner to 
+        bottom-right corner. </font><br>
+        render-&gt;DrawLine( 0, 0, screen_width, screen_height, Color( 0, 255, 
+        0 ) );</font></p>
+      <p align="justify">All drawing operation are queued. To actually perform 
+        drawing call Render2D <font face="Courier New, Courier, mono">Flush()</font> 
+        method. This draws all sprites and primitives to backbuffer.</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        sort draw queue by z order and draw it.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;Flush();</font></p>
+      <p align="justify"> And to copy backbuffer to device display memory call 
+        Render2D <font face="Courier New, Courier, mono">Show()</font> method:</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Copy backbuffer to display video memory.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;Show();</font> </p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp; </p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Image</strong></font></p>
+      <p align="justify"> Image class is used to hold .pcx images loaded from 
+        PackDir file. </p>
+      <p align="justify">Only PCX 256 palette graphics format supported of square 
+        size with power of two – side length (8x8, 16x16, 32x32, 64x64, 128x128 
+        and 256x256). Image can have transparent pixels. Pixels with value R=255, 
+        G=0, B=255 are always transparent and not drawn.</p>
+      <p align="justify">Image alpha channel can be stored in file with the same 
+        name and added “+a” suffix. To store alpha values in PCX file format you 
+        need to copy pixel alpha channel value into it’s RGB components values 
+        then save new image as PCX 256 palette graphics format. Such a file will 
+        be automatically loaded into image alpha channel. ( for example if You 
+        have rgb bits of image stored in “test.pcx” file than alpha channel will 
+        be loaded from file &quot;test+a.pcx&quot; ).</p>
+      <p align="justify">Load images using <font face="Courier New, Courier, mono">Render2D::LoadImage()</font> 
+        method.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Find specified image by ASCII name in</font><font face="Courier New, Courier, mono"><br>
+        ObjRef&lt;Image&gt; img_test = render2d-&gt;LoadImage( <font color="#990000">“test”</font> 
+        );</font></p>
+      <p align="justify">When this image is not needed any more – free occupied 
+        resources like this:</p>
+      <p align="justify"><font face="Courier New, Courier, mono">img_test = NULL;<br>
+        render2d-&gt;UpdateResources();</font> </p>
+      <p align="justify">&nbsp; </p>
+      <p align="justify">&nbsp; </p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Sprite2D</strong></font></p>
+      <p align="justify"> Sprite2D represents rectangular area of Image. Let’s 
+        for example define Sprite2D object referencing area from point (10, 10) 
+        with width 20 and height 16.<br>
+        <br>
+        <font color="#009900" face="Courier New, Courier, mono">// Init sprite 
+        referencing to image rectanglular area from point (10, 10)<br>
+        // with width = 20 and height = 16.</font><font face="Courier New, Courier, mono"><br>
+        Sprite2D spr_test;<br>
+        spr_test.Init( img_test, 10, 10, 20, 16 );</font></p>
+      <p align="justify"> To draw sprites use SpriteTransform class that holds 
+        Sprite2D rendering transformation. </p>
+      <p align="justify">&nbsp; </p>
+      <p align="justify">&nbsp; </p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>SpriteTransform</strong></font></p>
+      <p align="justify">SpriteTransform class objects are used to hold Sprite2D 
+        rendering transformations. Possible transformations include: position 
+        translation, scaling, rotation, applying alpha transparency, visibility 
+        flag. <br>
+        For example:</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Let's draw created sprite at position (50, 100) with 50% transparency, 
+        <br>
+        // rotated 45 degress, and scaled to it's double size.</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create SpriteTransform object.</font><font face="Courier New, Courier, mono"><br>
+        SpriteTransform st_test;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Bind created sprite to it.</font><font face="Courier New, Courier, mono"><br>
+        st_test.Set( spr_test );<br>
+        <br>
+        <font color="#009900">// Position translation x = 50, y = 100</font><br>
+        st_test.Translate( 50, 100 );</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Choose 50% alpha</font><br>
+        st_test.SetAlpha( 128 );</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Rotated 45 degrees</font><br>
+        st_test.SetAngle( 45 );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Scaled by 2 ( width and height )</font><font face="Courier New, Courier, mono"><br>
+        st_test.SetScale( 2, 2 );<br>
+        <br>
+        <font color="#009900">// Update transformation.</font><br>
+        st_test.Update();<br>
+        <br>
+        <font color="#009900">// Draw it.</font><br>
+        render2d-&gt;Draw( st_test );</font></p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp; </p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Animation</strong></font></p>
+      <p align="justify">MobileDragon provides support for playing 2d sprite animation. 
+        Animation is represented as an array of SpriteTransform objects pointers. 
+        In general, you use animations loaded from GameData resource (see GameData 
+        class description for more details).</p>
+      <p align="justify">SpriteTransform class has member functions <font face="Courier New, Courier, mono">GetTime()</font>. 
+        <font face="Courier New, Courier, mono">GetTime()</font> returns current 
+        frame animation delay. Actor2D class object can be used to control (“play”) 
+        animation.</p>
+      <p align="justify">For example:</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Load the animation somewhere.</font><font face="Courier New, Courier, mono"><br>
+        SpriteTransform **anim = LoadAnimation();</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Actor2d object instance.</font><br>
+        Actor2D actor;<br>
+        <br>
+        <font color="#009900">// Bind actor object to this animation and choose 
+        infinite playback. </font><br>
+        actor.Set( anim, True );</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Advance animation time by 30 “points”.</font><br>
+        actor.Play( 30 );<br>
+        <br>
+        <font color="#009900">// Draw animation frame. GetFrame() returns pointer 
+        to <br>
+        // current frame SpriteTransform.</font><br>
+        render-&gt;Draw( actor.GetFrame() );</font></p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Font2D</strong></font></p>
+      <p align="justify"> Font2D class provides ability to display text messages. 
+        Font2D character glyphs loaded from binary file &lt;Name&gt;.bin and &lt;Name&gt;.pcx. 
+        These files can be prepared with TextureFont utility.<br>
+        Init Font2D class object like this:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Font2D object instance.</font><font face="Courier New, Courier, mono"><br>
+        Font2D font;</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Load game font.</font><br>
+        font.Create( render, <font color="#990000">&quot;arial_black&quot;</font> 
+        );</font></p>
+      <p align="justify"> And to display sample message:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Display message.</font><font face="Courier New, Courier, mono"><br>
+        font.Draw(<font color="#990000">&quot;sample message&quot;</font>, 10, 
+        10 );</font> 
+      <p align="justify">&nbsp; 
+      <p align="justify">&nbsp; 
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>GameData</strong></font></p>
+      <p align="justify"> MobileDragon comes with tool named DragonTool – program 
+        to edit 2d games graphics resources. These resources include sprite collections, 
+        tile maps and animations. DragonTool exports projects to one ore more 
+        *.pcx files and one *.dt binary file. These files must be kept together 
+        when composing game resource PackDir image.</p>
+      <p align="justify">GameData class is used to load and manage DragonTool 
+        prepared resource.</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Instance of GameData object.</font><font face="Courier New, Courier, mono"><br>
+        GameData gd;<br>
+        <br>
+        <font color="#009900">// Vector of SpriteTransform pointers to hold sprite 
+        collection.</font><br>
+        vector&lt;SpriteTransform*&gt; palette;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        SVector of SpriteTransform objects to hold actual SpriteTransform <br>
+        // objects.</font><font face="Courier New, Courier, mono"><br>
+        SVector&lt;SpriteTransform&gt; st_table;</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Vectors to hold node CustomData attributes.</font><br>
+        vector&lt;Char*&gt; tokens;<br>
+        SVector&lt;CustomData&gt;* cd_table;</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        TileMap object to load.</font><br>
+        TileMap floor;</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Load GameData resource named “set1_1”.</font><br>
+        gd.Init( render,<font color="#990000"> &quot;set1_l&quot; </font>);</font></p>
+      <p align="justify">GameData structure is the same tree structure seen in 
+        DragonTool outline. After loading the resource we can walk the tree and 
+        load variuos node items. At the beginning current node is the root node. 
+        <br>
+        The first thing to do is to enter that node:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Enter the root node.</font><font face="Courier New, Courier, mono"><br>
+        gd.EnterNode();</font></p>
+      <p align="justify"> Then go to sprite collection node named “palette”. This 
+        is dummy node with Sprites linked as child nodes to it. It holds sprite 
+        palette for our indexed tile map.</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Step to “palette” node.</font><font face="Courier New, Courier, mono"><br>
+        gd.GoToNextByNameNode(<font color="#990000">&quot;palette&quot;</font>);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Export palette node.</font><font face="Courier New, Courier, mono"><br>
+        gd.ExportNode( &amp; palette, &amp; st_table, &amp; cd_table, tokens.begin() 
+        );</font></p>
+      <p align="justify"> Then let’s load the tile map itself. That tile map resides 
+        in node “level10/floor”</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Go to top node in this level.</font><font face="Courier New, Courier, mono"><br>
+        gd.GoToTopNode();</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Goto node “level10” and enter it.</font><font face="Courier New, Courier, mono"><br>
+        gd.GoToNextByNameNode(<font color="#990000">&quot;level0&quot;</font>);<br>
+        gd.EnterNode();</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Go to tile map node “floor”.</font><font face="Courier New, Courier, mono"><br>
+        gd.GoToNextByNameNode(<font color="#990000">&quot;floor&quot;</font>);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        And export it to TileMap object.</font><font face="Courier New, Courier, mono"><br>
+        gd.ExportNode( &amp;floor );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set palette for this tile map. And set tile map cell size.</font><font face="Courier New, Courier, mono"><br>
+        floor.SetPalette( &amp;tile_map_palette );<br>
+        floor.SetCellSize(24, 24);</font></p>
+      <p align="justify">Let’s for example load animations from node “/animation”:<br>
+        <br>
+        <font color="#009900" face="Courier New, Courier, mono">// Animation class 
+        instance to hold node animations.</font><font face="Courier New, Courier, mono"><br>
+        Animation anim_node;<br>
+        <br>
+        <font color="#009900">// Go to root node.</font><br>
+        gd.GoToRootNode();</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Enter root node.</font><font face="Courier New, Courier, mono"><br>
+        gd.EnterNode();</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Go to “animation” node.</font><font face="Courier New, Courier, mono"><br>
+        gd.GoToNextByNameNode(<font color="#990000">&quot;animation&quot;</font>);</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Export node animations to anims object.</font><br>
+        anim_node.ExportNode( &amp; gd, st_table, cd_table, tokens.begin() );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Get individual animations from node.</font><font face="Courier New, Courier, mono"><br>
+        SpriteTransform ** anims[ 2 ];</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Get animation “walk-face”.</font><font face="Courier New, Courier, mono"><br>
+        anims[0] = anim_node.Find( <font color="#990000">&quot;walk-face&quot;</font> 
+        );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Get animation “walk-right”.</font><font face="Courier New, Courier, mono"><br>
+        anims[1] = anim_node.Find( <font color="#990000">&quot;walk-right&quot;</font> 
+        );</font> </p>
+ <p align="center">&nbsp;</p>
+  	  <p align="center">&nbsp;</p>
+      <p align="center" class="memTemplItemLeft"><font size="1"><strong>Copyright 
+        2005-2006 Herocraft Hitech Co. Ltd. </strong></font></p>
+
+      </td>
+  </tr>
+</table>
+
+
+</body>
+</html>

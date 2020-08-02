@@ -1,0 +1,26 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MDJoint"},(0x00000004),1,0,0
+
+
+; S2U information: Added UIQ 2.x as a requisite
+; Supports UIQ 2.x
+;(0x101F617B), 2, 0, 0, {"UIQ20ProductID"}
+(0x101F80BE), 1, 0, 0, {"SonyEricssonP80xPlatformProductID"}
+
+;
+; Files to install
+;
+"\symbian\UIQ_21\epoc32\release\armi\urel\MDJoint.app"         			  -"!:\system\apps\MDJoint\MDJoint.app"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDJoint\MDJoint.rsc"         -"!:\system\apps\MDJoint\MDJoint.rsc"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDJoint\MDJoint.aif"         -"!:\system\apps\MDJoint\MDJoint.aif"
+
+"..\HSS.DLL"         		-"!:\system\apps\MDJoint\HSS.DLL"
+
+"..\..\..\target\uiq\pdjoint.dat"         -"!:\system\apps\MDJoint\pdjoint.dat"
+"..\..\..\target\uiq\pdjoint.fat"         -"!:\system\apps\MDJoint\pdjoint.fat"

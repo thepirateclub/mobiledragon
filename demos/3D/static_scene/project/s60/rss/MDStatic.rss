@@ -1,0 +1,15 @@
+
+NAME	AWIZ
+
+#include <eikon.rh>
+#include <avkon.rsg>
+#include <avkon.rh>
+#include <avkon.mbg>
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf="MobileDragon"; }
+
+RESOURCE EIK_APP_INFO
+{
+}

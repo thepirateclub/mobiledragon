@@ -1,0 +1,29 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MDParticles"},(0x00000006),1,0,0
+
+;
+;Supports Series 60 v 0.9
+;This line indicates that this installation is for the Series 60 platform v0.9
+;This line must appear _exactly_ as shown below in the sis file
+;If this line is missing or incorrect, the sis file will not be able
+;to be installed on Series 60 v0.9 platforms
+(0x101F6F88), 0, 0, 0, {"Series60ProductID"}
+
+;
+; Files to install
+;
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDParticles.app"         -"!:\system\apps\MDParticles\MDParticles.app"
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDParticles.rsc"         -"!:\system\apps\MDParticles\MDParticles.rsc"
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDParticles_caption.rsc" -"!:\system\apps\MDParticles\MDParticles_caption.rsc"
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDParticles.aif"         -"!:\system\apps\MDParticles\MDParticles.aif"
+
+"..\HSS.DLL"         -"!:\system\apps\MDParticles\HSS.DLL"
+
+"..\..\..\target\s60\pdparticles.dat"         -"!:\system\apps\MDParticles\pdparticles.dat"
+"..\..\..\target\s60\pdparticles.fat"         -"!:\system\apps\MDParticles\pdparticles.fat"

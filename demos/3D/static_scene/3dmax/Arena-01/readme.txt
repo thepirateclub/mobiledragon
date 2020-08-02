@@ -1,0 +1,1 @@
+File "arena-01.txt" is the LOD settings file for this scene.

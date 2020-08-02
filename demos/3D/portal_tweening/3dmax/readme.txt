@@ -1,0 +1,1 @@
+Place "portals_tween" folder into "%3DMAX%\MAPS" folder.

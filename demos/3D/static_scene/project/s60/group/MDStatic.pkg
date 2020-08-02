@@ -1,0 +1,29 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MDStatic"},(0x00000001),1,0,0
+
+;
+;Supports Series 60 v 0.9
+;This line indicates that this installation is for the Series 60 platform v0.9
+;This line must appear _exactly_ as shown below in the sis file
+;If this line is missing or incorrect, the sis file will not be able
+;to be installed on Series 60 v0.9 platforms
+(0x101F6F88), 0, 0, 0, {"Series60ProductID"}
+
+;
+; Files to install
+;
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDStatic.app"         -"!:\system\apps\MDStatic\MDStatic.app"
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDStatic.rsc"         -"!:\system\apps\MDStatic\MDStatic.rsc"
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDStatic_caption.rsc" -"!:\system\apps\MDStatic\MDStatic_caption.rsc"
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDStatic.aif"         -"!:\system\apps\MDStatic\MDStatic.aif"
+
+"..\HSS.DLL"         -"!:\system\apps\MDStatic\HSS.DLL"
+
+"..\..\..\target\s60\pdstatic.dat"         -"!:\system\apps\MDStatic\pdstatic.dat"
+"..\..\..\target\s60\pdstatic.fat"         -"!:\system\apps\MDStatic\pdstatic.fat"

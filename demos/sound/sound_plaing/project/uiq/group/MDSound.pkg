@@ -1,0 +1,26 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MDSound"},(0x00000009),1,0,0
+
+
+; S2U information: Added UIQ 2.x as a requisite
+; Supports UIQ 2.x
+;(0x101F617B), 2, 0, 0, {"UIQ20ProductID"}
+(0x101F80BE), 1, 0, 0, {"SonyEricssonP80xPlatformProductID"}
+
+;
+; Files to install
+;
+"\symbian\UIQ_21\epoc32\release\armi\urel\MDSound.app"         			  -"!:\system\apps\MDSound\MDSound.app"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDSound\MDSound.rsc"         -"!:\system\apps\MDSound\MDSound.rsc"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDSound\MDSound.aif"         -"!:\system\apps\MDSound\MDSound.aif"
+
+"..\HSS.DLL"         		-"!:\system\apps\MDSound\HSS.DLL"
+
+"..\..\..\target\uiq\pdsound.dat"         -"!:\system\apps\MDSound\pdsound.dat"
+"..\..\..\target\uiq\pdsound.fat"         -"!:\system\apps\MDSound\pdsound.fat"

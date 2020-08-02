@@ -1,0 +1,1 @@
+Place "portals" folder into "%3DMAX%\MAPS" folder.

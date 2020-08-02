@@ -1,0 +1,20 @@
+TARGET  MDSound.app
+TARGETTYPE  app
+
+MACRO MD_OS_SYMBIAN_UIQ
+
+UID  0x100039CE 0x00000009
+TARGETPATH \system\apps\MDSound
+
+SOURCEPATH .
+RESOURCE ..\rss\MDSound.rss
+
+LIBRARY euser.lib apparc.lib cone.lib eikcore.lib eikcoctl.lib qikctl.lib eikdlg.lib hal.lib 
+LIBRARY fbscli.lib MediaClientImage.lib bitgdi.lib ws32.lib efsrv.lib HSS.LIB
+LIBRARY bluetooth.lib esock.lib sdpdatabase.lib sdpagent.lib btmanclient.lib plpvariant.lib
+STATICLIBRARY MDStaticLIB.lib
+
+AIF MDSound.aif ..\rss MDSoundAif.rss c8 context_pane_icon.bmp context_pane_icon_mask.bmp list_icon.bmp list_icon_mask.bmp
+
+USERINCLUDE . \MobileDragon\include
+SYSTEMINCLUDE   . \epoc32\include

@@ -1,0 +1,173 @@
+<html>
+	<head><title>Quick start</title></head>
+	<body bgcolor=#ffffff>
+	<table width="1%" border="0">
+	<tr>
+		
+		<td width="1%"><b><FONT SIZE="-1">Dragon&nbsp;Tool User&nbsp;Manual</font></b></td>
+		<td width="100%">&nbsp;</td>
+		<td width="1%"><a href="overview.htm"><img src="img/prev.png" border="0" alt="Previous Page"></a></td>
+		<td width="1%"><a href="index.htm"><img src="img/toc.png" border="0" alt="Table of Contents"></a></td>
+		<td width="1%"><a href="basic.htm"><img src="img/next.png" border="0" alt="Next Page"></a></td>
+		
+	</tr>
+	<tr>
+		<td align="center" colspan="5"><img src="img/blueline.png"></td>
+	</tr>
+	</table>
+		<h2>Quick start</h2>
+			This tutorial will show an overview of the main Dragon Tool features.
+			It's divided in a few steps. You can pass any step and continue from another
+			one by loading according scene. This scenes are located in the zip archive
+			(<a href="quick_start.zip">download scenes</a>).
+		<p>
+			Let's assume that we are making some RPG project. Out first task will be to
+			compose a panel where the action points of the game character and his
+			items and weapon is shown.
+			
+		<h3><a id="step1"></a> Step 1. Loading a scene</h3>
+			Start by loading scene quick_start/tutorial/step1.xml<br>
+			
+		<h3><a id="step2"></a> Step 2. Importing bitmap images</h3>
+			There are no sprites in this scene, so let's import some by
+			choosing "Sprite -> Import" menu item.<br>
+		<p>
+			<center><img src="img/file_chooser.png"></center>
+		<p>
+			For now we need the following bitmaps: apGreen, dragon, itemSlot and panelTile.
+		<h3><a id="step3"></a>Step 3. Placing and grouping sprites</h3>
+			After import they will appear in the project. In the Outliner Panel
+			you can see that this objects are selected:
+		<p>
+			<center><img src="img/outliner1.png"></center>
+		<p>
+			Then we will create an object that will group these elements in the needed order.
+			(Create -> Transform). This object will be named "Transform6" or something like
+			that. To rename it go to the table in the right part of the window (It's called
+			"Property Editor". There you can edit properties of selected objects) and
+			change the "name" property. Let's call it "panel":
+		<p>
+			<center><img src="img/prop_editor.png"></center>
+		<p>
+			Now we can start composing the panel. In the outliner window drag
+			a "panelTile" object on the "panel" object. "panelTile" object will
+			be attached to a "panel". Then attach an "itemSlot" and a "dragon"
+			objects to the "panel". Go to the Property Editor and set the panel's
+			'x' coord to 100, so we can se it separately from other objects in the scene.
+		<p>
+			Let's arrange interface elements and adjust they Z order. Select a
+			panelTile in the Outliner window and set it's ZOrder to 0. Then select
+			an itemSlot and set it's ZOrder to 1, x coord to 128 and it's y coord
+			to -5. Then set a dragon's ZOrder to 2, x and y coords to 11 and -16.
+		<p>
+			<center><img src="img/panel1.png"></center>
+		<p>
+			We need two itemSlots on the panel. So, select an itemSlot and
+			choose "Edit -> Copy" command. Set the newly created object's ZOrder
+			to 3 and x coord to 19.
+		<p>
+			Panel is nearly completed. We just need to layout an action points idicators.
+		<p>
+			Select an apGreen and attach it to the panel. Set it's
+			ZOrder to 4 and coords to 53 and -2. Copy it and move the copy
+			to the right using a Move Tool on the toolbar.
+		<p>
+			<center><img src="img/move_tool.png"></center>
+		<p>
+			Perform the same actions to make two more ap indicators. The
+			result of our work shoul look in the following way:
+		<p>
+			<center><img src="img/panel_finished.png"></center>
+		
+		<h3><a id="step4"></a> Step 4. Creating tile map</h3>
+			For creating a tile map firstly we should create a cell object for this grid.
+		<p>
+			Choose "Create -> Square Cell" command. Change the 'size' property of this cell to 24 pixels.
+		<p>
+			Choose "Create -> Index Tile Map". After the map is created look at
+			it's properties in the Property Editor. The most impotant ones are
+			"cellNode", "palette", "rowCount", "colCount". "cellNode" property should be
+			already defined. If not - set it to "|cell". Set "rowCount"
+			and "colCount" to 8. You can also set "showCells" to look at the grid of cells.
+			Call this object "terrainMap". And let's also hide a panel by selecting it and
+			unchecking the "visible" property.
+			<p><center><img src="img/empty_tile_map.png"></center>
+		<p>
+			For now the grid is clear. Let's import some tiles for this map.
+			Go to the "Sprite -> Import" and choose following sprites: grass, grass_left,
+			grass_topLeft, grass_top, sand. Then group them ("Edit -> Group"), call
+			this group "terrainTiles" and uncheck it's "visible" property. This
+			group of objects will be used to paint them	on our tile map.
+			Then we should tell a terrainMap that it should use this group of objects as a
+			tile set. Select it and set it's "palette" property to "|terrainTiles".
+		<p>
+			Now we can paint this map. Select a terrainTiles object and
+			choose "Window -> Display Brushes". Select a map and press a "Make Live"
+			button on the toolbar to allow
+			painting on this object <img src="img/make_live.png">(Live object is an
+			object on which the painting is performed). Then click on the brushes and
+			draw a on the map some terrain.
+		<p>
+			<center><img src="img/tile_map.png"></center>
+		<p>
+			When finished, select terrainMap and press "Make Live" button again to
+			disable painting on it.
+			
+		<h3><a id="step5"></a>Step 5. Placing objects on the map</h3>
+			The map looks empty. So, let's paint some trees and stones over it.
+			Import the following sprites: stone, tree1_top, tree1_bottom, tree2_botLeft,
+			tree2_botRight, tree2_topLeft, tree2_topRight. Group them and call the group
+			"objectTiles". Create another Tile Map ("Create -> Tile Map") and set it
+			palette property to "|objectTiles". Set it's rowCount and columnCount to 8.
+			Call this map "objectMap". Then select both maps (terrainMap and objectMap)
+			and group them. Name the group "map1".
+		<p>
+			Select the objectMap and click "Make Live" button <img src="img/make_live.png">. 
+			Then select objectTiles and choose "Window -> Brushes". Paint some trees
+			and stones.
+		<p><center><img src="img/tile_map2.png"></center>
+		<p>
+			When finished, select objectMap and press "Make Live" button again to
+			disable painting on it.
+		<h3><a id="step6"></a> Step 6. Creating animation</h3>
+		We have a beautiful woodland scenery. Now we need somebody to vivify it.
+		<p>
+			Import following sprites: monk1, monk2, monk3, monk4. Group them,
+			name the group "monk". Select "Edit -> Convert -> Transform to Animation".
+			Expand the monk object to see that it consist of a 4 frames, and
+			each frame has a "layer" object.
+		<p><center><img src="img/monk.png"></center>
+		<p>
+			To view an animation click "Play" button <img src="img/play_but.png">
+			in the right bootom part of a programm window. Well, this monk turns his
+			head too fast. Click "Stop" button and let's tune the delay of the
+			frames. To adjust the delay of the frame select it in the Outliner
+			window and enter the delay value in the Property Editor.
+		<h3><a id="step7"></a> Step 7. Putting all together</h3>
+			Select map1, monk and panel objects. Group them.
+			Use the Move Tool to place this	elements or enter x and y
+			coords directly in the Property Editor.
+		<p><center><img src="img/finished.png"></center>
+		<h3><a id="step8"></a> Step 8. Exporting resources to the Mobile Dragon</h3>
+			Choose "File -> Export Resources". This resources are exported to the "output" folder of the project. Now import this project in the Mobile Dragon and look at the best game in the world ! (Though it's more close to a screensaver :) ).
+			
+		<br>
+		<br>
+		<table width="1%" border="0">
+			<tr>
+				<td align="center" colspan="5"><img src="img/blueline.png"></td>
+			</tr>
+			<tr>
+				<td width="1%"><b><FONT SIZE="-1">Dragon&nbsp;Tool User&nbsp;Manual</font></b></td>
+				<td width="100%">&nbsp;</td>
+				<td width="1%"><a href="overview.htm"><img src="img/prev.png" border="0" alt="Previous Page"></a></td>
+				<td width="1%"><a href="index.htm"><img src="img/toc.png" border="0" alt="Table of Contents"></a></td>
+				<td width="1%"><a href="basic.htm"><img src="img/next.png" border="0" alt="Next Page"></a></td>
+			</tr>
+		</table>
+			<font size="-1">
+			Copyright 2000-2005 HeroCraft.  All rights reserved.
+			</font>
+	</body>
+</html>
+	

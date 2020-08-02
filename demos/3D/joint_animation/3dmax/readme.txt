@@ -1,0 +1,1 @@
+Place "robo_joint" folder into "%3DMAX%\MAPS" folder.

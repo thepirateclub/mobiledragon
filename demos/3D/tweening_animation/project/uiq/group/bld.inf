@@ -1,0 +1,9 @@
+
+PRJ_EXPORTS
+
+..\..\..\target\uiq\pdtweening.dat \Epoc32\Wins\c\system\apps\MDTweening\pdtweening.dat
+..\..\..\target\uiq\pdtweening.fat \Epoc32\Wins\c\system\apps\MDTweening\pdtweening.fat
+
+PRJ_MMPFILES
+
+MDTweening.mmp

@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<title>MobileDragon Installation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="keywords" content="MobileDragon, mobile games, game development, 3d mobile games, 2d mobile games, game engine, smartphone, PocketPC, Palm OS, Symbian OS, Windows Mobile, HeroCraft Hitech, games">
+<link href="../reference_manual/doxygen.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<table width="75%" border="0" align="center" cellpadding="2" cellspacing="0"  bgcolor="#868686">
+  <tr>
+    <td width="100%">
+	<table width="100%" border="0"  cellpadding="0" cellspacing="2" bgcolor="#F4F4FB">
+    <tr>
+        <td width="6%"><img src="../../data/mdicon.gif" align="right"></td>
+    	  <td width="94%" ><p align="center"><strong><font size="5">MobileDragon 
+              Installation</font></strong></p></td>
+    </tr>
+    </table>
+	</td>
+  </tr>
+</table>
+<p></p>
+
+
+
+
+<table width="75%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td>
+      <p >
+	  	The MobileDragon distribution contains static library binaries for all supported platforms and compilers(release and debug versions), 
+		library include files, documentation files, demos sources with projects for all supported platforms and compilers, tools executables, and redistributable files.
+		This all comes in form of a single .zip package. To install it simple unzip file contents (we recommend you to extract it into your "c:\" 
+		drive root directory and will assume that "c:\mobiledragon" is your MobileDragon installation folder).
+     </p>
+	 <p>
+		After extraction go to "c:\mobiledragon" directory.
+		There you can find several directories.
+	  </p>
+	  <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#666666">
+        <tr> 
+          <td width="20%">.\documentation</td>
+          <td width="80%">Contains MobileDragon guide and API reference documentation.</td>
+        </tr>
+        <tr> 
+          <td>.\include</td>
+          <td>Contains all MobileDragon .h include files.</td>
+        </tr>
+        <tr> 
+          <td>.\lib</td>
+          <td>Contains all compiled MobileDragon binary library files for all 
+            supported platforms.</td>
+        </tr>
+        <tr> 
+          <td>.\tools</td>
+          <td>This is directory contains MobileDragon toolkit.</td>
+        </tr>
+        <tr> 
+          <td>.\demos</td>
+          <td>Contains MobileDragon demo projects.</td>
+        </tr>
+        <tr>
+          <td>.\extras</td>
+          <td>Additional MobileDragon components.</td>
+        </tr>
+      </table>
+<p></p>
+      <h1 class="memTemplItemLeft"><font size="5"><strong><a name="desktop_windows"></a>1.1 
+        Desktop Windows</strong></font></h1>
+      <h2> Overview</h2> 
+	  <p align="justify"> The desktop Windows is not final release platform for 
+        MobileDragon based applications, but it is very useful because the development 
+        for it is much faster and debugging is much simpler.</p>
+        
+      <p align="justify">Microsoft Visual C++ 6.0 or Microsoft Visual C++ 8.0 
+        can be used for desktop developments. Microsoft Visual C++ 6.0 is mature 
+        tool and still has one of most powerful debuggers. Microsoft Visual C++ 
+        8.0 also can be used for develop for Windows Mobile, so if you choose 
+        it, you have one tool for desktop and mobile device development.</p>
+		
+      <h2>Installation</h2>
+      <h3> Installing Microsoft Visual C++ 6.0</h3>
+       
+      <p align="justify"> Install Microsoft Visual C++ 6.0. It is recommended 
+        that you install in default directory, and make sure that the 'Register 
+        environment variables' checkbox is checked at the final stage of installation.</p>
+      <p align="justify">Then install Service Pack 6 for Visual C++ 6.0.</p>
+      <p align="justify">After all is installed it is required to configure Visual 
+        C++ 6.0 environment. To do it start the Visual C++ 6.0 IDE. </p>
+      <p align="justify">Go to menu “Tools / Options”. The In the dialog window 
+        appeared select “Directories” tab.</p>
+      <p align="justify">On that tab set option “Platform” to “Win32” and “Show 
+        directories for” to “Include files”. Add Include files directory path 
+        to the MobileDragon includes directory (default is “c:\mobiledragon\include”).</p>
+      <p align="justify">Then set option “Show directories for” to “Library files” 
+        and add path to the MobileDragon desktop windows libraries directory (default 
+        is “c:\mobiledragon\lib\win32”).</p>
+		
+		
+       <h3> Installing Microsoft Visual C++ 8.0</h3>
+        
+      <p align="justify">Install Microsoft Visual C++ 8.0. It is recommended that 
+        you install in default directory</p>
+      <p align="justify">After all is installed it is required to configure Visual 
+        C++ 8.0 environment. To do it start the Visual C++ 6.0 IDE.</p>
+      <p align="justify">Go to menu “Tools / Options”. In the dialog window appeared 
+        select “Projects and Solutions / VC++ Directories” tree item. </p>
+      <p align="justify">On appeared tab set “Platform” options to “Win32” and 
+        “Show directories for” to “Include files”. Add Include files directory 
+        path to the MobileDragon includes directory (default is “c:\mobiledragon\include”).</p>
+      <p align="justify">Then set option “Show directories for” to “Library files” 
+        and add path to the MobileDragon desktop windows libraries directory (default 
+        is “c:\mobiledragon\lib\win32”). </p>
+	  
+	     
+      <h1 class="memTemplItemLeft"><font size="5"><strong><a name="windows_mobile"></a>1.2 
+        Windows Mobile</strong></font></h1>
+      <h2> Overview</h2> 
+	  <p align="justify"> To develop MobileDragon games for Windows Mobile (Pocket 
+        PC and Smartphone ) platform you will need Embedded Visual C++ 4 and Pocket 
+        PC 2003 SDK.</p>
+		
+      <h2>Installation</h2>
+      <p>First you need to install Microsoft Embedded Visual C++ 4.0 with Service 
+        Pack 4. It is recommended installing in default directory. </p>
+       
+      <p align="justify"> Then install required Pocket PC 2003 SDK. It can be 
+        obtained from Microsoft site at <a href="http://msdn.microsoft.com/mobility/downloads/sdks/default.aspx" title="http://msdn.microsoft.com/mobility/downloads/sdks/default.aspx" target="_blank">http://msdn.microsoft.com/mobility/downloads/sdks/default.aspx</a></p>
+      <p align="justify">After all is installed it is required to configure Embedded 
+        Visual C++ environment. To do it start the Embedded Visual C++ IDE. </p>
+      <p align="justify"> Go to menu “Tools / Options” and select Directories 
+        tab.</p>
+      <p align="justify">Set “Platform” option to “Pocket PC 2003” platform.</p>
+      <p align="justify"> Set “Show directories for” option to “Include files” 
+        and add directory path to the MobileDragon includes directory (default 
+        is “c:\mobiledragon\include”) for both Win32(WCE emulator) &amp; Win32(WCE 
+        ARMV4) CPUs.</p>
+      <p align="justify"> Then set “Show directories for” to “Library files” in, 
+        and add path to the MobileDragon Windows Mobile libraries directory (default 
+        is “c:\mobiledragon\lib\wince” used for example) ) for both Win32(WCE 
+        emulator) &amp; Win32(WCE ARMV4) CPUs. </p>
+		
+      <h1 class="memTemplItemLeft"><font size="5"><strong><a name="symbian"></a>1.3 
+        Symbian</strong></font></h1>
+      <h2> Overview</h2> 
+	  <p align="justify"> To develop MobileDragon games for Symbian (Series 60 
+        & UIQ now supported) platform you will need SDK's for each platform. These 
+        SDK's include various command line tools needed to build & deploy applications.</p>
+      <p align="justify"> For series s60 you will need SDK version 1.2, for UIQ 
+        platform use SDK version 2.1. Application compiled with those SDK's will 
+        run on many Series 60 / UIQ devices.</p>
+	  
+	  <h2>Installation</h2>
+      <p align="justify">Download SDK’s from <a href="http://www.symbian.com/developer/" title="http://www.symbian.com/developer/" target="_blank">http://www.symbian.com/developer/</a>.</p>
+      <p align="justify"> Install Series 60 v1.2 and / or UIQ 2.1 SDK(s). It is 
+        important that SDK’s and your project directories reside on the same drive. 
+        So it is recommended installing in default directory (usually it is c:\symbian). 
+      </p>
+      <p align="justify"> You also need ActivePerl installed to use SDK’s development 
+        tools, it is included in UIQ SDK distribution or can be obtained from 
+        <a href="http://www.activestate.com/Products/ActivePerl/" title="http://www.activestate.com/Products/ActivePerl/" target="_blank">http://www.activestate.com/Products/ActivePerl/</a>.</p>
+      <p align="justify"> After SDK’s are installed you need to copy MobileDragon 
+        Symbian library binaries folder \lib\s60\release to your SDK \epoc32\ 
+        directory. </p>
+      
+	        
+      <h1 class="memTemplItemLeft"><font size="5"><strong><a name="palm"></a>1.4 
+        Palm</strong></font></h1>
+      <h2> Overview</h2> 
+	  <p align="justify"> To develop MobileDragon games for Palm OS you will need 
+        CodeWarrior for PalmOS Version 9.0.</p>
+	  
+	  <h2>Installation</h2>
+      <p align="justify">First you need to install CodeWarrior for PalmOS Version 
+        9.0. It is recommended installing in default directory.</p>
+      <p align="justify"> Install CodeWarrior for PalmOS 9.2 update, install CodeWarrior 
+        for PalmOS 9.3 update. You can obtain those updates from Freescale site 
+        <a href="http://www.freescale.com/" title="http://www.freescale.com/" target="_blank">http://www.freescale.com/</a></p>
+      <p align="justify">After installing CodeWarrior you need to unzip content 
+        of CW for Palm OS Support - PATCH.zip (see &quot;MobileDragon\extra&quot; 
+        directory) to the &quot;Metrowerks\CodeWarrior\&quot; folder. This will 
+        add support for additional PNO hacks wrappers which are necessary for 
+        MobileDragon library. Unzipping process will ask you for replacing of 
+        existing files, you have to accept this operation.</p>
+      <p align="justify">After this you need to run CodeWarrior IDE and rebuild 
+        it's runtime libraries:<br>
+        - open Build All.mcp project (it resides in &quot;Metrowerks\CodeWarrior\CW 
+        for Palm OS Support\&quot; folder)<br>
+        - execute Make command</p>
+      <p align="center">&nbsp;</p>
+  	  <p align="center">&nbsp;</p>
+      <p align="center" class="memTemplItemLeft"><font size="1"><strong>Copyright 
+        2005-2006 Herocraft Hitech Co. Ltd. </strong></font></p>
+      </td>
+  </tr>
+</table>
+
+
+</body>
+</html>

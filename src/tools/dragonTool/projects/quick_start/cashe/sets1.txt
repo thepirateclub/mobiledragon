@@ -1,0 +1,5 @@
+set_0;256;4;
+sprites\monk1.png;1;1;18;36;
+sprites\monk2.png;1;39;18;36;
+sprites\monk3.png;1;77;18;36;
+sprites\monk4.png;21;1;18;36;

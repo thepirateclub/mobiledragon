@@ -1,0 +1,154 @@
+<html>
+	<head><title>User Interface</title></head>
+	<body bgcolor=#ffffff>
+	<table width="1%" border="0">
+	<tr>
+		<td width="1%"><b><FONT SIZE="-1">Dragon&nbsp;Tool User&nbsp;Manual</font></b></td>
+		<td width="100%">&nbsp;</td>
+		<td width="1%"><a href="objects.htm"><img src="img/prev.png" border="0" alt="Previous Page"></a></td>
+		<td width="1%"><a href="index.htm"><img src="img/toc.png" border="0" alt="Table of Contents"></a></td>
+		<td width="1%"><a href="tut.htm"><img src="img/next.png" border="0" alt="Next Page"></a></td>
+		
+	</tr>
+	<tr>
+		<td align="center" colspan="5"><img src="img/blueline.png"></td>
+	</tr>
+	</table>
+		<h2>User Interface</h2>
+		DragonTool window consists of a few elements:
+		<p>
+			<center><img src="img/screenshot.png"></center>
+		<p>
+		<h3><a name="menubar">Menubar</a></h3>
+			<blockquote>
+				<b>File</b>
+				<p>
+					Here you can load, save project and export it to a dragon tool format.
+				<p><b>Edit</b>
+				<p>
+					In this menu following operations are located:
+					<ul>
+					<li>Standart operations: Undo/Redo.
+					<li>Creation/Removing operations: Delete, Copy, Instance. For a difference between
+						copies and instances see <a href="basic.htm#copies">Basic concepts</a>.
+					<li>Selection operations: Select Children, Select Parents, Select None.
+					<li>Operations which deal with nodes order and their position in tree hierarchy.
+						<p>Move To Back, Move To Front - makes selected object first (or last) child of
+							it's parent.
+						<p>Swap - swaps two selected nodes.
+						<p>Group - creates a new transform node and attaches all selected objects to it.
+						<p>Link - Two nodes must be selected to perform this operation. It creates an Instance
+							of the first selected object and parents it to the second object.
+						<p>Parent - attaches all selected objects to the last selected object.
+						<p>Unparent - detaches selected objects from their parents.
+					<li>Transform operations (can be performed only on the Transform and Animation objects):
+						Rotate 90, Rotate -90, Flip Horizontal.
+					<li>Convertion operations. You can convert some of the objects into another objects.
+						(For example convert Transform into Animation).
+					<li>Add Custom Property. Here you can add a custom property to selected objects and
+						then export it into Mobile Dragon resource file. A dialog appears where
+						a name of the property and it's type should be defined.
+						More info about property types see at
+						<a href="objects.htm#property_types">Scene objects</a>.
+					</ul>
+				<b>Sprite</b>
+					<ul>
+					<li>Render - renders currently selected objects and writes it's images into the output folder
+						of the project.
+					<li>Import - select images to import them into the project. When image on the disk
+						is changed it automaticaly updates in the scene.
+					</ul>
+				<b>Window</b>
+					<ul>
+					<li>Brushes - displays all the children of the selected node as a brushes. Then this objects
+						can be painted on the Live Objects.
+					</ul>
+				<b>Create</b>
+				<ul>
+					Here is a list of the objects that can be created. For creation of a
+					Sprite use "Sprite -> Import" command.
+				</ul>
+				<p><b>Sprite Set</b>
+				<ul>
+				<li>Pack Row, Pack Column - this commands arrange children of selected node into row or column.
+				<li>Sort by Name - sort children of selected node by name.
+				</ul>
+				<p><b>Animation</b>
+				<ul>
+				<li>Add Frame - add frame to selected animation
+				<li>Add Layer - add one more layer to selected animation
+				<li>Render Animation - creates png files of animation frames and puts them into output dir
+				of the project.
+				</ul>
+			</blockquote>
+		<h3><a name="edit_view">Edit View</a></h3>
+			<blockquote>
+				This is a main work area. Here you can see and overview of the project or view only one of
+				the objects in the scene. When the project is loaded it is shown in this window. Then
+				you can right click on the objects in the Outliner panel to view them
+			</blockquote>
+		<h3><a name="prop_editor">Property Editor</a></h3>
+			<blockquote>
+				When you select an object in the scene a Property Editor displays all the properties of
+				this object (including custom properties). Click on the property value to edit it.
+				There are read-only properties which cannot be set. They are shown on the gray background.
+				If property value is shown on a red background that means that it depends on another property.
+				(For example 'frameNum' property of an Animation object depends on 'frameNum' property of
+				Time object).
+			</blockquote>
+		<h3><a name="outliner">Outliner Panel</a></h3>
+			<blockquote>
+				In this window an hierarchy of the scene nodes is displayed. You can expand/collapse
+				this nodes to show/hide their children. Drag and drop a node onto another one to
+				attach it and right click them to view in the edit view.
+			</blockquote>
+		<h3><a name="logger">Logger Panel</a></h3>
+			<blockquote>
+				This is a place where program messages are displayed (info, warngins or error messages).
+			</blockquote>
+		<h3><a name="toolbar">Toolbar</a></h3>
+	 		<blockquote>
+	 			Here is a current tool selected. Hotkey for each button can be seen in tooltips.<br>
+	 			First two tools are <b>Select tool</b> and <b>Move tool</b>. They work with objects in
+	 			the scene. Only thouse objects that have 'translateX' and 'translateY' properties can
+	 			be moved. Hold <i>alt</i> while movind object to create it's copy. Hold <i>ctrl</i> to add to selection and
+	 			<i>alt</i> to substract from selection.<br>
+	 			<b>Pan</b> and <b>Zoom</b> tools work like their Photoshop analogues. To zoom in just
+	 			left click on edit view. To zoom out hold <i>alt</i> and left click.<br>
+	 			<b>Make live</b>. Press it to make selected object 'live object'. You can paint with
+	 			brushes on live objects.<br>
+	 			Buttons <b>Select on Tile Map</b>, <b>Move on Tile Map</b> and <b>Eraser</b>
+	 			work with Tile Maps.<br>
+			</blockquote>
+		<h3><a name="tool_info">Tool Info Panel</a></h3>
+			<blockquote>
+				Every time you select a tool some info concerning it displayed here.
+			</blockquote>
+		<h3><a name="timeline">Timeline and Player Panel</a></h3>
+			<blockquote>
+				This two elements are interactiong with the Time node.
+				Click (or click and drag) on the Timeline to set a time value.
+				'Rewind' button sets Time node <b>frameNum</b> property at 0.
+				Also there is a button that brings an "FPS" dialog where you can set animation speed.
+			</blockquote>
+	<br>	
+		<table width="1%" border="0">
+			<tr>
+				<td align="center" colspan="5"><img src="img/blueline.png"></td>
+			</tr>
+			<tr>
+				<td width="1%"><b><FONT SIZE="-1">Dragon&nbsp;Tool User&nbsp;Manual</font></b></td>
+				<td width="100%">&nbsp;</td>
+		<td width="1%"><a href="objects.htm"><img src="img/prev.png" border="0" alt="Previous Page"></a></td>
+		<td width="1%"><a href="index.htm"><img src="img/toc.png" border="0" alt="Table of Contents"></a></td>
+		<td width="1%"><a href="tut.htm"><img src="img/next.png" border="0" alt="Next Page"></a></td>
+			</tr>
+		</table>
+			<font size="-1">
+			Copyright 2000-2005 HeroCraft.  All rights reserved.
+			</font>
+	<font size="-1">
+	Copyright 2000-2005 HeroCraft.  All rights reserved.
+	</font>
+</body>
+</html>

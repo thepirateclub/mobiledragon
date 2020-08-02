@@ -1,0 +1,11 @@
+
+#include <aiftool.rh>
+#include "..\..\..\mdconfig.h"
+
+RESOURCE AIF_DATA
+{
+	app_uid=MD_SYMBIAN_UID;
+	num_icons=2;
+	embeddability=KAppNotEmbeddable;
+	newfile=KAppDoesNotSupportNewFile;
+}

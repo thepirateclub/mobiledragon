@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>MobileDragon Basic Application Structure</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="keywords" content="MobileDragon, mobile games, game development, 3d mobile games, 2d mobile games, game engine, smartphone, PocketPC, Palm OS, Symbian OS, Windows Mobile, HeroCraft Hitech, games">
+<link href="../reference_manual/doxygen.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<table width="75%" border="0" align="center" cellpadding="2" cellspacing="0"  bgcolor="#868686">
+  <tr>
+    <td width="100%">
+	<table width="100%" border="0"  cellpadding="0" cellspacing="2" bgcolor="#F4F4FB">
+    <tr>
+        <td width="6%"><img src="../../data/mdicon.gif" width="44" height="44" align="right"></td>
+    	  <td width="94%" ><p align="center"><strong><font size="5">MobileDragon 
+              Basic Application Structure</font></strong></p></td>
+    </tr>
+    </table>
+	</td>
+  </tr>
+</table>
+<p></p>
+
+<table width="75%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td> <p align="justify">In the MobileDragon game program flow is controlled 
+        by the MobileDragon core.</p>
+      <p align="justify">The very first call the MobileDragon core does to an 
+        application is call to <font face="Courier New, Courier, mono">MDGameSetPreferences()</font> 
+        global function, which must be implemented by the user. The purpose is 
+        to determine some initial settings.</p>
+      <p align="justify">This function prototype is <br>
+        <font face="Courier New, Courier, mono">void MDGameSetPreferences( mdragon::MDGamePreferences 
+        &amp; )</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"><strong>MDGamePreferences</strong></font> 
+        structure members currently are: <br>
+        <em>string name</em> – application name.<br>
+        <em>string title </em>– application title. On Windows it is used as application 
+        window caption.<br>
+        <em>string pack_dir_name</em> – game resource package name without any 
+        extension.<br>
+        <em>DWord system_pool_size</em> – memory size in bytes that MobileDragon 
+        can use for it’s internal needs (such as file decompression, etc.)<br>
+        <em>string log_name</em> – name for log file that will be created by MobileDragon 
+        core. string ‘_systemLog’ will be added to this name.<br>
+        <em>DWord symbian_uuid </em>– application uuid for symbian platform.<br>
+        <em>DWord runs_per_second</em> – how many times per second main game logic 
+        will be called (see MDGame::Update() method).<br>
+        <em>DWord palm_creator_id </em>– application vendor id for palm platform.</p>
+      <p align="justify"> Note that <font face="Courier New, Courier, mono">MDGameSetPreferences()</font> 
+        function can be called more than once, so ensure it returns same data 
+        every call.</p>
+      <p align="justify">Next thing that MobileDragon does is it creates instance 
+        of main user’s game class object, which must be a derived from <font face="Courier New, Courier, mono"><strong>MDGame</strong></font> 
+        class and have it’s 3 pure virtual methods implemented:</p>
+      <p align="justify"><font face="Courier New, Courier, mono">virtual Bool 
+        Init()</font><br>
+        called by MobileDragon core to perform main game class object initialization. 
+        Here you can perform basic tasks &amp; initial resource loading. Return 
+        True to indicate that initialization completed successfully or False otherwise.</p>
+      <p align="justify"><font face="Courier New, Courier, mono">virtual Bool 
+        Update()</font><br>
+        periodically called by MobileDragon core. All game logics must be implemented 
+        here.<br>
+        MobileDragon core will try to call this method exactly such many times 
+        as it is set in preferences structure ( see MDGameSetPreferences function 
+        and MDGamePreferences structure ). </p>
+      <p align="justify"><font face="Courier New, Courier, mono">virtual void 
+        Draw()</font><br>
+        periodically called by MobileDragon core. All idle time left from executing 
+        logic updates will be spent within Draw() cycle. Here &amp; only here 
+        you visualize your game screen. </p>
+      <p align="justify">MobileDragon creates that instance by calling user-impemented 
+        global function <font face="Courier New, Courier, mono">MDGameCreate()</font>. 
+        It must return pointer to created user’s main game class object instance, 
+        allocated on heap using new operator. Deletion of this object is MobileDragon 
+        core task.</p>
+      <p align="justify">This function prototype is <br>
+        <font face="Courier New, Courier, mono">mdragon::MDGame* MDGameCreate( 
+        mdragon::System * system);</font></p>
+      <p align="justify">It takes pointer to MobileDragon <font face="Courier New, Courier, mono">Sytem</font> 
+        object, and also it must allocate render object and let the core know 
+        about it assigning the <font face="Courier New, Courier, mono">system-&gt;render2d</font> 
+        or <font face="Courier New, Courier, mono">system-&gt;render3d</font> 
+        member variable to 2d or 3d render object instance.</p>
+      <p align="justify">Let’s provide source for example application that will: 
+        start, enter logic loop once and immediately exit without drawing anything 
+        on the screen.</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        MDSampleApp.cpp</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        define this to configure MobileDragon for Win32 target platform.</font><font face="Courier New, Courier, mono"><br>
+        <font color="#0000FF">#define</font> MD_OS_WIN32</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        include MobileDragon main header.</font><font face="Courier New, Courier, mono"><br>
+        <font color="#0000FF">#include</font> <font color="#990000">&quot;mdragon.h&quot;</font></font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        prefere use of mdragon namespace.</font><font face="Courier New, Courier, mono"><br>
+        <font color="#0000FF">using namespace</font> mdragon;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">/**<br>
+        * This is MobileDraon sample application main game object class.<br>
+        */</font><font face="Courier New, Courier, mono"><br>
+        <font color="#0000FF">class</font> MDSampleApp : <font color="#0000FF">public</font> 
+        MDGame<br>
+        {<br>
+        <font color="#0000FF">public</font>:<br>
+        <br>
+        MDSampleApp( System *md_system_ )<br>
+        {<br>
+        <font color="#009900">// remember pointer to MobileDragon System object.</font><br>
+        md_system = md_system_;<br>
+        }</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> ~MDSampleApp()<br>
+        {<br>
+        <font color="#009900">// nothing to do here</font><br>
+        }</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">/**<br>
+        * Implement MDGame pure virtual metod.<br>
+        */</font><br>
+        <font color="#0000FF">virtual</font> Bool Init()<br>
+        {<br>
+        <font color="#009900">// Simply return True to tell MobileDragon core 
+        that<br>
+        // initialization completed successfully.</font><br>
+        <font color="#0000FF">return</font> True;<br>
+        }</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">/**<br>
+        * Implement MDGame pure virtual metod.<br>
+        */</font><br>
+        <font color="#0000FF">virtual</font> Bool Update()<br>
+        {<br>
+        <font color="#009900">// Call to System::Exit() causes current logic update 
+        to<br>
+        // be the last one, after it MobileDragon core will perform <br>
+        // resource cleanup and return control to the host os.</font><br>
+        md_system-&gt;Exit();</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Returning False from Update() shows MobileDragon that <br>
+        // there is no need to draw the game screen, so Draw()<br>
+        // method will not be called.</font><br>
+        <font color="#0000FF">return</font> False;<br>
+        }<br>
+        <br>
+        <font color="#009900">/**<br>
+        * Implement MDGame pure virtual metod.<br>
+        */</font><br>
+        <font color="#0000FF">virtual</font> <font color="#0000FF">void</font> 
+        Draw()<br>
+        {<br>
+        <font color="#009900">// This method will not be called at all in this 
+        sample.</font><br>
+        }</font></p>
+      <p align="justify"><font color="#0000FF" face="Courier New, Courier, mono">private:</font><font face="Courier New, Courier, mono"><br>
+        System *md_system;<br>
+        };</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">/**<br>
+        * Implement MDGameSetPreferences function.<br>
+        */</font><font face="Courier New, Courier, mono"><br>
+        <font color="#0000FF">void</font> MDGameSetPreferences( mdragon::MDGamePreferences 
+        &amp; prefs )<br>
+        {<br>
+        <font color="#009900">// set up this game name</font><br>
+        prefs.name = <font color="#990000">&quot;MDSampleApp&quot;</font>;</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        set up this game title</font><br>
+        prefs.title = <font color="#990000">&quot;MDSampleApp&quot;</font>;</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        set up the name for PackDir file( not really used here )</font><br>
+        prefs.pack_dir_name = <font color="#990000">&quot;MDSampleApp&quot;</font>;</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        set the system memory pool size be 300 Kbytes.</font><br>
+        prefs.system_pool_size = 300 * 1024;</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        set preffered logic update method calls ( times per second ).</font><br>
+        prefs.runs_per_second = 30;</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        set MobileDragon system log name.</font><br>
+        prefs.log_name = <font color="#990000">&quot;MDSampleApp&quot;</font>;<br>
+        }</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">/**<br>
+        * Implement MDGameCreate function.<br>
+        */</font><font face="Courier New, Courier, mono"><br>
+        mdragon::MDGame * MDGameCreate( System * system )<br>
+        {<br>
+        <font color="#009900">// for example init MobileDragon system with 2d 
+        renderer object.</font><br>
+        system-&gt;render2d = <font color="#0000FF">new</font> mdragon::Render2D;</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        create and return MDSampleApp object instance.</font><br>
+        <font color="#0000FF">return new</font> MDSampleApp( system );<br>
+        } </font></p>
+ <p align="center">&nbsp;</p>
+  	  <p align="center">&nbsp;</p>
+      <p align="center" class="memTemplItemLeft"><font size="1"><strong>Copyright 
+        2005-2006 Herocraft Hitech Co. Ltd. </strong></font></p>
+	
+	</td>
+  </tr>
+</table>
+
+
+</body>
+</html>

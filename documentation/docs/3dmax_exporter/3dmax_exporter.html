@@ -1,0 +1,1437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1251">
+	<meta name="keywords" content="MobileDragon, mobile games, game development, 3d mobile games, 2d mobile games, game engine, smartphone, PocketPC, Palm OS, Symbian OS, Windows Mobile, HeroCraft Hitech, games">
+	<TITLE>Manual for 3D Studio Max scenes &amp; models exporter</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0.1  (Win32)">
+	<META NAME="AUTHOR" CONTENT=" Vladimir">
+	<META NAME="CREATED" CONTENT="20060627;18110000">
+	<META NAME="CHANGEDBY" CONTENT="kxs">
+	<META NAME="CHANGED" CONTENT="20060802;18312543">
+	<STYLE>
+	<!--
+		@page { size: 21cm 29.7cm; margin-right: 1.5cm; margin-top: 1.25cm; margin-bottom: 1.25cm }
+		@page:first { margin-top: 0.95cm; margin-bottom: 2cm }
+		P { margin-bottom: 0.21cm; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ru-RU }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		H1 { margin-bottom: 0.11cm; direction: ltr; color: #000000; widows: 2; orphans: 2; page-break-after: avoid }
+		H1.western { font-family: "Arial", sans-serif; font-size: 16pt; so-language: ru-RU; font-weight: bold }
+		H1.cjk { font-family: "Times New Roman", serif; font-size: 16pt; font-weight: bold }
+		H1.ctl { font-family: "Arial", sans-serif; font-size: 16pt; so-language: ar-SA; font-weight: bold }
+		H2 { margin-bottom: 0.11cm; direction: ltr; color: #000000; widows: 2; orphans: 2; page-break-after: avoid }
+		H2.western { font-family: "Arial", sans-serif; font-size: 14pt; so-language: ru-RU; font-style: italic; font-weight: bold }
+		H2.cjk { font-family: "Times New Roman", serif; font-size: 14pt; font-style: italic; font-weight: bold }
+		H2.ctl { font-family: "Arial", sans-serif; font-size: 14pt; so-language: ar-SA; font-style: italic; font-weight: bold }
+		A:link { color: #0000ff; text-decoration: underline }
+		A:visited { color: #800080; text-decoration: underline }
+	-->
+	</STYLE>
+<link href="../reference_manual/doxygen.css" rel="stylesheet" type="text/css">
+</HEAD>
+<BODY LANG="ru-RU" TEXT="#000000" LINK="#0000ff" VLINK="#800080" DIR="LTR">
+
+<table width="75%" border="0" align="center" cellpadding="2" cellspacing="0"  bgcolor="#868686">
+  <tr>
+    <td width="100%">
+	<table width="100%" border="0"  cellpadding="0" cellspacing="2" bgcolor="#F4F4FB">
+    <tr>
+        <td width="6%"><img src="../../data/mdicon.gif" align="right"></td>
+    	  <td width="94%" ><p align="center"><strong><font size="5">Manual for 
+              3D Studio Max scenes &amp; models exporter</font></strong></p></td>
+    </tr>
+    </table>
+	</td>
+  </tr>
+</table>
+<p></p>
+
+
+
+<table width="75%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td>
+	
+
+<P CLASS="western" ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT SIZE=4><I><B><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Content:</FONT></SPAN></B></I></FONT></P>
+<DIV ID="Оглавление1" DIR="LTR">
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Introduction:|outline"><FONT FACE="Arial, sans-serif">Introduction:</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Installation|outline"><FONT FACE="Arial, sans-serif">Installation</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.LOG - File|outline"><FONT FACE="Arial, sans-serif">LOG
+	- File</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Object names agreements|outline"><FONT FACE="Arial, sans-serif">Object
+	names agreements</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Hierarchy of Objects |outline"><FONT FACE="Arial, sans-serif">Hierarchy
+	of Objects </FONT></A>
+	</P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Geometric objects|outline"><FONT FACE="Arial, sans-serif">Geometric
+	objects</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Lights|outline"><FONT FACE="Arial, sans-serif">Lights</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Materials|outline"><FONT FACE="Arial, sans-serif">Materials</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Light Map|outline"><FONT FACE="Arial, sans-serif">Light
+	Map</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.User Defined Info|outline"><FONT FACE="Arial, sans-serif">User
+	Defined Info</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.System objects|outline"><FONT FACE="Arial, sans-serif">System
+	objects</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Models creating general statements|outline"><FONT FACE="Arial, sans-serif">Models
+	creating general statements</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Static scenes (Static Scene option)|outline"><FONT FACE="Arial, sans-serif">Static
+	scenes (Static Scene option)</FONT></A></P>
+	<P STYLE="margin-left: 0.42cm; margin-bottom: 0cm"><A HREF="#0.0.!ROOM|outline"><FONT FACE="Arial, sans-serif">!ROOM</FONT></A></P>
+	<P STYLE="margin-left: 0.42cm; margin-bottom: 0cm"><A HREF="#0.0.!PORTAL|outline"><FONT FACE="Arial, sans-serif">!PORTAL</FONT></A></P>
+	<P STYLE="margin-left: 0.42cm; margin-bottom: 0cm"><A HREF="#0.0.!GROUND|outline"><FONT FACE="Arial, sans-serif">!GROUND</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Animation. Common features:|outline"><FONT FACE="Arial, sans-serif">Animation.
+	Common features:</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Simple Animation|outline"><FONT FACE="Arial, sans-serif">Simple
+	Animation</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Tweening Animation|outline"><FONT FACE="Arial, sans-serif">Tweening
+	Animation</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0. Joint Animation|outline">
+	<FONT FACE="Arial, sans-serif">Joint Animation</FONT></A></P>
+	<P STYLE="margin-left: 0.42cm; margin-bottom: 0cm"><A HREF="#0.0.Joint Animation (Joint Animation Option) |outline"><FONT FACE="Arial, sans-serif">Joint
+	Animation (Joint Animation Option) </FONT></A>
+	</P>
+	<P STYLE="margin-left: 0.42cm; margin-bottom: 0cm"><A HREF="#0.0.Creating Of Joint Model or Detail Kit (Joint Model Option)|outline"><FONT FACE="Arial, sans-serif">Creating
+	Of Joint Model or Detail Kit (Joint Model Option)</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.Levels Of Details|outline"><FONT FACE="Arial, sans-serif">Levels
+	Of Details</FONT></A></P>
+	<P STYLE="margin-bottom: 0cm"><A HREF="#0.DUMMY Objects.|outline"><FONT FACE="Arial, sans-serif">DUMMY
+	Objects.</FONT></A></P>
+</DIV>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 CLASS="western"><A NAME="0.Introduction:|outline"></A><SPAN LANG="en-US">Introduction</SPAN>:</H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 1.25cm; margin-bottom: 0cm"><A NAME="OLE_LINK75"></A>
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">All the
+descriptions of 3D graphics and work with 3D Max, were given
+according to the export function and they don&rsquo;t aspire to
+completeness and incontestability.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" STYLE="text-indent: 1.25cm; margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 LANG="en-US" CLASS="western"><A NAME="0.Installation|outline"></A>
+Installation</H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm"><A NAME="OLE_LINK32"></A><A NAME="OLE_LINK31"></A>
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">To install the
+exporter, you need to copy MDExp.dle file to the %3DMax%\stdplugs
+folder. It would be connected to 3dMax automatically with it&rsquo;s
+next run. </FONT></SPAN>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT COLOR="#808080">NOTE:</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.27cm; margin-bottom: 0cm">
+<FONT FACE="Courier New, monospace"><FONT COLOR="#808080">Here and
+further %3DMax% &ndash; path to the installation folder of 3D Max.</FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm"><A NAME="OLE_LINK34"></A><A NAME="OLE_LINK33"></A><A NAME="OLE_LINK36"></A><A NAME="OLE_LINK35"></A>
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">After the
+installation in menu File-&gt;Export&hellip; in the list of file
+types for export a new line &ldquo;Mobile Dragon Model (*.MDM)&rdquo;
+would appear &ndash; this is a type of file to where scenes are being
+exported.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">It is necessary to
+create text files in %3DMax% folder with Udef.txt and Roboid.txt
+names for correct work of the exporter. You can leave them empty for
+the firs time. Explanations</SPAN> <SPAN LANG="en-US">about</SPAN>
+<SPAN LANG="en-US">them</SPAN> <SPAN LANG="en-US">would</SPAN> <SPAN LANG="en-US">be</SPAN>
+<SPAN LANG="en-US">given</SPAN> <SPAN LANG="en-US">below</SPAN>.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">When
+exporting, after you named a file and pressed the &ldquo;Save&rdquo;
+button, a dialog box would appear (see picture 1).</SPAN></FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><IMG SRC="3dmax_exporter_html_4ed6d24a.png" NAME="Графический объект1" ALIGN=BOTTOM WIDTH=282 HEIGHT=338 BORDER=0></P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Pic.
+1 &ndash; Exporter window</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 CLASS="western"><A NAME="0.LOG - File|outline"></A><SPAN LANG="en-US">LOG
+- File</SPAN></H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">When saving scenes, exporter creates
+the LOG &ndash; file. This file has the same name as the export file
+has, but with &ldquo;.log&rdquo; extension. They would be created in
+the same folder. For example: if scene has been exported in the
+&ldquo;test.mdm&rdquo; file, then LOG &ndash; file would have the
+&ldquo;test.log&rdquo; name and they both would be in the same
+folder.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm"><A NAME="OLE_LINK76"></A><A NAME="OLE_LINK40"></A><A NAME="OLE_LINK39"></A>
+ <SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">LOG &ndash; file
+helps to find out if the scene was saved correctly and also it helps
+to reveal saving errors. If there would be any errors while
+exporting, then a window with message about error would appear. After
+closing this window, LOG &ndash; file would be automatically opened
+for viewing. If there would not be any errors then LOG &ndash; file
+would not be opened automatically.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Those lines in the
+LOG &ndash; file, which don&rsquo;t have any information about errors
+or warnings starting with the &ldquo;#&rdquo; symbol. Lines which
+have information about errors starting with the &ldquo;!&rdquo;
+symbol. Lines which have just warnings starting with the &ldquo;?&rdquo;
+symbol.</FONT></SPAN></P>
+      <P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm"><A NAME="OLE_LINK42"></A><A NAME="OLE_LINK41"></A> 
+        <SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">There is summary information 
+        about errors and warnings in the end of the LOG &ndash; file.</FONT></SPAN></P>
+      <P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">&nbsp;</P>
+      <H1 CLASS="western" STYLE="page-break-before: always"><A NAME="_Соглашение_об_именах_объектов"></A><A NAME="0.Object names agreements|outline"></A><A NAME="0.Object names agreements|outline"></A>
+<B><SPAN LANG="en-US"><FONT SIZE=4 STYLE="font-size: 16pt"><FONT FACE="Arial, sans-serif">Object
+names agreements</FONT></FONT></SPAN></B></H1>
+<P CLASS="western" STYLE="text-indent: 1.25cm; margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">You
+may name your scene objects with any name except some reserved names
+which you can find in Table 1:  </FONT></SPAN>
+</P>
+<P CLASS="western" ALIGN=RIGHT STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">Table</SPAN>
+1<SPAN LANG="en-US">: Reserved names.</SPAN></FONT></P>
+<TABLE WIDTH=639 BORDER=1 align="center" CELLPADDING=7 CELLSPACING=0 BORDERCOLOR="#000000">
+	<COL WIDTH=239>
+	<COL WIDTH=225>
+	<COL WIDTH=130>
+	<TR VALIGN=TOP>
+		<TD WIDTH=239>
+			<P CLASS="western" ALIGN=CENTER><B><FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">Name</SPAN>/<SPAN LANG="en-US">Name
+			format</SPAN></FONT></B></P>
+		</TD>
+		<TD WIDTH=225>
+			<P CLASS="western" ALIGN=CENTER><B><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Usage</FONT></SPAN></B></P>
+		</TD>
+		<TD WIDTH=130>
+			<P LANG="en-US" CLASS="western" ALIGN=CENTER><FONT FACE="Arial, sans-serif"><B>Example</B></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=239>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">CONTROLLER</SPAN></FONT></P>
+			<P CLASS="western" ALIGN=JUSTIFY><BR>
+			</P>
+		</TD>
+		<TD WIDTH=225>
+			<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, sans-serif">Name
+			of the controller &ndash; object which is used for creating of the
+			 animated models.</FONT></P>
+		</TD>
+		<TD WIDTH=130>
+			<P CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">CONTROLLER</SPAN></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=239>
+			<P CLASS="western"><FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">ROOM</SPAN>_<SPAN LANG="en-US">&lt;room_name&gt;</SPAN></FONT></P>
+		</TD>
+		<TD WIDTH=225>
+			<P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Name
+			of the room - object, which is used for creating static scenes
+			with portals.</FONT></SPAN></P>
+		</TD>
+		<TD WIDTH=130>
+			<P CLASS="western" STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">ROOM</SPAN>_<SPAN LANG="en-US">A</SPAN></FONT></P>
+			<P CLASS="western"><FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">ROOM_B</SPAN></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=239>
+			<P CLASS="western"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">!PORTAL_&lt;room_name_1&gt;/&lt;room_name_2&gt;</FONT></SPAN></P>
+		</TD>
+		<TD WIDTH=225>
+			<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY><A NAME="OLE_LINK45"></A>
+			<FONT FACE="Arial, sans-serif">Name of the portal &ndash; object
+			which is used for creating static scenes with portals.</FONT></P>
+		</TD>
+		<TD WIDTH=130>
+			<P CLASS="western"><FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">PORTAL</SPAN>_<SPAN LANG="en-US">A/B</SPAN></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=239>
+			<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">GROUND_&lt;ground</SPAN>_<SPAN LANG="en-US">name&gt;</SPAN></FONT></P>
+			<P CLASS="western"><BR>
+			</P>
+		</TD>
+		<TD WIDTH=225>
+			<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, sans-serif">Name
+			of the ground &ndash; object which is used for creating static
+			scenes with portals.</FONT></P>
+		</TD>
+		<TD WIDTH=130>
+			<P CLASS="western"><FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">GROUND_
+			MAIN</SPAN></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=239>
+			<P CLASS="western"><FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">JOINT</SPAN></FONT></P>
+		</TD>
+		<TD WIDTH=225>
+			<P CLASS="western" ALIGN=JUSTIFY><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Name
+			of the joint &ndash; object which is used for creating joint
+			animated model.</FONT></SPAN></P>
+		</TD>
+		<TD WIDTH=130>
+			<P CLASS="western"><FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">JOINT</SPAN></FONT></P>
+		</TD>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD WIDTH=239>
+			<P CLASS="western"><FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">!DUMMY_&lt;object</SPAN>_<SPAN LANG="en-US">name&gt;</SPAN></FONT></P>
+		</TD>
+		<TD WIDTH=225>
+			<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY><FONT FACE="Arial, sans-serif">Name
+			of the dummy  object.</FONT></P>
+		</TD>
+		<TD WIDTH=130>
+			<P CLASS="western" STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">DUMMY</SPAN>_<SPAN LANG="en-US">A</SPAN></FONT></P>
+			<P CLASS="western"><FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">DUMMY_POS</SPAN></FONT></P>
+		</TD>
+	</TR>
+</TABLE>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">It
+would be better if the scene objects will have names with proper
+sense because they would be used in the game. It is allowed to use
+the same names for objects with the same sense. For example: if there
+is a hundred trees in some scene, then all of them might have the
+same name &ndash; TREE.</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">	<U>Important:</U>
+Those scenes where Levels Of Details (LOD) are planned to be used,
+can not have any objects with the same names. For example: if you
+have several trees in one scene you&rsquo;d better name them like:
+TREE01, TREE02, TREE03, TREE04 etc. You can read more about it in the
+&laquo;</FONT></SPAN><FONT COLOR="#0000ff"><U><A HREF="#0.Levels Of Details|outline"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Levels
+Of Details</FONT></SPAN></A></U></FONT><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">&raquo;
+part.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 CLASS="western"><A NAME="0.Hierarchy of Objects |outline"></A><SPAN LANG="en-US">Hierarchy
+of Objects</SPAN> 
+</H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">When
+creating static scenes it is recommended to divide the whole scene
+into separated objects and subobjects which you can logically select
+among the other objects. For example: if scene consists of ground,
+trees and house then it is recommended to create them as a separated
+objects. </SPAN></FONT>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">	If
+the game process needs clear distinction among some objects of the
+scene, then you need to separate that objects too. For example: you
+need distinction between the house and it&rsquo;s door. It is
+possible to separate the scene into subobjects if the game&rsquo;s
+logic needs it. For example: trees and leafs, house and door, field
+and road. So if there is no need in distinction between the tree and
+it&rsquo;s leafs, then you can create them as one object (reminder:
+in this case you will have to create one general texture for it). </FONT></SPAN>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">To
+keep the logics of the scene safe, it is strongly recommended to use
+object&rsquo;s parent links. For example: if the house and it&rsquo;s
+door are separated objects, than it is recommended to link the door
+to the house (the door is a logical part of the house).</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">Also
+you can use groups of objects for logical linking.  You can link one
+group of objects to the other. It will simplify work with these
+groups of objects, but all objects of every group will be exported
+separately. Only parent links will be exported for future usage in
+the game.</SPAN></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT COLOR="#808080">NOTE:</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.27cm; margin-bottom: 0cm">
+<FONT FACE="Courier New, monospace"><FONT COLOR="#808080">Parent
+links in animation models are necessary. If they are missing or there
+are some violations when exporting, then messages about error would
+appear in LOG &ndash; file.</FONT></FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">	 </FONT>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">	 </FONT>
+</P>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H1 CLASS="western" STYLE="page-break-before: always"><A NAME="0.Geometric objects|outline"></A>
+<SPAN LANG="en-US">Geometric objects</SPAN></H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">	The
+exporter supports all types of geometric objects. Limitation of
+polygon&rsquo;s sizes: the lengths of at least two sides of the
+polygon (triangle) shouldn&rsquo;t exceed a 50 units limit each.
+There is no limitation for object&rsquo;s modification (scale,
+reflection etc.) You can find requirements for object&rsquo;s
+materials in part &ldquo;<A HREF="#0.Materials|outline">Materials</A></FONT></SPAN><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">&rdquo;.</FONT></SPAN></P>
+<P CLASS="western" STYLE="text-indent: 1.25cm; margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">You
+may name your objects with any name except some reserved names which
+you can find  in &ldquo;</FONT></SPAN><FONT COLOR="#0000ff"><U><A HREF="#0.Object names agreements|outline"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Object
+names agreements</FONT></SPAN></A></U></FONT><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">&rdquo;
+part.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 LANG="en-US" CLASS="western"><A NAME="0.Lights|outline"></A>Lights</H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">The
+exporter supports only Omni type lights. </SPAN></FONT>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">List
+of the parameters which are taken into consideration when exporting:</FONT></SPAN></P>
+<UL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">On/Off
+	switch setting;</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Color;</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Multiplier;</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">All
+	the Near Attenuation group parameters;</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">All
+	the Far Attenuation group parameters.</FONT></SPAN></P>
+</UL>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">	</FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 LANG="en-US" CLASS="western"><A NAME="0.Materials|outline"></A><A NAME="0.Materials|outline"></A>
+Materials</H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">Every scene object
+have to have it&rsquo;s own unique material. It means that you can&rsquo;t
+convert object into Editable Mesh, and then select different polygons
+and assign different materials to them. Also in &ldquo;Material
+Editor&rdquo; one slot should have only one material (texture) .
+Multistructures</SPAN> <SPAN LANG="en-US">are</SPAN> <SPAN LANG="en-US">prohibited</SPAN>.
+ </FONT>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">All the textures
+which are used for materials should be in %3DMax%\maps\ folder or in
+subfolders. For example: C:\3dMax\maps or C:\3dMax\maps\level2\ are
+correct paths.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">List of the material parameters which
+are taken into consideration when exporting:</FONT></P>
+<UL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Ambient;</FONT></SPAN></P>
+	<LI><P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+	<FONT FACE="Arial, sans-serif">Diffuse;</FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Specular;
+	</FONT></SPAN>
+	</P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Self-Illumination
+	(the Color switch should be On, otherwise the black color would be
+	saved as default setting);</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Shininess;
+	</FONT></SPAN>
+	</P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Opacity;</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">2-<SPAN LANG="en-US">Sided
+	switch setting;</SPAN></FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Wire
+	switch setting;</FONT></SPAN></P>
+	<LI><P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+	<FONT FACE="Arial, sans-serif">Texture file name.</FONT></P>
+</UL>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 0.64cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">Material might have no texture.</FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 CLASS="western"><A NAME="0.Light Map|outline"></A><SPAN LANG="en-US">Light</SPAN>
+<SPAN LANG="en-US">Map</SPAN></H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">There is a second
+channel texture&rsquo;s coordinates supported in games for light map
+usage. If object has it&rsquo;s own light map, then the Unwrap UVW
+modifier should be applied to this object. Then in the Channels group
+you should select Map Channel and set it as 2. Editing texture&rsquo;s
+unwrap realizes as always (&ldquo;Edit&rdquo; button). </FONT></SPAN>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">	Light
+Maps can be used only in static scenes. For shadows calculation you
+need to set the Omni lights. For the conformity of calculated shadows
+to the shadows of 3dMax, you need to switch the Use flag of the Far
+Attenuation parameter and regulate it&rsquo;s End value. So, you need
+to regulate <U>only</U> the End setting of Far Attenuation parameter
+to get the conformity of the 3dMax image to the image which will be
+in your game.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 CLASS="western"><A NAME="0.User Defined Info|outline"></A><A NAME="0.User Defined Info|outline"></A>
+<SPAN LANG="en-US">User</SPAN> <SPAN LANG="en-US">Defined</SPAN> <SPAN LANG="en-US">Info</SPAN></H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">You can find object
+properties of every scene object in &ldquo;Object Properties&rdquo;
+window, there is also a &ldquo;User Defined&rdquo; tab. It is
+possible to get and save all the parameters which are in this tab.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">It is recommended to use this
+opportunity from extreme necessity.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">One of the
+conditions for the correct work of the exporter with parameters is
+preliminary definition of their names and types.  Their names and
+types are listed in &ldquo;Udef.txt&rdquo; file (it should be in 3d
+Max root folder).</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">There are 5 types
+of parameters supported:</FONT></SPAN></P>
+<OL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Integer
+	(int) &ndash; it should be an integer number (for ex.: 122)</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Boolean
+	(bool) &ndash; it shoul have the only meaning [true, false]</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Float
+	(float) &ndash; it should be a floating point number (for ex.: 1.22)</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">String
+	(str) &ndash; it should be a string parameter</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">FLAG
+	(flag) &ndash; if there is a FLAG in &ldquo;User Defined&rdquo; than
+	it means that this parameter is on, if no than it&rsquo;s off by
+	default.</FONT></SPAN></P>
+</OL>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">Symbol register for
+names and types of the parameters <U>doesn&rsquo;t make sense</U>.
+Here</SPAN> <SPAN LANG="en-US">is</SPAN> <SPAN LANG="en-US">a</SPAN>
+<SPAN LANG="en-US">format</SPAN> <SPAN LANG="en-US">of</SPAN>
+<SPAN LANG="en-US">parameter</SPAN> <SPAN LANG="en-US">definition</SPAN>:</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">&lt;<SPAN LANG="en-US">parameter</SPAN>_<SPAN LANG="en-US">name</SPAN>&gt;(&lt;<SPAN LANG="en-US">parameter</SPAN>_<SPAN LANG="en-US">type</SPAN>&gt;)</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">There should not be
+any space between &lt;parameter_name&gt; and &ldquo;(&ldquo;
+symbol!!! </FONT></SPAN>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Brackets are
+necessary. Every parameter should be defined in every separate line.
+Name and type of the parameter shouldn&rsquo;t have any spaces.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=RIGHT STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Example of the
+Udef.txt file content:</FONT></SPAN></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><SPAN LANG="en-US">	</SPAN>Width(INT)</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><SPAN LANG="en-US">	</SPAN>volume(Float)</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><SPAN LANG="en-US">	</SPAN>IS_VISIBLE(booL)</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><SPAN LANG="en-US">	</SPAN>MegaNAmE(str)</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><SPAN LANG="en-US">	</SPAN>STATIC(flag)</FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT COLOR="#808080">NOTE:</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.27cm; margin-bottom: 0cm">
+<FONT FACE="Courier New, monospace"><FONT COLOR="#808080">There are
+different symbol registers in this example, but it would be better to
+hold to the one of the registers.</FONT></FONT></P>
+<P CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">When
+processing scene objects, exporter will search the parameters listed
+in Udef.txt file in User Defined tab properties of these objects and
+in case it will find them, it will read their values.	To write the
+name and to set the parameter&rsquo;s settings, you have to use the
+upper register (except string settings).</SPAN></FONT></P>
+<P CLASS="western" ALIGN=RIGHT STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Example
+of the User Defined label for some object</FONT></SPAN></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace">	WIDTH
+= 122</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace">	VOLUME
+= 1.22</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace">	IS_VISIBLE
+= TRUE</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace">	MEGANAME
+= Apple!</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace">	STATIC</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><FONT COLOR="#808080">Note:</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.27cm; margin-bottom: 0cm">
+<FONT FACE="Courier New, monospace"><FONT COLOR="#808080">In this
+example there is a FLAG &ldquo;STATIC&rdquo; in User Defined tab, it
+means that this flag is on. &ldquo;IS_VISIBLE&rdquo; parameter is
+written strictly in upper register (as it should be done). &ldquo;MEGANAME&rdquo;
+parameter is string (Apple!) that&rsquo;s why you don&rsquo;t have to
+stick to the upper register.</FONT></FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">There could be
+spaces between parameter&rsquo;s name and &ldquo;=&rdquo; symbol.  </FONT></SPAN>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">If some or even all
+the parameters in User Defined object options are missed but they
+were stated in &ldquo;Udef.txt&rdquo; file, then it&rsquo;s not an
+error. Also if there would be some parameter in User Defined options,
+which name and type weren&rsquo;t stated in &ldquo;Udef.txt&rdquo;
+file, then it wouldn&rsquo;t be an error too. This parameter will be
+ignored and it would not be exported.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 LANG="en-US" CLASS="western"><A NAME="0.System objects|outline"></A>
+System objects</H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+&ldquo;<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">System
+objects&rdquo; are used for auxiliary purposes. Exporter processes
+system objects in special way. These objects are needed to keep an
+additional information about the scene and it&rsquo;s objects.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">System objects are
+being defined by names.  Name of such object starts with &ldquo;!&rdquo;
+symbol. There are system names which were reserved:</FONT></SPAN></P>
+<OL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">!CONTROLLER
+	&ndash; name of controller-object which is used for creating of
+	animated models.</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">!ROOM
+	&ndash;  name of room-object which is used for creating of static
+	scenes with portals.</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">!PORTAL
+	&ndash; name of portal-object which is used for creating of static
+	scenes with portals.</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">!GROUND
+	&ndash; name of ground-object which is used for creating of static
+	scenes with portals.</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">!JOINT
+	&ndash; name of joint-object which is used for creating of joint
+	animated models. (for ex.: robots).</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">!DUMMY
+	&ndash; name of dummy-object.</FONT></SPAN></P>
+</OL>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.27cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.27cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">You can&rsquo;t
+name an object with one of these names if it is not a system object.
+You can find detail description of all the system objects below. </FONT></SPAN>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.27cm; margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 LANG="en-US" CLASS="western"><A NAME="0.Models creating general statements|outline"></A>
+Models creating general statements</H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">All the models of
+different types of scenes and animation should have sensible names
+because these objects are going to be used in game development.</FONT></SPAN></P>
+<P CLASS="western" STYLE="text-indent: 1.21cm; margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Objects
+can be created with the &ldquo;instance&rdquo; method. For example if
+there are few equal objects in one scene (for ex.: set of trees), but
+they have different coordinates and orientation, it is better to
+create only one object and make copies via &ldquo;instance&rdquo;
+method. In this case only the model of the first object would be
+saved. Other objects would be saved with the link to the base
+geometry and local transformation matrix.  The size of the compiled
+file will be much smaller.</FONT></SPAN></P>
+<P CLASS="western" STYLE="text-indent: 1.21cm; margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">It
+is possible to set the user settings in object properties (Properties
+&ndash;&gt; User Defined tab). Read</SPAN> <SPAN LANG="en-US">more</SPAN>
+<SPAN LANG="en-US">in</SPAN> &ldquo;</FONT><FONT COLOR="#0000ff"><U><A HREF="#0.User Defined Info|outline"><FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">User</SPAN>
+<SPAN LANG="en-US">Defined</SPAN> <SPAN LANG="en-US">Info</SPAN></FONT></A></U></FONT><FONT FACE="Arial, sans-serif">&rdquo;
+<SPAN LANG="en-US">part</SPAN>.</FONT></P>
+<P LANG="en-US" CLASS="western" STYLE="text-indent: 1.21cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">For every object in different scene
+types following parameters are saved:</FONT></P>
+<UL>
+	<LI><P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">Object
+	name</FONT></P>
+	<LI><P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">Parent
+	reference</FONT></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Instance
+	reference (if they are)</FONT></SPAN></P>
+	<LI><P CLASS="western" STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">User
+	Defined information</FONT></SPAN></P>
+</UL>
+<P LANG="en-US" CLASS="western" STYLE="text-indent: 1.27cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">In other cases additional necessary
+information is saved.</FONT></P>
+<P CLASS="western" STYLE="text-indent: 1.21cm; margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 CLASS="western"><A NAME="0.Static scenes (Static Scene option)|outline"></A>
+<SPAN LANG="en-US">Static scenes (Static Scene option)</SPAN></H1>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">	</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">	There
+are two types of static scenes: static scene with portals and static
+scene without portals (simply static scene).</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Static scene has
+geometric objects (see &ldquo;Geometric objects&rdquo;) and omni
+lights (see &ldquo;Lights&rdquo;).</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Scene with portals
+has not only lights and geometric objects but also a system objects
+kit: !ROOM, !PORTAL and !GROUND. These system objects are not drew in
+the game. They are used to point out the logical division of scene in
+separate rooms.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Objects of static
+scene can have several levels of detail. Read more in &ldquo;</FONT></SPAN><FONT COLOR="#0000ff"><U><A HREF="#0.Levels Of Details|outline"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Levels
+Of Details</FONT></SPAN></A></U></FONT><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">&rdquo;
+part.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<H2 CLASS="western"><A NAME="0.0.!ROOM|outline"></A>!<SPAN LANG="en-US">ROOM</SPAN></H2>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">It could be any
+geometric object. It&rsquo;s geometry is not saved, but his object
+hierarchy is saved. Name</SPAN> <SPAN LANG="en-US">format</SPAN>:</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">ROOM</SPAN>_&lt;<SPAN LANG="en-US">room</SPAN>_<SPAN LANG="en-US">name</SPAN>&gt;
+</FONT>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.25cm; text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">Examples</SPAN>:</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.25cm; text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">ROOM</SPAN>_<SPAN LANG="en-US">A</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.25cm; text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">ROOM</SPAN>_<SPAN LANG="en-US">MAIN</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">There are two rooms
+with &ldquo;A&rdquo; and &ldquo;MAIN&rdquo; names in this example.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">It is prohibited to
+create rooms with the same names. When creating a static scene with
+portals, objects which are logically belong to one room should be
+linked with parent references to this room-object. </FONT></SPAN>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<H2 CLASS="western"><A NAME="0.0.!PORTAL|outline"></A>!<SPAN LANG="en-US">PORTAL</SPAN></H2>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Portal is a system
+object which shows the point of connection of two rooms. Actually
+this is a passage from one room to the other.  Portal is a geometric
+object of Plane class. Length Segs and Width Segs  portals parameters
+should be set as 1, so portal is an object of plane type which
+consists of 2 triangles (4 vertexes). You don&rsquo;t have to set the
+portal&rsquo;s material (it will not be exported).</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">The portal&rsquo;s name shows which
+rooms it connects.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Portal-object name
+format:</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">!PORTAL_&lt;room_name_1&gt;/&lt;room_name_2&gt;</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.25cm; text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Examples:</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.25cm; text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">!PORTAL_A/B</FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.25cm; text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">!PORTAL_ROOM_X/ROOM_Y</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">There are portal
+names in this example, first of them connects A and B rooms, the
+second one connects ROOM_X and ROOM_Y rooms. </FONT></SPAN>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Portal-objects,
+unlike the other static objects in portal scenes, shouldn&rsquo;t be
+linked to the room-objects manually. Portal will link to the both
+room automatically by its name. Objects which are logically belong to
+two rooms at one time (for ex.: door), should be linked with parent
+references to portal-object that links these rooms. The following
+picture (pic. 2) show how objects in static portal scene should be
+linked.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<P LANG="" CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><IMG SRC="3dmax_exporter_html_208005c9.gif"></P>
+<P LANG="en-US" CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">Picture 2 &ndash; Example of linking
+of objects in static scene with portals.</FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">There:</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<IMG SRC="3dmax_exporter_html_m5203a39d.gif"> &ndash; <FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">system
+objects (rooms/grounds/portals)</SPAN></FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<IMG SRC="3dmax_exporter_html_m7eac1d4.gif"> &ndash; <FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">simple
+geometric objects</SPAN></FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<IMG SRC="3dmax_exporter_html_737ca7ef.gif"> &ndash; <FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">linking
+by parent references</SPAN></FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<IMG SRC="3dmax_exporter_html_m31e7df99.gif"> &ndash; <FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">linking
+by name</SPAN></FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<H2 LANG="en-US" CLASS="western"><A NAME="0.0.!GROUND|outline"></A>!GROUND</H2>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Ground is a system
+object which helps to find out in which room view camera is situated.
+Ground-object should be a geometric object of a Plane type. There are
+no limits for polygons. Ground-object should be on the same level and
+of the same shape as a real ground of the scene. Ground-object&rsquo;s
+geometry could be easier comparing to geometry of a real ground of
+scene because it is used only for calculations.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Ground-object name
+format:</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">!GROUND_&lt;ground_name&gt;</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">	Examples</SPAN>:</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">	!<SPAN LANG="en-US">GROUND</SPAN>_<SPAN LANG="en-US">MAIN</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">	!<SPAN LANG="en-US">GROUND</SPAN>_<SPAN LANG="en-US">SECOND</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">There are no limits
+for ground-object&rsquo;s name.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Ground-objects
+should be linked to rooms with 3D Max means (see pic.2).</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 CLASS="western"><A NAME="0.Animation. Common features:|outline"></A><A NAME="0.Animation. Common features:|outline"></A><A NAME="0.Animation. Common features:|outline"></A><A NAME="0.Animation. Common features:|outline"></A>
+<SPAN LANG="en-US">Animation. Common features:</SPAN></H1>
+<P LANG="en-US" CLASS="western" STYLE="text-indent: 1.27cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">To create animation you should perform
+some requirements which are written below.</FONT></P>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Courier New, monospace"><FONT COLOR="#808080">Important
+Note:</FONT></FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.27cm; margin-bottom: 0cm">
+<FONT COLOR="#808080"><FONT FACE="Courier New, monospace">You should
+perform these requirements when making Simple, Joint or Tweening
+
+animation.</FONT></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.27cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Courier New, monospace"><FONT COLOR="#808080">At
+first you have to create an animation model. Then before creating
+animation you need to reset all collected transformations on pivot
+points of model&rsquo;s parts. To do this you have to select a part
+or whole model and than in &ldquo;Utilities&rdquo; tab select &ldquo;Reset
+XForm&rdquo; and than just press &ldquo;Reset Selected&rdquo; button.
+</FONT></FONT></SPAN>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-left: 1.27cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Courier New, monospace"><FONT COLOR="#808080">After
+this operation normals could be inverted in some parts of model. If
+it happened, you can fix normals with &ldquo;Normal&rdquo; modifier.
+After that you can convert a model to &ldquo;Mesh&rdquo;. Now you can
+link model&rsquo;s parts to each other if it necessary and start to
+create animation.</FONT></FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.27cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" STYLE="text-indent: 1.27cm; margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">To
+create animation, designer should use controller-object where he can
+set common key frames.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">To set common key
+frames for the whole model (not for model&rsquo;s parts) there should
+be a system controller-object. It should have reserved system name -
+&ldquo;!CONTROLLER&rdquo;.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Animation&rsquo;s
+settings saving starts from the first controller&rsquo;s key frame.
+And the length of the last animation frame spreads to the end of
+timeline of 3dMax. </FONT></SPAN>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="" CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><IMG SRC="3dmax_exporter_html_7246e236.gif"></P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Picture
+3 &ndash; Key frames of controller-object.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Controller can be
+shown as any geometric object on scene. It&rsquo;s geometry will not
+saved, it is necessary only for the key frames information. </FONT></SPAN>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 CLASS="western"><A NAME="0.Simple Animation|outline"></A><SPAN LANG="en-US">Simple</SPAN>
+<SPAN LANG="en-US">Animation</SPAN></H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Simple animation
+doesn&rsquo;t differ a lot from static scene. Actually with this
+animation type model&rsquo;s elements are saved according to the
+transformation matrix. In game this model will be moved with usage of
+local matrixes of transformation. For example: you can animate a
+helicopter&rsquo;s propeller using around matrix.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif"><SPAN LANG="en-US"><U>There is no need
+in usage of controller-object</U> in such animation type. No</SPAN>
+<SPAN LANG="en-US">key</SPAN> <SPAN LANG="en-US">frames</SPAN> <SPAN LANG="en-US">would</SPAN>
+<SPAN LANG="en-US">be</SPAN> <SPAN LANG="en-US">needed</SPAN> <SPAN LANG="en-US">here</SPAN>.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">Hierarchic linking
+of animation objects is necessary. PIVOT points of all objects should
+be correctly arranged. It means that PIVOT should be set in the point
+around which should be rotation of some model block. It is necessary
+to reset all secondary transformations from pivot points of a model.
+Read</SPAN> <SPAN LANG="en-US">more</SPAN> <SPAN LANG="en-US">in</SPAN>
+&ldquo;</FONT><FONT COLOR="#0000ff"><U><A HREF="#0.Animation. Common features:|outline"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Animation.
+Common features</FONT></SPAN></A></U></FONT><FONT FACE="Arial, sans-serif">&rdquo;
+<SPAN LANG="en-US">part about it</SPAN>. </FONT>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="" CLASS="western" ALIGN=CENTER STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<IMG SRC="3dmax_exporter_html_m6140fbc5.gif"></P>
+<P LANG="en-US" CLASS="western" ALIGN=CENTER STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Picture 4 &ndash;
+Example of arranging PIVOT points for parts of tank.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">There is no need to set motion for the
+model&rsquo;s parts, programmers should do that.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Export of a simple
+animation realizes on choosing &ldquo;Simple Animation&rdquo;
+radio-button in exporter window.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Model&rsquo;s
+objects with simple animation might have different levels of details.
+Read more in &ldquo;</FONT></SPAN><FONT COLOR="#0000ff"><U><A HREF="#0.Levels Of Details|outline"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Levels
+Of Details</FONT></SPAN></A></U></FONT><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">&rdquo;
+part.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 LANG="en-US" CLASS="western"><A NAME="0.Tweening Animation|outline"></A>
+Tweening Animation</H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">	This
+animation type (it is also known as Morphing animation) suits for
+creating of animated characters such as people, animals or explosions
+(but not robot type characters). In animation process their separate
+objects can change not only their situation but also they can change
+shape (for example they can be bent, squeezed or stretched). In every
+key frame (animation controller should be used) all information about
+geometry of animated object is saved. Main lack of such animation
+type is a big size of exported file.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">	For
+model animation in 3DMax designer can use skeleton, bipeds and invert
+kinematics. There is one requirement when creating tweening animation
+&ndash; animated model must have constant amount of vertex and faces
+during all animations phases.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">At first
+character&rsquo;s model animates with any method. It is necessary to
+remember that after creating a model you should reset all secondary
+transformations from PIVOT points of a model. Read more in
+&ldquo;</FONT></SPAN><FONT COLOR="#0000ff"><U><A HREF="#0.Animation. Common features:|outline"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Animation.
+Common features</FONT></SPAN></A></U></FONT><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">&rdquo;
+part. Then controller object is added to the scene. Designer should
+set on controller object a kit of key frames, in which character&rsquo;s
+geometry is saved. The more key frames on controller, the more file
+size would be. In the intervals where character moves not so much
+it&rsquo;s better to set key frames rarely. In the intervals where
+character moves a lot it&rsquo;s better to set key frames more often.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">In the game model&rsquo;s
+animation would be created according to the key frames with usage of
+geometry interpolation.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Export of a
+tweening animation realizes on choosing &ldquo;Tweening Animation&rdquo;
+or &ldquo;Tweening Animation Compact&rdquo; radio-button in exporter
+window.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Tweening
+Animation Compact &ndash; is more compact type of saving tweening
+animation of character.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 CLASS="western"><A NAME="0. Joint Animation|outline"></A> <SPAN LANG="en-US">Joint
+Animation</SPAN></H1>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">	This
+animation type is close to the bone animation. It</SPAN> <SPAN LANG="en-US">suits</SPAN>
+<SPAN LANG="en-US">well</SPAN> <SPAN LANG="en-US">for</SPAN> <SPAN LANG="en-US">creating</SPAN>
+<SPAN LANG="en-US">robot</SPAN> <SPAN LANG="en-US">type</SPAN>
+<SPAN LANG="en-US">animated</SPAN> <SPAN LANG="en-US">models</SPAN>.
+<SPAN LANG="en-US">Such models keep constant shape through the
+animation process (they don&rsquo;t bend, squeeze or stretch), they
+change only their position and orientation. </SPAN></FONT>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">Such</SPAN>
+<SPAN LANG="en-US">animation</SPAN> <SPAN LANG="en-US">type</SPAN>
+<SPAN LANG="en-US">has</SPAN> <SPAN LANG="en-US">superiority</SPAN>
+<SPAN LANG="en-US">above</SPAN> <SPAN LANG="en-US">the</SPAN>
+<SPAN LANG="en-US">Tweening</SPAN> <SPAN LANG="en-US">animation</SPAN>.
+<SPAN LANG="en-US">The difference is that you can change some parts
+of the animated model to the others with another geometry and the
+whole animation wouldn&rsquo;t be changed. So you can animate a model
+of robot only once and then all you have to do is to change different
+model&rsquo;s parts with another and animation will stay correct. For
+example: there is an animation of robot&rsquo;s walking. Robot which
+was assembled of details of one kit would walk in the same way as the
+robot which was assembled of details of another detail kit.</SPAN></FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">This animation type supposes two
+stages of creating of animated models.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">1 &ndash; creating
+of animation (motion of simplified model).</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">2 &ndash; creating
+of details kit (of a joint model), which is used to assemble the
+model.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<U><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Animation and
+joint model are saved in different files. </FONT></SPAN></U>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">It is also
+important that sizes of files which are containing animation are of a
+small size, but sizes of files which are containing details kit (a
+model) are almost equivalent to the sizes of files as if the model
+was saved as a static scene or a simple animation.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<B><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">For the
+conformity of the model animation and the details kit you should give
+the same names to the corresponding objects in animation and in the
+details kit. So if an arm in animation has name &ldquo;ARM&rdquo;,
+then in details kit it also has to be named as &ldquo;ARM&rdquo;. In
+other case detail&rsquo;s animation wouldn&rsquo;t be set to the
+detail. To prevent such situation and to provide the conformity of
+animation and details in the game you should correctly create and
+fill up the &ldquo;Roboid.txt&rdquo; file.</FONT></SPAN></B></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">This file have to
+be placed in the %3DMax% folder. It holds a list of all possible
+names of model parts in joint animation. When exporting, a line&rsquo;s
+number, in which object name is written, is taken into consideration.
+That&rsquo;s why you should add names in file with the list of other
+names in the end of file. Because adding of the name somewhere in the
+middle of file will lead to the displace of numbers of other names
+and you will have to resave already saved joint animations and
+details kits. </FONT></SPAN>
+</P>
+<P CLASS="western" ALIGN=RIGHT STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Example
+of &ldquo;Roboid.txt&rdquo; file content.</FONT></SPAN></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><SPAN LANG="en-US">	</SPAN>HEAD</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><SPAN LANG="en-US">	</SPAN>ARM_RIGHT</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><SPAN LANG="en-US">	</SPAN>ARM_LEFT</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><SPAN LANG="en-US">	</SPAN>TORS</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><SPAN LANG="en-US">	</SPAN>FOOT_RIGHT</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><SPAN LANG="en-US">	</SPAN>FOOT_LEFT</FONT></P>
+<P CLASS="western" STYLE="margin-left: 1.27cm; margin-bottom: 0cm"><FONT FACE="Courier New, monospace"><SPAN LANG="en-US">	</SPAN>BASE</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Now when naming
+objects of joint animation and details kits you need to give names
+from this list of names. Non-observance of this rule leads to the
+error message (in the LOG file).</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<H2 LANG="en-US" CLASS="western"></H2>
+<H2 CLASS="western"><A NAME="0.0.Joint Animation (Joint Animation Option) |outline"></A>
+<SPAN LANG="en-US">Joint Animation (Joint Animation Option) </SPAN>
+</H2>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">Create a model (it
+may be reductive and without material) and animate it in any way
+which wouldn&rsquo;t change the geometry of separated parts of the
+model (so don&rsquo;t pull any points of a mesh). Then add a
+controller object to the scene. Designer</SPAN> <SPAN LANG="en-US">should</SPAN>
+<SPAN LANG="en-US">set</SPAN> <SPAN LANG="en-US">key</SPAN> <SPAN LANG="en-US">frames</SPAN>
+<SPAN LANG="en-US">on</SPAN> <SPAN LANG="en-US">it</SPAN>. <SPAN LANG="en-US">The
+more key frames are on controller, the more file size would be (in
+this animation type it is no so important). In the intervals where
+character moves not so much it&rsquo;s better to set key frames
+rarely. In the intervals where character moves a lot it&rsquo;s
+better to set key frames more often.</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">It&rsquo;s
+important not to forget to name objects according to the &ldquo;Roboid.txt&rdquo;
+file.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">Hierarchical
+linking of animation objects is necessary. PIVOT points should be
+correctly set on all objects. So PIVOT should be set in the point
+around which should be rotation of some model block. It is necessary
+to reset all secondary transformations from pivot points of a model.
+Read</SPAN> <SPAN LANG="en-US">more</SPAN> <SPAN LANG="en-US">in</SPAN>
+&ldquo;</FONT><FONT COLOR="#0000ff"><U><A HREF="#0.Animation. Common features:|outline"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Animation.
+Common features</FONT></SPAN></A></U></FONT><FONT FACE="Arial, sans-serif">&rdquo;
+<SPAN LANG="en-US">part</SPAN>.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<IMG SRC="3dmax_exporter_html_m5123321a.gif">                 
+<IMG SRC="3dmax_exporter_html_m72bebe87.gif"><FONT FACE="Arial, sans-serif">		</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Picture 5 &ndash;
+Example of the hierarchical linking of the elements and PIVOT points
+arrangement for the model of robot.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=CENTER STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Export of joint
+animation realizes on choosing &ldquo;Joint Animation&rdquo; in
+exporter window.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<H2 CLASS="western"><A NAME="0.0.Creating Of Joint Model or Detail Kit (Joint Model Option)|outline"></A>
+<SPAN LANG="en-US">Creating Of Joint Model or Detail Kit (Joint Model
+Option)</SPAN></H2>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">Joint Model is a simple kit of
+separate parts of the whole model.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Details might be
+arranged wherever on the scene.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">It&rsquo;s
+important not to forget to name objects according to the &ldquo;Roboid.txt&rdquo;
+file.	Arrangement (and axes direction) of PIVOT point of a concrete
+detail should coincide with arrangement of PIVOT point of
+corresponding element in animation model.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="" CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><IMG SRC="3dmax_exporter_html_m7e8aa7ed.gif"></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	</FONT></P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Picture
+6 &ndash; Example of PIVOT point position</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">It is necessary to reset all secondary
+transformations from pivot points of a model. Read more in
+&ldquo;Animation. Elementary knowledge&rdquo; part.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">According to the
+picture 6, you can see that object&rsquo;s position in details kit on
+scene space of 3DMax doesn&rsquo;t make any sense. It is important
+that PIVOT points coincide to corresponding objects in joint
+animation.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">Next step is joint arrangement.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">For joint usage a
+system joint-object should be leaded in. It should have a reserved
+name &ldquo;!JOINT&rdquo;.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Joint can represent
+itself as any geometric object on the scene. It&rsquo;s geometry is
+not saved, it only has information about the joint position.
+Information of the joint position represents it&rsquo;s PIVOT point,
+that&rsquo;s why it is better to use a sphere as joint object because
+it&rsquo;s PIVOT point is in the center by default.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Axes directions of
+PIVOT point of joint should coincide with axes directions of PIVOT
+point of object to which this joint is fixed.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Next you have to
+set parent links. Joints are fixed to details; details are fixed to
+joints.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+ 
+</P>
+      <P LANG="" CLASS="western" ALIGN=center STYLE="margin-bottom: 0cm"><IMG SRC="3dmax_exporter_html_m1320086a.gif"></P>
+<P LANG="en-US" CLASS="western" ALIGN=CENTER STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Picture
+7 &ndash; Example of joint parent links setting.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">	There
+is no need to set details on scene with some or even any sense.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="" CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><IMG SRC="3dmax_exporter_html_532635e6.gif"></P>
+<P LANG="en-US" CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Picture
+8 &ndash; Possible arrangement of objects on scene and their parent
+links.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Export of joint
+model realizes on choosing &ldquo;Joint Model&rdquo; in exporter
+window.</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 LANG="en-US" CLASS="western"><A NAME="0.Levels Of Details|outline"></A><A NAME="0.Levels Of Details|outline"></A><A NAME="0.Levels Of Details|outline"></A><A NAME="0.Levels Of Details|outline"></A>
+Levels Of Details</H1>
+<P LANG="en-US" CLASS="western" STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">	When
+creating a static scene, models with simple animation, tweening
+animation and joint animation, it is possible to use Levels of
+Details. They can be used for optimization of graphics output in the
+game. It&rsquo;s possible to output objects which are far from the
+camera with lower details than objects which are close to camera.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">	There
+is no limitation for amount of Levels of Details.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">	To
+create Levels of Details you need to create several scenes with the
+same objects: object&rsquo;s details can (and should if you are
+creating different levels of details) be different in different
+scenes, but object&rsquo;s names should strictly coincide.</FONT></SPAN></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">	Also
+there is a restriction for the name format. Objects of the one scene
+shouldn&rsquo;t have the same names. So if there is 10 trees on the
+scene, than you have to name them as TREE01, TREE02, TREE03&hellip;
+TREE</SPAN>10.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">It
+is recommended to draw the whole scene in the highest level of
+details first, than create several copies of this scene for lower
+levels and after that you can decrease details on these copies (pic.
+9). Positions of corresponding objects in different levels of details
+should coincide.</SPAN></FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><IMG SRC="3dmax_exporter_html_m5d285643.gif">
+  
+<IMG SRC="3dmax_exporter_html_324b9e92.gif">   
+<IMG SRC="3dmax_exporter_html_50db765e.gif"></P>
+<P LANG="en-US" CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Picture
+9 &ndash; Example of the scene with different levels of details</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">	Special
+feature is that if you need that in the current level of details one
+of the objects was shown as in the previous level of details, than
+you can delete this object. It will save the file size (pic. 10). </FONT></SPAN>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><IMG SRC="3dmax_exporter_html_m786e8683.gif">
+  
+<IMG SRC="3dmax_exporter_html_33a9f026.gif">   
+<IMG SRC="3dmax_exporter_html_50db765e.gif"></P>
+<P LANG="en-US" CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P CLASS="western" ALIGN=CENTER STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Picture
+10 &ndash; Example of the scene with missed objects and different
+Levels of Details</FONT></SPAN></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">	</FONT></P>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; page-break-before: always">
+<BR>
+</P>
+<H1 CLASS="western"><A NAME="0.DUMMY Objects.|outline"></A><SPAN LANG="en-US">DUMMY</SPAN>
+<SPAN LANG="en-US">Objects</SPAN>.</H1>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">Exporter
+also lets to save dummy objects. These</SPAN> <SPAN LANG="en-US">objects</SPAN>
+<SPAN LANG="en-US">are</SPAN> <SPAN LANG="en-US">not</SPAN> <SPAN LANG="en-US">shown</SPAN>
+<SPAN LANG="en-US">in</SPAN> <SPAN LANG="en-US">the</SPAN> <SPAN LANG="en-US">game</SPAN>
+<SPAN LANG="en-US">but</SPAN> <SPAN LANG="en-US">they</SPAN> <SPAN LANG="en-US">keep</SPAN>
+<SPAN LANG="en-US">an</SPAN> <SPAN LANG="en-US">additional</SPAN>
+<SPAN LANG="en-US">information</SPAN>.</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">Any
+dummy object should have the name of the following format:</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">!<SPAN LANG="en-US">DUMMY</SPAN>_&lt;<SPAN LANG="en-US">
+object</SPAN>_<SPAN LANG="en-US">name</SPAN>&gt;</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">Examples</SPAN>:</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">	!<SPAN LANG="en-US">DUMMY</SPAN>_<SPAN LANG="en-US">A</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="text-indent: 1.25cm; margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">	!<SPAN LANG="en-US">DUMMY</SPAN>_<SPAN LANG="en-US">POS</SPAN>	</FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">Now
+there are two types of dummy objects supported:</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">		</SPAN>&ndash;
+<SPAN LANG="en-US">Box</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">		&ndash;
+<SPAN LANG="en-US">Sphere</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif">	<SPAN LANG="en-US">Difference
+is that they save different parameters.</SPAN></FONT></P>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">For
+the BOX type object is saved:</FONT></SPAN></P>
+<UL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">Object</SPAN>
+	<SPAN LANG="en-US">name</SPAN></FONT></P>
+	<LI><P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+	<FONT FACE="Arial, sans-serif">Parent links</FONT></P>
+	<LI><P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+	<FONT FACE="Arial, sans-serif">User Defined</FONT></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Min
+	and Max significance of the box (Bounding Box)</FONT></SPAN></P>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">Transformation
+	matrix: in case if the box was rotated after it&rsquo;s creating,
+	than error would appear in LOG file (Axis Aligned Bounding Box).</FONT></SPAN></P>
+</UL>
+<P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<FONT FACE="Arial, sans-serif">For the SPHERE type object is saved:</FONT></P>
+<UL>
+	<LI><P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Arial, sans-serif"><SPAN LANG="en-US">Object</SPAN>
+	<SPAN LANG="en-US">name</SPAN></FONT></P>
+	<LI><P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+	<FONT FACE="Arial, sans-serif">Parent links</FONT></P>
+	<LI><P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+	<FONT FACE="Arial, sans-serif">User Defined </FONT>
+	</P>
+	<LI><P LANG="en-US" CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+	<FONT FACE="Arial, sans-serif">Sphere radius</FONT></P>
+</UL>
+<P CLASS="western" ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><SPAN LANG="en-US"><FONT FACE="Arial, sans-serif">To
+save the dummy object you need to check switcher &ldquo;Save Dummy
+Objects&rdquo; in exporter window up, otherwise information about
+such objects wouldn&rsquo;t be saved.</FONT></SPAN></P>
+
+	   <p align="center">&nbsp;</p>
+  	  <p align="center">&nbsp;</p>
+      <p align="center" class="memTemplItemLeft"><font size="1"><strong>Copyright 
+        2005-2006 Herocraft Hitech Co. Ltd. </strong></font></p>
+	  </td>
+  </tr>
+</table>
+
+
+</BODY>
+</HTML>

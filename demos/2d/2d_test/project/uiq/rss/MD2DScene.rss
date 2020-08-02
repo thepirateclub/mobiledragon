@@ -1,0 +1,13 @@
+
+NAME    AWIZ
+
+#include <eikon.rh>
+#include <qikon.rh>
+
+RESOURCE RSS_SIGNATURE { }
+
+RESOURCE TBUF { buf="MobileDragon"; }
+
+RESOURCE EIK_APP_INFO
+{
+}

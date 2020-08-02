@@ -1,0 +1,1185 @@
+  <herotool.GONode id="0">
+    <herotool.gameobjects.Dummy id="1">
+      <String name="step6_finished"/>
+      <boolean visible="true"/>
+      <int size="0"/>
+    </herotool.gameobjects.Dummy>
+    <int connectionsCount="0"/>
+    <int childCount="6"/>
+    <herotool.GONode id="2">
+      <herotool.gameobjects.Time id="3">
+        <String name="Time"/>
+        <boolean visible="true"/>
+        <int size="0"/>
+      </herotool.gameobjects.Time>
+      <int connectionsCount="0"/>
+      <int childCount="0"/>
+    </herotool.GONode>
+    <herotool.GONode id="4">
+      <herotool.gameobjects.Grid id="5">
+        <String name="grid"/>
+        <boolean visible="true"/>
+        <int size="0"/>
+        <double tx="0.0"/>
+        <double ty="0.0"/>
+        <double sx="16.0"/>
+        <double sy="16.0"/>
+        <double angle="0.0"/>
+        <double pivotX="0.0"/>
+        <double pivotY="0.0"/>
+        <boolean displayPivot="true"/>
+        <float opacity="0.0"/>
+        <boolean snap="false"/>
+        <int checkerColor1_r="253"/>
+        <int checkerColor1_g="253"/>
+        <int checkerColor1_b="253"/>
+        <int checkerColor2_r="202"/>
+        <int checkerColor2_g="204"/>
+        <int checkerColor2_b="202"/>
+      </herotool.gameobjects.Grid>
+      <int connectionsCount="0"/>
+      <int childCount="0"/>
+    </herotool.GONode>
+    <herotool.GONode id="6">
+      <herotool.gameobjects.Cell id="7">
+        <String name="cell"/>
+        <boolean visible="true"/>
+        <int size="0"/>
+        <herotool.gameobjects.Point id="8">
+          <String name="point"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <int x="24"/>
+          <int y="0"/>
+        </herotool.gameobjects.Point>
+        <herotool.gameobjects.Point id="9">
+          <String name="point"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <int x="0"/>
+          <int y="24"/>
+        </herotool.gameobjects.Point>
+        <herotool.gameobjects.GPolygon id="10">
+          <String name="polygon"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <String points="(0, 0), (24, 0), (24, 24), (0, 24)"/>
+        </herotool.gameobjects.GPolygon>
+      </herotool.gameobjects.Cell>
+      <int connectionsCount="0"/>
+      <int childCount="3"/>
+      <herotool.GONode id="11">
+        <herotool.gameobjects.GPolygon id="10"/>
+        <int connectionsCount="0"/>
+        <int childCount="4"/>
+        <herotool.GONode id="12">
+          <herotool.gameobjects.Point id="13">
+            <String name="point"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <int x="0"/>
+            <int y="0"/>
+          </herotool.gameobjects.Point>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+        <herotool.GONode id="14">
+          <herotool.gameobjects.Point id="15">
+            <String name="point"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <int x="24"/>
+            <int y="0"/>
+          </herotool.gameobjects.Point>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+        <herotool.GONode id="16">
+          <herotool.gameobjects.Point id="17">
+            <String name="point"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <int x="24"/>
+            <int y="24"/>
+          </herotool.gameobjects.Point>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+        <herotool.GONode id="18">
+          <herotool.gameobjects.Point id="19">
+            <String name="point"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <int x="0"/>
+            <int y="24"/>
+          </herotool.gameobjects.Point>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="20">
+        <herotool.gameobjects.Point id="8"/>
+        <int connectionsCount="0"/>
+        <int childCount="0"/>
+      </herotool.GONode>
+      <herotool.GONode id="21">
+        <herotool.gameobjects.Point id="9"/>
+        <int connectionsCount="0"/>
+        <int childCount="0"/>
+      </herotool.GONode>
+    </herotool.GONode>
+    <herotool.GONode id="22">
+      <dragontool.TransformZ id="23">
+        <String name="terrainTiles"/>
+        <boolean visible="false"/>
+        <int size="0"/>
+        <double tx="0.0"/>
+        <double ty="0.0"/>
+        <double sx="1.0"/>
+        <double sy="1.0"/>
+        <double angle="-0.0"/>
+        <double pivotX="0.0"/>
+        <double pivotY="0.0"/>
+        <boolean displayPivot="false"/>
+        <float opacity="1.0"/>
+        <int zOrder="7"/>
+      <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+      <int connectionsCount="0"/>
+      <int childCount="5"/>
+      <herotool.GONode id="24">
+        <dragontool.TransformZ id="25">
+          <String name="grass"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="2"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode id="26">
+          <herotool.gameobjects.Sprite id="27">
+            <String name="grass"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\grass.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="28">
+        <dragontool.TransformZ id="29">
+          <String name="grass_left"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="3"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode id="30">
+          <herotool.gameobjects.Sprite id="31">
+            <String name="grass_left"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\grass_left.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="32">
+        <dragontool.TransformZ id="33">
+          <String name="grass_top"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="4"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode id="34">
+          <herotool.gameobjects.Sprite id="35">
+            <String name="grass_top"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\grass_top.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="36">
+        <dragontool.TransformZ id="37">
+          <String name="grass_topLeft"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="5"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode id="38">
+          <herotool.gameobjects.Sprite id="39">
+            <String name="grass_topLeft"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\grass_topLeft.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="40">
+        <dragontool.TransformZ id="41">
+          <String name="sand"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="6"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode id="42">
+          <herotool.gameobjects.Sprite id="43">
+            <String name="sand"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\sand.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+    </herotool.GONode>
+    <herotool.GONode id="44">
+      <dragontool.TransformZ id="45">
+        <String name="objectTiles"/>
+        <boolean visible="false"/>
+        <int size="0"/>
+        <double tx="0.0"/>
+        <double ty="0.0"/>
+        <double sx="1.0"/>
+        <double sy="1.0"/>
+        <double angle="-0.0"/>
+        <double pivotX="0.0"/>
+        <double pivotY="0.0"/>
+        <boolean displayPivot="false"/>
+        <float opacity="1.0"/>
+        <int zOrder="15"/>
+      <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+      <int connectionsCount="0"/>
+      <int childCount="7"/>
+      <herotool.GONode id="46">
+        <dragontool.TransformZ id="47">
+          <String name="stone"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="8"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode id="48">
+          <herotool.gameobjects.Sprite id="49">
+            <String name="stone"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\stone.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="50">
+        <dragontool.TransformZ id="51">
+          <String name="tree1_bottom"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="9"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode id="52">
+          <herotool.gameobjects.Sprite id="53">
+            <String name="tree1_bottom"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\tree1_bottom.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="54">
+        <dragontool.TransformZ id="55">
+          <String name="tree1_top"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="10"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode id="56">
+          <herotool.gameobjects.Sprite id="57">
+            <String name="tree1_top"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\tree1_top.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="58">
+        <dragontool.TransformZ id="59">
+          <String name="tree2_botLeft"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="11"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode id="60">
+          <herotool.gameobjects.Sprite id="61">
+            <String name="tree2_botLeft"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\tree2_botLeft.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="62">
+        <dragontool.TransformZ id="63">
+          <String name="tree2_botRight"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="12"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode id="64">
+          <herotool.gameobjects.Sprite id="65">
+            <String name="tree2_botRight"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\tree2_botRight.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="66">
+        <dragontool.TransformZ id="67">
+          <String name="tree2_topLeft"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="13"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode id="68">
+          <herotool.gameobjects.Sprite id="69">
+            <String name="tree2_topLeft"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\tree2_topLeft.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="70">
+        <dragontool.TransformZ id="71">
+          <String name="tree2_topRight"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="14"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="1"/>
+        <herotool.GONode id="72">
+          <herotool.gameobjects.Sprite id="73">
+            <String name="tree2_topRight"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <String path="sprites\tree2_topRight.png"/>
+          </herotool.gameobjects.Sprite>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+    </herotool.GONode>
+    <herotool.GONode id="74">
+      <dragontool.TransformZ id="75">
+        <String name="screen"/>
+        <boolean visible="true"/>
+        <int size="0"/>
+        <double tx="0.0"/>
+        <double ty="0.0"/>
+        <double sx="1.0"/>
+        <double sy="1.0"/>
+        <double angle="-0.0"/>
+        <double pivotX="0.0"/>
+        <double pivotY="0.0"/>
+        <boolean displayPivot="false"/>
+        <float opacity="1.0"/>
+        <int zOrder="17"/>
+      <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+      <int connectionsCount="0"/>
+      <int childCount="3"/>
+      <herotool.GONode id="76">
+        <dragontool.TransformZ id="77">
+          <String name="map1"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="0.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="0"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="2"/>
+        <herotool.GONode id="78">
+          <herotool.gameobjects.IndexedTileMap id="79">
+            <String name="terrainMap"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <herotool.GONode id="6"/>
+            <herotool.gameobjects.IndexedGOTableModel id="80">
+              <int rowCount="8"/>
+              <int columnCount="8"/>
+              <herotool.GONode id="22"/>
+              <int index_0_0="4"/>
+              <int index_0_1="4"/>
+              <int index_0_2="4"/>
+              <int index_0_3="4"/>
+              <int index_0_4="4"/>
+              <int index_0_5="4"/>
+              <int index_0_6="4"/>
+              <int index_0_7="4"/>
+              <int index_1_0="4"/>
+              <int index_1_1="4"/>
+              <int index_1_2="4"/>
+              <int index_1_3="4"/>
+              <int index_1_4="4"/>
+              <int index_1_5="4"/>
+              <int index_1_6="4"/>
+              <int index_1_7="4"/>
+              <int index_2_0="4"/>
+              <int index_2_1="4"/>
+              <int index_2_2="3"/>
+              <int index_2_3="2"/>
+              <int index_2_4="2"/>
+              <int index_2_5="2"/>
+              <int index_2_6="2"/>
+              <int index_2_7="2"/>
+              <int index_3_0="4"/>
+              <int index_3_1="4"/>
+              <int index_3_2="1"/>
+              <int index_3_3="0"/>
+              <int index_3_4="0"/>
+              <int index_3_5="0"/>
+              <int index_3_6="0"/>
+              <int index_3_7="0"/>
+              <int index_4_0="4"/>
+              <int index_4_1="4"/>
+              <int index_4_2="1"/>
+              <int index_4_3="0"/>
+              <int index_4_4="0"/>
+              <int index_4_5="0"/>
+              <int index_4_6="0"/>
+              <int index_4_7="0"/>
+              <int index_5_0="4"/>
+              <int index_5_1="4"/>
+              <int index_5_2="1"/>
+              <int index_5_3="0"/>
+              <int index_5_4="0"/>
+              <int index_5_5="0"/>
+              <int index_5_6="0"/>
+              <int index_5_7="0"/>
+              <int index_6_0="4"/>
+              <int index_6_1="4"/>
+              <int index_6_2="1"/>
+              <int index_6_3="0"/>
+              <int index_6_4="0"/>
+              <int index_6_5="0"/>
+              <int index_6_6="0"/>
+              <int index_6_7="0"/>
+              <int index_7_0="4"/>
+              <int index_7_1="4"/>
+              <int index_7_2="1"/>
+              <int index_7_3="0"/>
+              <int index_7_4="0"/>
+              <int index_7_5="0"/>
+              <int index_7_6="0"/>
+              <int index_7_7="0"/>
+            </herotool.gameobjects.IndexedGOTableModel>
+            <boolean showCells="false"/>
+          </herotool.gameobjects.IndexedTileMap>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+        <herotool.GONode id="81">
+          <herotool.gameobjects.IndexedTileMap id="82">
+            <String name="objectMap"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <herotool.GONode id="6"/>
+            <herotool.gameobjects.IndexedGOTableModel id="83">
+              <int rowCount="8"/>
+              <int columnCount="8"/>
+              <herotool.GONode id="44"/>
+              <int index_0_0="-1"/>
+              <int index_0_1="-1"/>
+              <int index_0_2="-1"/>
+              <int index_0_3="-1"/>
+              <int index_0_4="-1"/>
+              <int index_0_5="-1"/>
+              <int index_0_6="-1"/>
+              <int index_0_7="-1"/>
+              <int index_1_0="-1"/>
+              <int index_1_1="0"/>
+              <int index_1_2="-1"/>
+              <int index_1_3="-1"/>
+              <int index_1_4="-1"/>
+              <int index_1_5="-1"/>
+              <int index_1_6="2"/>
+              <int index_1_7="-1"/>
+              <int index_2_0="-1"/>
+              <int index_2_1="-1"/>
+              <int index_2_2="-1"/>
+              <int index_2_3="-1"/>
+              <int index_2_4="-1"/>
+              <int index_2_5="0"/>
+              <int index_2_6="1"/>
+              <int index_2_7="-1"/>
+              <int index_3_0="2"/>
+              <int index_3_1="-1"/>
+              <int index_3_2="-1"/>
+              <int index_3_3="-1"/>
+              <int index_3_4="-1"/>
+              <int index_3_5="-1"/>
+              <int index_3_6="-1"/>
+              <int index_3_7="-1"/>
+              <int index_4_0="1"/>
+              <int index_4_1="-1"/>
+              <int index_4_2="-1"/>
+              <int index_4_3="-1"/>
+              <int index_4_4="5"/>
+              <int index_4_5="6"/>
+              <int index_4_6="-1"/>
+              <int index_4_7="0"/>
+              <int index_5_0="-1"/>
+              <int index_5_1="-1"/>
+              <int index_5_2="0"/>
+              <int index_5_3="-1"/>
+              <int index_5_4="3"/>
+              <int index_5_5="4"/>
+              <int index_5_6="-1"/>
+              <int index_5_7="5"/>
+              <int index_6_0="-1"/>
+              <int index_6_1="-1"/>
+              <int index_6_2="-1"/>
+              <int index_6_3="5"/>
+              <int index_6_4="6"/>
+              <int index_6_5="0"/>
+              <int index_6_6="-1"/>
+              <int index_6_7="3"/>
+              <int index_7_0="-1"/>
+              <int index_7_1="-1"/>
+              <int index_7_2="-1"/>
+              <int index_7_3="3"/>
+              <int index_7_4="4"/>
+              <int index_7_5="-1"/>
+              <int index_7_6="-1"/>
+              <int index_7_7="-1"/>
+            </herotool.gameobjects.IndexedGOTableModel>
+            <boolean showCells="false"/>
+          </herotool.gameobjects.IndexedTileMap>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="84">
+        <dragontool.AnimationZ id="85">
+          <String name="monk"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="68.0"/>
+          <double ty="82.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="1"/>
+        </dragontool.AnimationZ>
+        <int connectionsCount="12"/>
+        <herotool.Connection id="86">
+          <herotool.GONode id="84"/>
+          <String inProp="frameNum"/>
+          <herotool.GONode id="2"/>
+          <String outProp="frameNum"/>
+        </herotool.Connection>
+        <herotool.Connection id="87">
+          <herotool.GONode id="84"/>
+          <String inProp="frameNum"/>
+          <herotool.GONode id="2"/>
+          <String outProp="frameNum"/>
+        </herotool.Connection>
+        <herotool.Connection id="88">
+          <herotool.GONode id="84"/>
+          <String inProp="frameNum"/>
+          <herotool.GONode id="2"/>
+          <String outProp="frameNum"/>
+        </herotool.Connection>
+        <herotool.Connection id="89">
+          <herotool.GONode id="84"/>
+          <String inProp="frameNum"/>
+          <herotool.GONode id="2"/>
+          <String outProp="frameNum"/>
+        </herotool.Connection>
+        <herotool.Connection id="90">
+          <herotool.GONode id="84"/>
+          <String inProp="frameNum"/>
+          <herotool.GONode id="2"/>
+          <String outProp="frameNum"/>
+        </herotool.Connection>
+        <herotool.Connection id="91">
+          <herotool.GONode id="84"/>
+          <String inProp="frameNum"/>
+          <herotool.GONode id="2"/>
+          <String outProp="frameNum"/>
+        </herotool.Connection>
+        <herotool.Connection id="92">
+          <herotool.GONode id="84"/>
+          <String inProp="frameNum"/>
+          <herotool.GONode id="2"/>
+          <String outProp="frameNum"/>
+        </herotool.Connection>
+        <herotool.Connection id="93">
+          <herotool.GONode id="84"/>
+          <String inProp="frameNum"/>
+          <herotool.GONode id="2"/>
+          <String outProp="frameNum"/>
+        </herotool.Connection>
+        <herotool.Connection id="94">
+          <herotool.GONode id="84"/>
+          <String inProp="frameNum"/>
+          <herotool.GONode id="2"/>
+          <String outProp="frameNum"/>
+        </herotool.Connection>
+        <herotool.Connection id="95">
+          <herotool.GONode id="84"/>
+          <String inProp="frameNum"/>
+          <herotool.GONode id="2"/>
+          <String outProp="frameNum"/>
+        </herotool.Connection>
+        <herotool.Connection id="96">
+          <herotool.GONode id="84"/>
+          <String inProp="frameNum"/>
+          <herotool.GONode id="2"/>
+          <String outProp="frameNum"/>
+        </herotool.Connection>
+        <herotool.Connection id="97">
+          <herotool.GONode id="84"/>
+          <String inProp="frameNum"/>
+          <herotool.GONode id="2"/>
+          <String outProp="frameNum"/>
+        </herotool.Connection>
+        <int childCount="4"/>
+        <herotool.GONode id="98">
+          <herotool.gameobjects.Frame id="99">
+            <String name="frame"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <int delay="1"/>
+          </herotool.gameobjects.Frame>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONode id="100">
+            <dragontool.TransformZ id="101">
+              <String name="monk1"/>
+              <boolean visible="true"/>
+              <int size="0"/>
+              <double tx="0.0"/>
+              <double ty="0.0"/>
+              <double sx="1.0"/>
+              <double sy="1.0"/>
+              <double angle="-0.0"/>
+              <double pivotX="0.0"/>
+              <double pivotY="0.0"/>
+              <boolean displayPivot="false"/>
+              <float opacity="1.0"/>
+              <int zOrder="17"/>
+            <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+            <int connectionsCount="0"/>
+            <int childCount="1"/>
+            <herotool.GONode id="102">
+              <herotool.gameobjects.Sprite id="103">
+                <String name="monk1"/>
+                <boolean visible="true"/>
+                <int size="0"/>
+                <String path="sprites\monk1.png"/>
+              </herotool.gameobjects.Sprite>
+              <int connectionsCount="0"/>
+              <int childCount="0"/>
+            </herotool.GONode>
+          </herotool.GONode>
+        </herotool.GONode>
+        <herotool.GONode id="104">
+          <herotool.gameobjects.Frame id="105">
+            <String name="frame"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <int delay="1"/>
+          </herotool.gameobjects.Frame>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONode id="106">
+            <dragontool.TransformZ id="107">
+              <String name="monk2"/>
+              <boolean visible="true"/>
+              <int size="0"/>
+              <double tx="0.0"/>
+              <double ty="0.0"/>
+              <double sx="1.0"/>
+              <double sy="1.0"/>
+              <double angle="-0.0"/>
+              <double pivotX="0.0"/>
+              <double pivotY="0.0"/>
+              <boolean displayPivot="false"/>
+              <float opacity="1.0"/>
+              <int zOrder="18"/>
+            <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+            <int connectionsCount="0"/>
+            <int childCount="1"/>
+            <herotool.GONode id="108">
+              <herotool.gameobjects.Sprite id="109">
+                <String name="monk2"/>
+                <boolean visible="true"/>
+                <int size="0"/>
+                <String path="sprites\monk2.png"/>
+              </herotool.gameobjects.Sprite>
+              <int connectionsCount="0"/>
+              <int childCount="0"/>
+            </herotool.GONode>
+          </herotool.GONode>
+        </herotool.GONode>
+        <herotool.GONode id="110">
+          <herotool.gameobjects.Frame id="111">
+            <String name="frame"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <int delay="1"/>
+          </herotool.gameobjects.Frame>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONode id="112">
+            <dragontool.TransformZ id="113">
+              <String name="monk3"/>
+              <boolean visible="true"/>
+              <int size="0"/>
+              <double tx="0.0"/>
+              <double ty="0.0"/>
+              <double sx="1.0"/>
+              <double sy="1.0"/>
+              <double angle="-0.0"/>
+              <double pivotX="0.0"/>
+              <double pivotY="0.0"/>
+              <boolean displayPivot="false"/>
+              <float opacity="1.0"/>
+              <int zOrder="19"/>
+            <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+            <int connectionsCount="0"/>
+            <int childCount="1"/>
+            <herotool.GONode id="114">
+              <herotool.gameobjects.Sprite id="115">
+                <String name="monk3"/>
+                <boolean visible="true"/>
+                <int size="0"/>
+                <String path="sprites\monk3.png"/>
+              </herotool.gameobjects.Sprite>
+              <int connectionsCount="0"/>
+              <int childCount="0"/>
+            </herotool.GONode>
+          </herotool.GONode>
+        </herotool.GONode>
+        <herotool.GONode id="116">
+          <herotool.gameobjects.Frame id="117">
+            <String name="frame"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <int delay="1"/>
+          </herotool.gameobjects.Frame>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONode id="118">
+            <dragontool.TransformZ id="119">
+              <String name="monk4"/>
+              <boolean visible="true"/>
+              <int size="0"/>
+              <double tx="0.0"/>
+              <double ty="0.0"/>
+              <double sx="1.0"/>
+              <double sy="1.0"/>
+              <double angle="-0.0"/>
+              <double pivotX="0.0"/>
+              <double pivotY="0.0"/>
+              <boolean displayPivot="false"/>
+              <float opacity="1.0"/>
+              <int zOrder="20"/>
+            <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+            <int connectionsCount="0"/>
+            <int childCount="1"/>
+            <herotool.GONode id="120">
+              <herotool.gameobjects.Sprite id="121">
+                <String name="monk4"/>
+                <boolean visible="true"/>
+                <int size="0"/>
+                <String path="sprites\monk4.png"/>
+              </herotool.gameobjects.Sprite>
+              <int connectionsCount="0"/>
+              <int childCount="0"/>
+            </herotool.GONode>
+          </herotool.GONode>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode id="122">
+        <dragontool.TransformZ id="123">
+          <String name="panel"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <double tx="0.0"/>
+          <double ty="180.0"/>
+          <double sx="1.0"/>
+          <double sy="1.0"/>
+          <double angle="-0.0"/>
+          <double pivotX="0.0"/>
+          <double pivotY="0.0"/>
+          <boolean displayPivot="false"/>
+          <float opacity="1.0"/>
+          <int zOrder="2"/>
+        <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+        <int connectionsCount="0"/>
+        <int childCount="8"/>
+        <herotool.GONode id="124">
+          <dragontool.TransformZ id="125">
+            <String name="panelTile"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="0.0"/>
+            <double ty="0.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+          <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONode id="126">
+            <herotool.gameobjects.Sprite id="127">
+              <String name="panelTile"/>
+              <boolean visible="true"/>
+              <int size="0"/>
+              <String path="sprites\panelTile.png"/>
+            </herotool.gameobjects.Sprite>
+            <int connectionsCount="0"/>
+            <int childCount="0"/>
+          </herotool.GONode>
+        </herotool.GONode>
+        <herotool.GONode id="128">
+          <dragontool.TransformZ id="129">
+            <String name="itemSlot"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="128.0"/>
+            <double ty="-5.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="1"/>
+          <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONode id="130">
+            <herotool.gameobjects.Sprite id="131">
+              <String name="itemSlot"/>
+              <boolean visible="true"/>
+              <int size="0"/>
+              <String path="sprites\itemSlot.png"/>
+            </herotool.gameobjects.Sprite>
+            <int connectionsCount="0"/>
+            <int childCount="0"/>
+          </herotool.GONode>
+        </herotool.GONode>
+        <herotool.GONode id="132">
+          <dragontool.TransformZ id="133">
+            <String name="dragon"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="11.0"/>
+            <double ty="-16.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="2"/>
+          <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONode id="134">
+            <herotool.gameobjects.Sprite id="135">
+              <String name="dragon"/>
+              <boolean visible="true"/>
+              <int size="0"/>
+              <String path="sprites\dragon.png"/>
+            </herotool.gameobjects.Sprite>
+            <int connectionsCount="0"/>
+            <int childCount="0"/>
+          </herotool.GONode>
+        </herotool.GONode>
+        <herotool.GONode id="136">
+          <dragontool.TransformZ id="137">
+            <String name="itemSlot"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="19.0"/>
+            <double ty="-5.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="3"/>
+          <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance id="138">
+            <herotool.GONode id="130"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode id="139">
+          <dragontool.TransformZ id="140">
+            <String name="apGreen"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="53.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="4"/>
+          <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONode id="141">
+            <herotool.gameobjects.Sprite id="142">
+              <String name="apGreen"/>
+              <boolean visible="true"/>
+              <int size="0"/>
+              <String path="sprites\apGreen.png"/>
+            </herotool.gameobjects.Sprite>
+            <int connectionsCount="0"/>
+            <int childCount="0"/>
+          </herotool.GONode>
+        </herotool.GONode>
+        <herotool.GONode id="143">
+          <dragontool.TransformZ id="144">
+            <String name="apGreen"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="70.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="4"/>
+          <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance id="145">
+            <herotool.GONode id="141"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode id="146">
+          <dragontool.TransformZ id="147">
+            <String name="apGreen"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="87.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="4"/>
+          <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance id="148">
+            <herotool.GONode id="141"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode id="149">
+          <dragontool.TransformZ id="150">
+            <String name="apGreen"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="104.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="4"/>
+          <int tint_r="255"/> <int tint_g="255"/> <int tint_b="255"/> </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance id="151">
+            <herotool.GONode id="141"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+      </herotool.GONode>
+    </herotool.GONode>
+  </herotool.GONode>

@@ -1,0 +1,1049 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <herotool.GONode>
+    <herotool.gameobjects.Dummy>
+      <String name="finished"/>
+      <boolean visible="true"/>
+      <int size="0"/>
+    </herotool.gameobjects.Dummy>
+    <int connectionsCount="0"/>
+    <int childCount="3"/>
+    <herotool.GONode id="|Time">
+      <herotool.gameobjects.Time>
+        <String name="Time"/>
+        <boolean visible="true"/>
+        <int size="0"/>
+      </herotool.gameobjects.Time>
+      <int connectionsCount="0"/>
+      <int childCount="0"/>
+    </herotool.GONode>
+    <herotool.GONode>
+      <herotool.gameobjects.Grid>
+        <String name="grid"/>
+        <boolean visible="true"/>
+        <int size="0"/>
+        <double tx="0.0"/>
+        <double ty="0.0"/>
+        <double sx="16.0"/>
+        <double sy="16.0"/>
+        <double angle="0.0"/>
+        <double pivotX="0.0"/>
+        <double pivotY="0.0"/>
+        <boolean displayPivot="true"/>
+        <float opacity="1.0"/>
+        <boolean snap="false"/>
+        <int checkerColor1_r="135"/>
+        <int checkerColor1_g="214"/>
+        <int checkerColor1_b="135"/>
+        <int checkerColor2_r="134"/>
+        <int checkerColor2_g="213"/>
+        <int checkerColor2_b="134"/>
+      </herotool.gameobjects.Grid>
+      <int connectionsCount="0"/>
+      <int childCount="0"/>
+    </herotool.GONode>
+    <herotool.GONode id="|swordLeft">
+      <dragontool.AnimationZ>
+        <String name="swordLeft"/>
+        <boolean visible="true"/>
+        <int size="0"/>
+        <double tx="33.0"/>
+        <double ty="43.0"/>
+        <double sx="1.0"/>
+        <double sy="1.0"/>
+        <double angle="0.0"/>
+        <double pivotX="0.0"/>
+        <double pivotY="0.0"/>
+        <boolean displayPivot="false"/>
+        <float opacity="1.0"/>
+        <int zOrder="0"/>
+      </dragontool.AnimationZ>
+      <int connectionsCount="2"/>
+      <herotool.Connection>
+        <herotool.GONode id="|swordLeft"/>
+        <String inProp="frameNum"/>
+        <herotool.GONode>
+          <herotool.gameobjects.Time>
+            <String name="Time"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+          </herotool.gameobjects.Time>
+          <int connectionsCount="0"/>
+          <int childCount="0"/>
+        </herotool.GONode>
+        <String outProp="frameNum"/>
+      </herotool.Connection>
+      <herotool.Connection>
+        <herotool.GONode id="|swordLeft"/>
+        <String inProp="frameNum"/>
+        <herotool.GONode id="|Time"/>
+        <String outProp="frameNum"/>
+      </herotool.Connection>
+      <int childCount="10"/>
+      <herotool.GONode>
+        <herotool.gameobjects.Frame>
+          <String name="frame0"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <int delay="1"/>
+        </herotool.gameobjects.Frame>
+        <int connectionsCount="0"/>
+        <int childCount="3"/>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer1"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-10.0"/>
+            <double ty="-14.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="1"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_legsL1">
+              <herotool.gameobjects.Sprite>
+                <String name="samuraj_x15_legsL1"/>
+                <boolean visible="true"/>
+                <int size="0"/>
+                <String path="sprites\/samuraj_x15_legsL1.png"/>
+              </herotool.gameobjects.Sprite>
+              <int connectionsCount="0"/>
+              <int childCount="0"/>
+            </herotool.GONode>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer2"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-19.0"/>
+            <double ty="-32.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="2"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_swordL1">
+              <herotool.gameobjects.Sprite>
+                <String name="samuraj_x15_swordL1"/>
+                <boolean visible="true"/>
+                <int size="0"/>
+                <String path="sprites\/samuraj_x15_swordL1.png"/>
+              </herotool.gameobjects.Sprite>
+              <int connectionsCount="0"/>
+              <int childCount="0"/>
+            </herotool.GONode>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="shadow"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-7.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONode id="|swordLeft|frame0|shadow|shadowSprite">
+            <herotool.gameobjects.Sprite>
+              <String name="shadowSprite"/>
+              <boolean visible="true"/>
+              <int size="0"/>
+              <String path="sprites\shadow.png"/>
+            </herotool.gameobjects.Sprite>
+            <int connectionsCount="0"/>
+            <int childCount="0"/>
+          </herotool.GONode>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode>
+        <herotool.gameobjects.Frame>
+          <String name="frame1"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <int delay="1"/>
+        </herotool.gameobjects.Frame>
+        <int connectionsCount="0"/>
+        <int childCount="3"/>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer1"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-10.0"/>
+            <double ty="-14.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="1"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_legsL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer2"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-9.0"/>
+            <double ty="-36.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="2"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_swordL2">
+              <herotool.gameobjects.Sprite>
+                <String name="samuraj_x15_swordL2"/>
+                <boolean visible="true"/>
+                <int size="0"/>
+                <String path="sprites\/samuraj_x15_swordL2.png"/>
+              </herotool.gameobjects.Sprite>
+              <int connectionsCount="0"/>
+              <int childCount="0"/>
+            </herotool.GONode>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="shadow"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-7.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="|swordLeft|frame0|shadow|shadowSprite"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode>
+        <herotool.gameobjects.Frame>
+          <String name="frame2"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <int delay="1"/>
+        </herotool.gameobjects.Frame>
+        <int connectionsCount="0"/>
+        <int childCount="3"/>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer1"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-11.0"/>
+            <double ty="-14.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="1"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_legsL2">
+              <herotool.gameobjects.Sprite>
+                <String name="samuraj_x15_legsL2"/>
+                <boolean visible="true"/>
+                <int size="0"/>
+                <String path="sprites\/samuraj_x15_legsL2.png"/>
+              </herotool.gameobjects.Sprite>
+              <int connectionsCount="0"/>
+              <int childCount="0"/>
+            </herotool.GONode>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer2"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-14.0"/>
+            <double ty="-37.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="2"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_swordL2"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="shadow"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-13.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="|swordLeft|frame0|shadow|shadowSprite"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode>
+        <herotool.gameobjects.Frame>
+          <String name="frame3"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <int delay="1"/>
+        </herotool.gameobjects.Frame>
+        <int connectionsCount="0"/>
+        <int childCount="4"/>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer1"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-22.0"/>
+            <double ty="-14.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="1"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_legsL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer2"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-37.0"/>
+            <double ty="-33.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode>
+              <herotool.gameobjects.Sprite>
+                <String name="samuraj_x15_swordL3"/>
+                <boolean visible="true"/>
+                <int size="0"/>
+                <String path="sprites\/samuraj_x15_swordL3.png"/>
+              </herotool.gameobjects.Sprite>
+              <int connectionsCount="0"/>
+              <int childCount="0"/>
+            </herotool.GONode>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="fx_1"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-35.0"/>
+            <double ty="-38.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONode>
+            <herotool.gameobjects.Sprite>
+              <String name="fx_1Sprite"/>
+              <boolean visible="true"/>
+              <int size="0"/>
+              <String path="sprites\\fx_1.png"/>
+            </herotool.gameobjects.Sprite>
+            <int connectionsCount="0"/>
+            <int childCount="0"/>
+          </herotool.GONode>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="shadow"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-20.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="|swordLeft|frame0|shadow|shadowSprite"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode>
+        <herotool.gameobjects.Frame>
+          <String name="frame4"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <int delay="1"/>
+        </herotool.gameobjects.Frame>
+        <int connectionsCount="0"/>
+        <int childCount="4"/>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer1"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-22.0"/>
+            <double ty="-14.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="1"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_legsL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer2"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-33.0"/>
+            <double ty="-31.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="2"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_swordL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="fx_2"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-38.0"/>
+            <double ty="-29.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONode>
+            <herotool.gameobjects.Sprite>
+              <String name="fx_2Sprite"/>
+              <boolean visible="true"/>
+              <int size="0"/>
+              <String path="sprites\\fx_2.png"/>
+            </herotool.gameobjects.Sprite>
+            <int connectionsCount="0"/>
+            <int childCount="0"/>
+          </herotool.GONode>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="shadow"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-20.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="|swordLeft|frame0|shadow|shadowSprite"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode>
+        <herotool.gameobjects.Frame>
+          <String name="frame5"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <int delay="1"/>
+        </herotool.gameobjects.Frame>
+        <int connectionsCount="0"/>
+        <int childCount="3"/>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer1"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-22.0"/>
+            <double ty="-14.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="1"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_legsL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer2"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-33.0"/>
+            <double ty="-31.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="2"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_swordL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="shadow"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-20.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="|swordLeft|frame0|shadow|shadowSprite"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode>
+        <herotool.gameobjects.Frame>
+          <String name="frame6"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <int delay="1"/>
+        </herotool.gameobjects.Frame>
+        <int connectionsCount="0"/>
+        <int childCount="3"/>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer1"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-22.0"/>
+            <double ty="-14.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="1"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_legsL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer2"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-32.0"/>
+            <double ty="-32.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="2"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_swordL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="shadow"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-20.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="|swordLeft|frame0|shadow|shadowSprite"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode>
+        <herotool.gameobjects.Frame>
+          <String name="frame7"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <int delay="4"/>
+        </herotool.gameobjects.Frame>
+        <int connectionsCount="0"/>
+        <int childCount="3"/>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer1"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-22.0"/>
+            <double ty="-14.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="1"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_legsL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer2"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-32.0"/>
+            <double ty="-33.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="2"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_swordL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="shadow"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-20.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="|swordLeft|frame0|shadow|shadowSprite"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode>
+        <herotool.gameobjects.Frame>
+          <String name="frame8"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <int delay="1"/>
+        </herotool.gameobjects.Frame>
+        <int connectionsCount="0"/>
+        <int childCount="3"/>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer1"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-11.0"/>
+            <double ty="-14.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="1"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_legsL2"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer2"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-26.0"/>
+            <double ty="-33.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="2"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_swordL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="shadow"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-14.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="|swordLeft|frame0|shadow|shadowSprite"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+      </herotool.GONode>
+      <herotool.GONode>
+        <herotool.gameobjects.Frame>
+          <String name="frame9"/>
+          <boolean visible="true"/>
+          <int size="0"/>
+          <int delay="1"/>
+        </herotool.gameobjects.Frame>
+        <int connectionsCount="0"/>
+        <int childCount="3"/>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer1"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-10.0"/>
+            <double ty="-14.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="1"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_legsL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="layer2"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-21.0"/>
+            <double ty="-33.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="2"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="null|samuraj_x15_swordL1"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+        <herotool.GONode>
+          <dragontool.TransformZ>
+            <String name="shadow"/>
+            <boolean visible="true"/>
+            <int size="0"/>
+            <double tx="-7.0"/>
+            <double ty="-2.0"/>
+            <double sx="1.0"/>
+            <double sy="1.0"/>
+            <double angle="-0.0"/>
+            <double pivotX="0.0"/>
+            <double pivotY="0.0"/>
+            <boolean displayPivot="false"/>
+            <float opacity="1.0"/>
+            <int zOrder="0"/>
+            <int tint_r="255"/>
+            <int tint_g="255"/>
+            <int tint_b="255"/>
+          </dragontool.TransformZ>
+          <int connectionsCount="0"/>
+          <int childCount="1"/>
+          <herotool.GONodeInstance>
+            <herotool.GONode id="|swordLeft|frame0|shadow|shadowSprite"/>
+          </herotool.GONodeInstance>
+        </herotool.GONode>
+      </herotool.GONode>
+    </herotool.GONode>
+  </herotool.GONode>

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>MobileDragon Resource file API</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="keywords" content="MobileDragon, mobile games, game development, 3d mobile games, 2d mobile games, game engine, smartphone, PocketPC, Palm OS, Symbian OS, Windows Mobile, HeroCraft Hitech, games">
+<link href="../reference_manual/doxygen.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<table width="75%" border="0" align="center" cellpadding="2" cellspacing="0"  bgcolor="#868686">
+  <tr>
+    <td width="100%">
+	<table width="100%" border="0"  cellpadding="0" cellspacing="2" bgcolor="#F4F4FB">
+    <tr>
+        <td width="6%"><img src="../../data/mdicon.gif" width="44" height="44" align="right"></td>
+    	  <td width="94%" ><p align="center"><strong><font size="5">MobileDragon 
+              Resource file API</font></strong></p></td>
+    </tr>
+    </table>
+	</td>
+  </tr>
+</table>
+<p></p>
+
+<table width="75%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td> <p align="justify">MobileDragon based game is supposed have access to 
+        it’s persistent resources like images, sounds, 3d models and user’s custom 
+        data files. MobileDragon way is to store all those files compressed in 
+        single packed file. Such a file can be created using supplied command-line 
+        utility packdir.exe<br>
+        See <a href="packdir.htm">packdir utility description</a> for more information 
+        how to prepare the compressed file.</p>
+      <p align="justify">Access to this compressed storage provided through <font face="Courier New, Courier, mono">PackDir</font> 
+        class interface.</p>
+      <p align="justify">Instance of <font face="Courier New, Courier, mono">PackDir</font> 
+        object is created by the MobileDragon core, it opens the compressed storage 
+        file and prepares it for reading, and pointer to that <font face="Courier New, Courier, mono">PackDir</font> 
+        instance is stored in the system object, all this is done before <font face="Courier New, Courier, mono">MDGame::Init()</font> 
+        method is called. Name of the packdir file to open is set in <font face="Courier New, Courier, mono">MDGamePreferences</font> 
+        structure [ see <a href="app_structure.htm" title="MobileDragon Basic Application Structure" target="_self">MobileDragon 
+        Basic Application Structure</a>] . </p>
+      <p align="justify">Working with this packed resource is very simple. API 
+        allows you to check if there is specified file in packdir, allows to determine 
+        that file size and to load that whole file into memory.</p>
+      <p align="justify">Suppose you have <font face="Courier New, Courier, mono">mdragon::System 
+        * system</font> variable pointing to valid MobileDragon system object 
+        therefore you can obtain pointer to <font face="Courier New, Courier, mono">PackDir</font> 
+        object by calling</p>
+      <p align="justify"><font face="Courier New, Courier, mono">PackDir * pd 
+        = system-&gt;GetPackDir();</font></p>
+      <p align="justify">Let’s for example load the file “data.bin” from the PackDir</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Obtain pointer to the PackDir object</font><font face="Courier New, Courier, mono"><br>
+        PackDir * pd = md_system-&gt;GetPackDir();<br>
+        <br>
+        <font color="#009900">// Find the file &quot;data.bin&quot; in PackDir<br>
+        // FindItem returns an id of that file or -1 <br>
+        // if there is not such file found.</font><br>
+        Int id = pd-&gt;FindItem( <font color="#990000">&quot;data.bin&quot;</font> 
+        );<br>
+        </font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Determine that file size, allocate memory for it and load.</font><br>
+        size_type size = pd-&gt;GetItemSize( id );<br>
+        Byte data * = <font color="#0000FF">new</font> Byte[ id ];<br>
+        pd-&gt;LoadItem( id, data );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono"> /* ... some 
+        data processing stuff here */</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">//release 
+        memory</font><br>
+        <font color="#0000FF">delete</font> data;</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"><br>
+        <font color="#009900">// or another way to load the file is to load it 
+        into the Resource object.</font><br>
+        id = pd-&gt;FindItem( <font color="#990000">&quot;data2.bin&quot;</font> 
+        );<br>
+        Resource res; <br>
+        pd-&gt;LoadItem( id, res );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono"> /* ... some 
+        data processing stuff here */</font></p>
+      <p align="justify"><br>
+        Note that <font face="Courier New, Courier, mono">PackDir</font> uses 
+        case-sensitive comparison on file names, therefore it is recommended to 
+        keep all file names in lowercase, to avoid situations like calls to<br>
+        <font face="Courier New, Courier, mono">pd-&gt;FindItem ( <font color="#990000">&quot;data2.bin&quot;</font> 
+        )</font> and <font face="Courier New, Courier, mono">pd-&gt;FindItem ( 
+        <font color="#990000">&quot;Data2.bin&quot;</font> )</font> provide different 
+        results.</p>
+      <p align="justify">packdir utility packs directory contents including subdirectories. 
+        To load file “sample.txt” residing in subdirectory “dir” you need supply 
+        it’s full name <br>
+        <font face="Courier New, Courier, mono">pd-&gt;FindItem( <font color="#990000">&quot;dir\\sample.txt&quot;</font> 
+        );</font></p>
+      <p align="justify">The <font face="Courier New, Courier, mono">Resource</font> 
+        class represents a binary resource in memory. Using it simplifies parsing 
+        your binary data, it allow simple retrieving of data of all basic numeric 
+        types and string.</p>
+      <p align="justify">Note that you must use this API only when loading your 
+        custom data files, all MobileDragon objects like <font face="Courier New, Courier, mono">Sound, 
+        Music, Image, Texture</font>, etc. loaders interrogate with <font face="Courier New, Courier, mono">PackDir</font> 
+        themselves.
+      </p>
+	   <p align="center">&nbsp;</p>
+  	  <p align="center">&nbsp;</p>
+      <p align="center" class="memTemplItemLeft"><font size="1"><strong>Copyright 
+        2005-2006 Herocraft Hitech Co. Ltd. </strong></font></p>
+	  </td>
+  </tr>
+</table>
+
+
+</body>
+</html>

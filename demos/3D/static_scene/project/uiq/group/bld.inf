@@ -1,0 +1,9 @@
+
+PRJ_EXPORTS
+
+..\..\..\target\uiq\pdstatic.dat \Epoc32\Wins\c\system\apps\MDStatic\pdstatic.dat
+..\..\..\target\uiq\pdstatic.fat \Epoc32\Wins\c\system\apps\MDStatic\pdstatic.fat
+
+PRJ_MMPFILES
+
+MDStatic.mmp

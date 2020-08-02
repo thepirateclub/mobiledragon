@@ -1,0 +1,9 @@
+
+PRJ_EXPORTS
+
+..\..\..\target\uiq\pdsound.dat \Epoc32\Wins\c\system\apps\MDSound\pdsound.dat
+..\..\..\target\uiq\pdsound.fat \Epoc32\Wins\c\system\apps\MDSound\pdsound.fat
+
+PRJ_MMPFILES
+
+MDSound.mmp

@@ -1,0 +1,22 @@
+TARGET  MDSound.app
+TARGETTYPE  app
+
+MACRO MD_OS_SYMBIAN_S60
+
+UID  0x100039CE 0x00000009
+TARGETPATH \system\apps\MDSound
+
+SOURCEPATH .
+RESOURCE ..\rss\MDSound.rss
+RESOURCE ..\rss\MDSound_caption.rss
+LANG     SC
+
+AIF MDSound.aif ..\rss MDSoundaif.rss c8 context_pane_icon.bmp context_pane_icon_mask.bmp list_icon.bmp list_icon_mask.bmp
+
+LIBRARY euser.lib apparc.lib cone.lib eikcore.lib avkon.lib hal.lib fbscli.lib bitgdi.lib ws32.lib efsrv.lib MediaClientImage.lib HSS.LIB
+LIBRARY eikcoctl.lib CommonEngine.lib bluetooth.lib esock.lib sdpdatabase.lib sdpagent.lib btmanclient.lib
+STATICLIBRARY MDSTATICLIB.lib
+
+USERINCLUDE . \MobileDragon\include
+SYSTEMINCLUDE . \epoc32\include
+

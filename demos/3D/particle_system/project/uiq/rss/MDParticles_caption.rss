@@ -1,0 +1,9 @@
+
+#include <apcaptionfile.rh>
+#include "../../../mdconfig.h"
+
+RESOURCE CAPTION_DATA
+{
+    caption=MD_GAME_NAME;
+    shortcaption=MD_GAME_TITLE;
+}

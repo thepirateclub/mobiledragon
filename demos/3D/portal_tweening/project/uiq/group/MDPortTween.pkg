@@ -1,0 +1,26 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MDPortTween"},(0x00000005),1,0,0
+
+
+; S2U information: Added UIQ 2.x as a requisite
+; Supports UIQ 2.x
+;(0x101F617B), 2, 0, 0, {"UIQ20ProductID"}
+(0x101F80BE), 1, 0, 0, {"SonyEricssonP80xPlatformProductID"}
+
+;
+; Files to install
+;
+"\symbian\UIQ_21\epoc32\release\armi\urel\MDPortTween.app"         			  -"!:\system\apps\MDPortTween\MDPortTween.app"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDPortTween\MDPortTween.rsc"         -"!:\system\apps\MDPortTween\MDPortTween.rsc"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDPortTween\MDPortTween.aif"         -"!:\system\apps\MDPortTween\MDPortTween.aif"
+
+"..\HSS.DLL"         		-"!:\system\apps\MDPortTween\HSS.DLL"
+
+"..\..\..\target\uiq\pdportween.dat"         -"!:\system\apps\MDPortTween\pdportween.dat"
+"..\..\..\target\uiq\pdportween.fat"         -"!:\system\apps\MDPortTween\pdportween.fat"

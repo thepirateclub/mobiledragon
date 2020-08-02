@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <herotool.GONode>
+    <herotool.gameobjects.Dummy>
+      <String name="start"/>
+      <boolean visible="true"/>
+      <int size="0"/>
+    </herotool.gameobjects.Dummy>
+    <int connectionsCount="0"/>
+    <int childCount="2"/>
+    <herotool.GONode>
+      <herotool.gameobjects.Time>
+        <String name="Time"/>
+        <boolean visible="true"/>
+        <int size="0"/>
+      </herotool.gameobjects.Time>
+      <int connectionsCount="0"/>
+      <int childCount="0"/>
+    </herotool.GONode>
+    <herotool.GONode>
+      <herotool.gameobjects.Grid>
+        <String name="grid"/>
+        <boolean visible="true"/>
+        <int size="0"/>
+        <double tx="0.0"/>
+        <double ty="0.0"/>
+        <double sx="16.0"/>
+        <double sy="16.0"/>
+        <double angle="0.0"/>
+        <double pivotX="0.0"/>
+        <double pivotY="0.0"/>
+        <boolean displayPivot="true"/>
+        <float opacity="1.0"/>
+        <boolean snap="false"/>
+        <int checkerColor1_r="135"/>
+        <int checkerColor1_g="214"/>
+        <int checkerColor1_b="135"/>
+        <int checkerColor2_r="134"/>
+        <int checkerColor2_g="213"/>
+        <int checkerColor2_b="134"/>
+      </herotool.gameobjects.Grid>
+      <int connectionsCount="0"/>
+      <int childCount="0"/>
+    </herotool.GONode>
+  </herotool.GONode>

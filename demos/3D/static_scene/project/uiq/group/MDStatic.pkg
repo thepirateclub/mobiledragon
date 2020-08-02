@@ -1,0 +1,26 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MDStatic"},(0x00000001),1,0,0
+
+
+; S2U information: Added UIQ 2.x as a requisite
+; Supports UIQ 2.x
+;(0x101F617B), 2, 0, 0, {"UIQ20ProductID"}
+(0x101F80BE), 1, 0, 0, {"SonyEricssonP80xPlatformProductID"}
+
+;
+; Files to install
+;
+"\symbian\UIQ_21\epoc32\release\armi\urel\MDStatic.app"         			  -"!:\system\apps\MDStatic\MDStatic.app"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDStatic\MDStatic.rsc"         -"!:\system\apps\MDStatic\MDStatic.rsc"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDStatic\MDStatic.aif"         -"!:\system\apps\MDStatic\MDStatic.aif"
+
+"..\HSS.DLL"         		-"!:\system\apps\MDStatic\HSS.DLL"
+
+"..\..\..\target\uiq\pdstatic.dat"         -"!:\system\apps\MDStatic\pdstatic.dat"
+"..\..\..\target\uiq\pdstatic.fat"         -"!:\system\apps\MDStatic\pdstatic.fat"

@@ -1,0 +1,1 @@
+Place "tweening" folder into "%3DMAX%\MAPS" folder.

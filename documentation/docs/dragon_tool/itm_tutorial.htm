@@ -1,0 +1,139 @@
+<html>
+	<head><title>Working with IndexedTileMap</title></head>
+	<body bgcolor=#ffffff>
+	<table width="1%" border="0">
+	<tr>
+		<td width="1%"><b><FONT SIZE="-1">Dragon&nbsp;Tool User&nbsp;Manual</font></b></td>
+		<td width="100%">&nbsp;</td>
+		<td width="1%"><a href="tut.htm"><img src="img/prev.png" border="0" alt="Previous Page"></a></td>
+		<td width="1%"><a href="index.htm"><img src="img/toc.png" border="0" alt="Table of Contents"></a></td>
+		<td width="1%"><a href="animation_tut.htm"><img src="img/next.png" border="0" alt="Next Page"></a></td>
+	</tr>
+	<tr>
+		<td align="center" colspan="5"><img src="img/blueline.png"></td>
+	</tr>
+	</table>
+		<h2>Working with IndexedTileMap</h2>
+			This page describes the ways of creating and tuning tile maps. Today Dragon Tool has only one
+			implementation of TileMap - IndexedTileMap.
+		<p>
+			IndexedTileMap consists of:
+			<ul>
+				<li><b>Palette node.</b> This node defines a set of objects that are used as tiles in this map.
+				<li><b>Cell.</b> Cell defines a shape of a single tile and they layout. You can create any cell
+						(rectangular, 6-sided, 8-sided or any other). Tile's layout is defined by two Point objects.
+						First point defines a location of the next cell in the row, second -
+						location of the next cell in the column:
+					<p>
+						<center><img src="img/cell.png"></center>
+				<li><b>Data.</b> IndexedTileMap can be represented as a matrix or a two dimensional array.
+						Every element of this matrix holds a number of an object in the palette:
+					<p>
+						<center><img src="img/matrix.png"></center>
+					<p>
+						So, changes in palette node will result in changes in the tile map.
+						You can make two or more palettes for a map and then switch them.
+			</ul>
+			Now let's see how this works in practice.
+		<p>
+			Download a <a href="itm_tutorial.zip">project</a>, unpack it and load itm.xml file as a scene. There are 4 tile sets: 'palDay1', 
+			'palDay2', 'palNight1' and 'palNight2' (it was created simply by importing sprites and grouping them).
+			We will use this nodes
+			later, 'cos for now we need Cell object. Of course we could just use isometric cell for our
+			this purpose, but to understand how the cells work we will use free form cell.
+			Choose "Create -> Cell" command. Set it's name 'cell1'.
+			Our first map will use isometric tile 32x16. So, expand cell1 node in the Outliner panel.
+			It has three objects attached. The first one is a Polygon and others a Points.
+			To change a shape of a Polygon expand it and select and move it's Points.
+		<p>
+			<center><img src="img/itm1.png"></center>
+		<p>
+			You can also select the points of Polygon and change it's coords in the Property Editor.
+		<p>
+			Choose "Create -> IndexedTileMap" and edit it's properties. Set <b>rowCount</b> and
+			<b>columnCount</b> to 7. The <b>cell</b> property should be set to '|cell1'. Set <b>palette</b> to
+			'|palDay1' and turn on <b>showCells</b>. Change it's name to 'isoMap1'.
+		<p>
+			<center><img src="img/itm2.png"></center>
+		<p>
+			As we can see the cells of this map are not layed out properly. So, let's correct it.
+		<p>
+			Expand a cell1 node and select it's first of two points. Move it to the top vertex of the and
+			see how the map changed. Then move second point to the center vertex of the cell. Now the map
+			cells should be layed correctly.
+		<p>
+			<center><img src="img/itm3.png"></center>
+		<p>
+			Now we can paint a map. Select 'palDay1' node and choose "Window -> Brushes" to display the palette
+			children in a separate window. Then choose 'isoMap1' and turn on "Make Live" button on the toolbar
+			(or choose "Edit -> Make Live"). Then click on the brushes and paint on the map.
+		<p>
+			<center><img src="img/itm4.png"></center>
+		<p>
+			This map is a single layered. If we need some objects to be painted over this map (for example
+			trees or items) than we need create another map and put over this one. Create new map,
+			change it's <b>name</b> to 'isoMap2', <b>rowCount</b> and <b>columnCount</b> to 7.
+			Add 'isoMap1' to selection and choose "Edit -> Group". Set
+			<b>palette</b> property of 'isoMap2' to 'palDay2'. Choose "Edit -> Make Live",
+			select 'palette1' node and "Window -> Brushes". Then draw flowers and then try to put a post
+			near them.
+		<p>
+			<center><img src="img/itm5.png"></center>
+		<p>
+			Position of the post seems to be incorrect. And if you paint a flowers over it you'll
+			see that it displayed over a post ! But from the program point of view it seems to be ok because
+			the order in which map tiles are displayed is the following:
+		<p>
+			<center><img src="img/itm6.png"></center>
+		<p>
+			And probably in your game the same algorytm is used.
+		<p>
+			To correct this we need to adjust the position of the post relative to a cell.
+			Select the 'post' object in the 'palDay1'
+			node and decrease it's y coord to move it up. (Yes, an Y axis is pointing down. The same rule is used in
+			Mobile Dragon).
+		<p>
+			<center><img src="img/itm7.png">
+		<p>
+			<i>Adjusting position of the post relative to a cell. For the convinience
+			all the objects were hidden except the cell and the post (shown in the Outliner).</i></center>
+		<p>
+			Now it should be all right.
+		<p>
+			<center><img src="img/itm8.png"></center>
+		<p>
+			Let's try now to switch a palette nodes of this maps. Select 'isoMap1' and change it's <b>palette</b>
+			property to '|palNight1' and set a 'isoMap2' <b>palette</b> property to '|palNight2'.
+		<p>
+			<center><img src="img/itm9.png"></center>
+		<p>
+			If you expand 'palDay1' and 'palDay2' you will see that tiles in this tile sets have the same order.
+			Because of that when we changed palette of the IndexedTileMap it painted the tiles with the same
+			indexes. Only palette have changed, not the data (or matrix) of the map.
+		<p>
+			In this tutorial we used two maps (or two layers of a single map). One for terrain and 
+			another for objects. But in your game you probably will need three or more layers. To work with them
+			comfortably keep in mind that you can hide some them (by turning off <b>visible</b> property).
+		<p>
+			Also if you'll need a more complex cell you just adjust a location of the points of the cell and add
+			or remove Points to the Polygon object to change it's shape.
+		
+		<br>
+		<br> 
+		<table width="1%" border="0">
+			<tr>
+				<td align="center" colspan="5"><img src="img/blueline.png"></td>
+			</tr>
+			<tr>
+				<td width="1%"><b><FONT SIZE="-1">Dragon&nbsp;Tool User&nbsp;Manual</font></b></td>
+				<td width="100%">&nbsp;</td>
+				<td width="1%"><a href="tut.htm"><img src="img/prev.png" border="0" alt="Previous Page"></a></td>
+				<td width="1%"><a href="index.htm"><img src="img/toc.png" border="0" alt="Table of Contents"></a></td>
+				<td width="1%"><a href="animation_tut.htm"><img src="img/next.png" border="0" alt="Next Page"></a></td>
+			</tr>
+		</table>
+			<font size="-1">
+			Copyright 2000-2005 HeroCraft.  All rights reserved.
+			</font>
+	</body>
+</html>

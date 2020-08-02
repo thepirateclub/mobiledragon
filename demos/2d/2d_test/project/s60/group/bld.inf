@@ -1,0 +1,9 @@
+
+PRJ_EXPORTS
+
+..\..\..\target\s60\pd2dscene.dat \Epoc32\Wins\c\system\apps\MD2DScene\pd2dscene.dat
+..\..\..\target\s60\pd2dscene.fat \Epoc32\Wins\c\system\apps\MD2DScene\pd2dscene.fat
+
+PRJ_MMPFILES
+
+MD2DScene.mmp

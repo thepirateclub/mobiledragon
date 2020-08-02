@@ -1,0 +1,1 @@
+Place "Arena-01" and "Sky" folders into "%3DMAX%\MAPS" folder.

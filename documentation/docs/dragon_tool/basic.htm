@@ -1,0 +1,67 @@
+<html>
+	<head><title>Basic concepts</title></head>
+	<body bgcolor=#ffffff>
+	<table width="1%" border="0">
+	<tr>
+		
+		<td width="1%"><b><FONT SIZE="-1">Dragon&nbsp;Tool User&nbsp;Manual</font></b></td>
+		<td width="100%">&nbsp;</td>
+		<td width="1%"><a href="overview.htm"><img src="img/prev.png" border="0" alt="Previous Page"></a></td>
+		<td width="1%"><a href="index.htm"><img src="img/toc.png" border="0" alt="Table of Contents"></a></td>
+		<td width="1%"><a href="objects.htm"><img src="img/next.png" border="0" alt="Next Page"></a></td>
+		
+	</tr>
+	<tr>
+		<td align="center" colspan="5"><img src="img/blueline.png"></td>
+	</tr>
+	</table>
+		<h2>Basic concepts</h2>
+			<h3><a name="scene">Scene</a></h3>
+				Scene (or Project) is an xml file which is loaded into the Dragon Tool. Folder in
+				which this file is located called 'project root folder'. In the project root folder Dragon Tool
+				automaticaly creates following folders:
+				<ul>
+					<li><b>autobackup</b> - every 3 minutes a backup of the scene is written in this folder.
+					<li><b>bak</b>- every time you save a scene a backup scene is created here. So you can at any time
+								 load a scene on which you were working two months ago.
+					<li><b>sprites</b>   - in this directory png files which used by the project are located.
+					<li><b>output</b>    - an output files (for example, a Mobile Dragon res file) are written here.
+				</ul>
+			<h3><a name="object">Scene object</a></h3>
+				Every project (or a scene) consists of objects. When you create a new scene there are only three objects:
+				the root object, Time object and a Grid object. During workprocess you create new objects and combine them.
+				For example, importing a bitmap in a scene is just a creation of a Sprite object.
+			<h3><a id="properties">Editing object properties</a></h3>
+				Every object has a set of properties which can be adjusted. It is done in the Property Editor.
+				<p><center><img src="img/prop_editor.png" alt="property editor screenshot"></center>
+				<p>You can also add your own properties to any object in the scene. Such properties called
+				"custom properties" and are useful for translating extra information from the Dragon Tool editor to
+				the Mobile Dragon engine.
+			<h3><a name="copies">Copies and Instances</a></h3>
+				Objects can be copied on can be instanced. Copy is another independent object which can be modified
+				and this modifications wouldn't affect on the initial object. On the other hand, instance
+				is just the same object that can be parented to another node. When a base object is changed - an
+				instance is changed in the same way.
+				<p>Instance objects are shown in italic text in the outliner:
+				<p><center><img src="img/instances.png" border="1">
+				<p><i>Two instances of the object "door".</i></center>
+				<p>Instances take much less memory than copies and work faster.
+		<br>
+		<br>
+		<table width="1%" border="0">
+			<tr>
+				<td align="center" colspan="5"><img src="img/blueline.png"></td>
+			</tr>
+			<tr>
+				<td width="1%"><b><FONT SIZE="-1">Dragon&nbsp;Tool User&nbsp;Manual</font></b></td>
+				<td width="100%">&nbsp;</td>
+				<td width="1%"><a href="overview.htm"><img src="img/prev.png" border="0" alt="Previous Page"></a></td>
+				<td width="1%"><a href="index.htm"><img src="img/toc.png" border="0" alt="Table of Contents"></a></td>
+				<td width="1%"><a href="objects.htm"><img src="img/next.png" border="0" alt="Next Page"></a></td>
+			</tr>
+		</table>
+			<font size="-1">
+			Copyright 2000-2005 HeroCraft.  All rights reserved.
+			</font>
+	</body>
+</html>

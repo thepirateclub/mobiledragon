@@ -1,0 +1,17 @@
+set_0;256;16;
+sprites\dragon.png;1;1;128;37;
+sprites\panelTile.png;1;40;176;21;
+sprites\grass.png;1;63;24;24;
+sprites\tree1_bottom.png;1;89;24;24;
+sprites\grass_left.png;27;63;24;24;
+sprites\tree1_top.png;27;89;24;24;
+sprites\grass_top.png;53;63;24;24;
+sprites\tree2_botLeft.png;53;89;24;24;
+sprites\grass_topLeft.png;79;63;24;24;
+sprites\tree2_botRight.png;79;89;24;24;
+sprites\sand.png;105;63;24;24;
+sprites\tree2_topLeft.png;105;89;24;24;
+sprites\itemSlot.png;131;1;32;26;
+sprites\stone.png;131;63;24;24;
+sprites\tree2_topRight.png;131;89;24;24;
+sprites\apGreen.png;157;63;17;17;

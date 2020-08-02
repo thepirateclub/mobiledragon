@@ -1,0 +1,29 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MDSound"},(0x00000009),1,0,0
+
+;
+;Supports Series 60 v 0.9
+;This line indicates that this installation is for the Series 60 platform v0.9
+;This line must appear _exactly_ as shown below in the sis file
+;If this line is missing or incorrect, the sis file will not be able
+;to be installed on Series 60 v0.9 platforms
+(0x101F6F88), 0, 0, 0, {"Series60ProductID"}
+
+;
+; Files to install
+;
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDSound.app"         -"!:\system\apps\MDSound\MDSound.app"
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDSound.rsc"         -"!:\system\apps\MDSound\MDSound.rsc"
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDSound_caption.rsc" -"!:\system\apps\MDSound\MDSound_caption.rsc"
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDSound.aif"         -"!:\system\apps\MDSound\MDSound.aif"
+
+"..\HSS.DLL"         -"!:\system\apps\MDSound\HSS.DLL"
+
+"..\..\..\target\s60\pdsound.dat"         -"!:\system\apps\MDSound\pdsound.dat"
+"..\..\..\target\s60\pdsound.fat"         -"!:\system\apps\MDSound\pdsound.fat"

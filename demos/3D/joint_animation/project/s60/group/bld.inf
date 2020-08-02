@@ -1,0 +1,9 @@
+
+PRJ_EXPORTS
+
+..\..\..\target\s60\pdjoint.dat \Epoc32\Wins\c\system\apps\MDJoint\pdjoint.dat
+..\..\..\target\s60\pdjoint.fat \Epoc32\Wins\c\system\apps\MDJoint\pdjoint.fat
+
+PRJ_MMPFILES
+
+MDJoint.mmp

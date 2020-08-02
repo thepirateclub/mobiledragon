@@ -1,0 +1,1 @@
+Place "particle_system" folder into "%3DMAX%\MAPS" folder.

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>MobileDragon Sound API</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="keywords" content="MobileDragon, mobile games, game development, 3d mobile games, 2d mobile games, game engine, smartphone, PocketPC, Palm OS, Symbian OS, Windows Mobile, HeroCraft Hitech, games">
+<link href="../reference_manual/doxygen.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<table width="75%" border="0" align="center" cellpadding="2" cellspacing="0"  bgcolor="#868686">
+  <tr>
+    <td width="100%">
+	<table width="100%" border="0"  cellpadding="0" cellspacing="2" bgcolor="#F4F4FB">
+    <tr>
+        <td width="6%"><img src="../../data/mdicon.gif" width="44" height="44" align="right"></td>
+    	  <td width="94%" ><p align="center"><strong><font size="5">MobileDragon 
+              Sound API</font></strong></p></td>
+    </tr>
+    </table>
+	</td>
+  </tr>
+</table>
+<p></p>
+
+<table width="75%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td> <p align="justify" >MobileDragon <font face="Courier New, Courier, mono">SoundSystem</font> 
+        class provides API for loading &amp; playing .mod ProTracker music files 
+        and .wav sound files (8 and 16 bits per sample uncompressed and Microsoft 
+        ADPCM compressed mono and stereo WAV files are supported). Mono &amp; 
+        stereo playback is supported. It also supports virtually unlimited amount 
+        of playback channels.</p>
+      <p align="justify">You can add music and sound playback with 6 lines of 
+        code: <br>
+        <br>
+        <font color="#009900" face="Courier New, Courier, mono">// Obtain reference 
+        to SoundSystem object.</font><font face="Courier New, Courier, mono"><br>
+        SoundSystem &amp; sound_system = system-&gt;sound_system;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">//Initialize 
+        the sound system:</font><font face="Courier New, Courier, mono"><br>
+        sound_system.Init( 22100, 8, True, 2, 8, md_system-&gt;GetPackDir() );</font></p>
+      <p align="justify">This will initialize <font face="Courier New, Courier, mono">SoundSystem</font> 
+        to 22100 Hz, 8 bits per sample, stereo output with 2 mod music channels 
+        and 8 wav sound channels, giving SoundSystem object a pointer the to <font face="Courier New, Courier, mono">PackDir</font> 
+        object from which <font face="Courier New, Courier, mono">SoundSystem</font> 
+        will load resources.</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Load music .mod file &amp; start it’s playback.</font><font face="Courier New, Courier, mono"><br>
+        Music *mod_music = sound_system.LoadMusic( <font color="#990000">&quot;sample.mod&quot;</font> 
+        );<br>
+        sound_system.Play( mod_music );</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Load sound .wav file &amp; start it’s playback.</font><br>
+        Sound *wav_sound = sound_system.LoadSound ( <font face="Courier New, Courier, mono"><font color="#990000">&quot;</font></font><font color="#990000">tada.wav</font><font face="Courier New, Courier, mono"><font face="Courier New, Courier, mono"><font color="#990000">&quot;</font></font><font color="#990000"></font></font> 
+        );<br>
+        sound_system.Play( wav_sound );</font></p>
+      <p align="justify">Music as well as sounds can be looped, paused and then 
+        resumed if needed.<br>
+        <font face="Courier New, Courier, mono"><br>
+        <font color="#009900">// Set music to loop.</font><br>
+        mod_music-&gt;SetLoop( True );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Pause the music</font><font face="Courier New, Courier, mono"><br>
+        sound_system-&gt;Pause( mod_music );<br>
+        <font color="#009900">// Resume the music</font><br>
+        sound_system-&gt;Play( mod_music );</font></p>
+      <p align="justify">Music and sounds can be stopped. If they were stopped 
+        the next <font face="Courier New, Courier, mono">Play()</font> function 
+        will start it from the very beginning.</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Stop the music</font><font face="Courier New, Courier, mono"><br>
+        sound_system-&gt;Stop( mod_music );</font></p>
+      <p align="justify">You can also stop, pause and resume all music and sound 
+        available by using <font face="Courier New, Courier, mono">StopAll(), 
+        PauseAll()</font> and <font face="Courier New, Courier, mono">ResumeAll()</font> 
+        functions accordingly. </p>
+      <p align="justify">To set sound system volume you can use <font face="Courier New, Courier, mono">SetGlobalSoundVolume( 
+        DWord sound_volume )</font> and <font face="Courier New, Courier, mono">SetGlobalMusicVolume( 
+        DWord music_volume )</font> fuctions. There is a way to change each sound 
+        or music volume individually by using <font face="Courier New, Courier, mono">SetVolume( 
+        DWord volume )</font> function. Volume parameter varies between 0 and 
+        64, where 0 means silence and 64 is the highest volume.</p>
+      <p align="justify"> You can adjust panning and speed using <font face="Courier New, Courier, mono">SetPan( 
+        DWord pan )</font> and <font face="Courier New, Courier, mono">SetSpeed( 
+        DWord speed )</font> functions accordingly. In these functions pan and 
+        speed are values between 0 and 255. 128 means normal speed and center 
+        panning.
+      </p>
+ <p align="center">&nbsp;</p>
+  	  <p align="center">&nbsp;</p>
+      <p align="center" class="memTemplItemLeft"><font size="1"><strong>Copyright 
+        2005-2006 Herocraft Hitech Co. Ltd. </strong></font></p>
+	  </td>
+  </tr>
+</table>
+
+
+</body>
+</html>

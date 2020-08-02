@@ -1,0 +1,29 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MDTweening"},(0x00000002),1,0,0
+
+;
+;Supports Series 60 v 0.9
+;This line indicates that this installation is for the Series 60 platform v0.9
+;This line must appear _exactly_ as shown below in the sis file
+;If this line is missing or incorrect, the sis file will not be able
+;to be installed on Series 60 v0.9 platforms
+(0x101F6F88), 0, 0, 0, {"Series60ProductID"}
+
+;
+; Files to install
+;
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDTweening.app"         -"!:\system\apps\MDTweening\MDTweening.app"
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDTweening.rsc"         -"!:\system\apps\MDTweening\MDTweening.rsc"
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDTweening_caption.rsc" -"!:\system\apps\MDTweening\MDTweening_caption.rsc"
+"\symbian\6.1\series60\Epoc32\release\armi\urel\MDTweening.aif"         -"!:\system\apps\MDTweening\MDTweening.aif"
+
+"..\HSS.DLL"         -"!:\system\apps\MDTweening\HSS.DLL"
+
+"..\..\..\target\s60\pdtweening.dat"         -"!:\system\apps\MDTweening\pdtweening.dat"
+"..\..\..\target\s60\pdtweening.fat"         -"!:\system\apps\MDTweening\pdtweening.fat"

@@ -1,0 +1,429 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>MobileDragon INI Compiler</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="keywords" content="MobileDragon, mobile games, game development, 3d mobile games, 2d mobile games, game engine, smartphone, PocketPC, Palm OS, Symbian OS, Windows Mobile, HeroCraft Hitech, games">
+<link href="../reference_manual/doxygen.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<table width="75%" border="0" align="center" cellpadding="2" cellspacing="0"  bgcolor="#868686">
+  <tr>
+    <td width="100%">
+	<table width="100%" border="0"  cellpadding="0" cellspacing="2" bgcolor="#F4F4FB">
+    <tr>
+        <td width="6%"><img src="../../data/mdicon.gif" width="44" height="44" align="right"></td>
+    	  <td width="94%" ><p align="center"><strong><font size="5">MobileDragon 
+              INI Compiler</font></strong></p></td>
+    </tr>
+    </table>
+	</td>
+  </tr>
+</table>
+<p></p>
+
+<table width="75%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td> <p>&nbsp;</p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Overview:</strong></font></p>
+      <p align="justify">The INI Compiler is the console application for converting 
+        files with text format to the files with binary format. It is useful to 
+        save settings for the application in binary format. Currently MobileDragon 
+        supports two types of such settings files: LOD settings file and Texture 
+        Animation settings file. Creating of these files is described bellow. 
+        You may to create your own settings files with unique formats.</p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Source 
+        file format:</strong></font></p>
+      <p align="justify"> Source files can have any extension, but they have to 
+        have content only in text format.<br>
+        Structure of source file should be equal INI file structure:</p>
+      <p align="justify"><font face="Courier New, Courier, mono">[group_name]<br>
+        param1_name=value1<br>
+        param2_name=value2<br>
+        param3_name=value3<br>
+        param4_name=value4<br>
+        param5_name=value5<br>
+        param6_name=value6</font></p>
+      <p align="justify">INI Compiler supports converting of few data formats: 
+        String, Integer and Float. Value with Float format will be converted to 
+        the value with Fixed point (16.16) format. Name of parameter defines its 
+        data format. <br>
+        There is format of parameter’s name:</p>
+      <p align="justify"><font face="Courier New, Courier, mono">[s|i|f]_param_name</font></p>
+      <p align="justify">The first symbol of parameter’s name defines value format 
+        of this parameter.<br>
+        s – parameter’s value is String value,<br>
+        i – parameter’s value is Integer value,<br>
+        f – parameter’s value is Float value.<br>
+        These symbols must be in lower register.<br>
+        The second symbol of parameter’s name must be ‘_’.</p>
+      <p align="justify">There is complete example of content of source file:</p>
+      <p align="justify"><font face="Courier New, Courier, mono">[house1]<br>
+        i_doors_count=3<br>
+        f_width=20.34<br>
+        f_height=5.7<br>
+        s_street_name=Big_Avenue</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono">[other_house]<br>
+        i_doors_count=1<br>
+        f_width=10.5<br>
+        f_height=5.2<br>
+        s_street_name=Small_Avenu</font>e</p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Output 
+        file format:</strong></font></p>
+      <p align="justify"> INI Compiler DO NOT saves names of parameters in the 
+        output file, but it saves group’s name. Also every group in the output 
+        binary file is separated by Header. Header defined as 4 bites hexadecimal 
+        value 0xAAAAAAAA. After header that precedes every group in the file placed 
+        file position of the data block of next group. This position is represented 
+        as 4 byte integer value. <br>
+        Thus for example above in output file will be saved following information 
+        in binary format:</p>
+      <div align="justify">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr> 
+            <td><font face="Courier New, Courier, mono"><strong>File pos</strong></font></td>
+            <td><font face="Courier New, Courier, mono"><strong>Data</strong></font></td>
+            <td><font face="Courier New, Courier, mono"><strong>Comments</strong></font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr0 </font></td>
+            <td><font face="Courier New, Courier, mono">0xAAAAAAAA </font></td>
+            <td><font face="Courier New, Courier, mono">// group header</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr1</font></td>
+            <td><font face="Courier New, Courier, mono">addr8</font></td>
+            <td><font face="Courier New, Courier, mono">// file position of next 
+              group block</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr2</font></td>
+            <td><font face="Courier New, Courier, mono">house1</font></td>
+            <td><font face="Courier New, Courier, mono">// 1st group’s name</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr3</font></td>
+            <td><font face="Courier New, Courier, mono">3</font></td>
+            <td><font face="Courier New, Courier, mono">// i_doors_count</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr4</font></td>
+            <td><font face="Courier New, Courier, mono">20.34</font></td>
+            <td><font face="Courier New, Courier, mono">// f_width</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr5</font></td>
+            <td><font face="Courier New, Courier, mono">5.7</font></td>
+            <td><font face="Courier New, Courier, mono">// f_height</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr6</font></td>
+            <td><font face="Courier New, Courier, mono">Big_Avenue</font></td>
+            <td><font face="Courier New, Courier, mono">// s_street_name</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr7</font></td>
+            <td><font face="Courier New, Courier, mono">0xAAAAAAAA</font></td>
+            <td><font face="Courier New, Courier, mono">// group header</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr8</font></td>
+            <td><font face="Courier New, Courier, mono">addr14</font></td>
+            <td><font face="Courier New, Courier, mono">// file position of next 
+              group block</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr9</font></td>
+            <td><font face="Courier New, Courier, mono">other_house</font></td>
+            <td><font face="Courier New, Courier, mono">// 2nd group’s name</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr10</font></td>
+            <td><font face="Courier New, Courier, mono">1</font></td>
+            <td><font face="Courier New, Courier, mono">// i_doors_count</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr11</font></td>
+            <td><font face="Courier New, Courier, mono">10.5</font></td>
+            <td><font face="Courier New, Courier, mono">// f_width</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr12</font></td>
+            <td><font face="Courier New, Courier, mono">5.2</font></td>
+            <td><font face="Courier New, Courier, mono">// f_height</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr13</font></td>
+            <td><font face="Courier New, Courier, mono">Small_Avenue</font></td>
+            <td><font face="Courier New, Courier, mono">// s_street_name</font></td>
+          </tr>
+          <tr> 
+            <td><font face="Courier New, Courier, mono">addr14</font></td>
+            <td><font face="Courier New, Courier, mono">EOF</font></td>
+            <td><font face="Courier New, Courier, mono">// end of file</font></td>
+          </tr>
+        </table>
+      </div>
+      <p align="justify">Every string value is saved as null terminated string.<br>
+        Therefore you have to take into account order of parameters in your source 
+        file to load it in your application.</p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Running:</strong></font></p>
+      <p align="justify">INI Compiler takes one startup parameter from the command 
+        line. This parameter is the name of source ini-file (with any extension) 
+        for converting. <br>
+        For example command<br>
+        <font face="Courier New, Courier, mono">C:\inicomp.exe settings.txt</font><br>
+        will run INI Compiler to converting source file “settings.txt” to the 
+        binary format.</p>
+      <p align="justify"> INI Compiler will create *.dat file with the same name 
+        and in the same directory as source file. For example after converting 
+        source file with name “settings.txt”, new file with name “settings.dat” 
+        will be created in the same directory. This file is the output binary 
+        file.<br>
+      </p>
+      <p align="justify">&nbsp;</p> 
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Creating 
+        of LOD settings file:</strong></font></p>
+      <p align="justify">Mobile Dragon 3D API provides support of Levels Of Details 
+        (LOD) technology. To use LOD in the 3D application, it’s necessary to 
+        create set of scenes with different LOD first (see 3D MAX Exporter documentation 
+        for more details). After this it’s necessary to create LOD settings file. 
+        This file describes how objects with different LODs will be linked.<br>
+        Let’s see an example of scene with 3 LOD levels.<br>
+        This scene has a few objects with following names:<br>
+        <font face="Courier New, Courier, mono">– house01<br>
+        – house02<br>
+        – house03<br>
+        – tree01<br>
+        – tree02<br>
+        – well<br>
+        – ground</font></p>
+      <p align="justify"> It’s important to name objects by unique names, even 
+        if some objects belong to equal conception (for example all houses can’t 
+        have equal names “house”, we have to name them “house01”, “house02” etc.). 
+        But it’s possible to set common settings for these objects by replacing 
+        unequal symbols of name with “?” symbol. For example if we need to set 
+        common LOD settings for all objects with names “house01”, “house02” and 
+        “house03”, we have to name the group for these objects like “house??”. 
+        Here symbol “?” is a substitute of last two symbols of every name.<br>
+        For every object we have to set switch radius for every LOD level. When 
+        distance from the game camera to the object reaches this switch radius 
+        value then LOD level of this object will be switched to the next (lower) 
+        level. It’s important that count of LOD levels for the scene have to be 
+        equal to the count of switch radiuses in the LOD settings file.<br>
+        For example, object “house01” has 4 LOD levels. This means that we need 
+        to set 4 switch radiuses for this object in the LOD settings file. We 
+        have to create settings group for this object in accordance with common 
+        rules of settings file format. For example:</p>
+      <p align="justify"><font face="Courier New, Courier, mono">[house01] // 
+        name of settings group equals to object’s name<br>
+        f_radius_1=10 // switch radius from 1 to 2 LOD level<br>
+        f_radius_2=15 // switch radius from 2 to 3 LOD level<br>
+        f_radius_3=20 // switch radius from 3 to 4 LOD level<br>
+        f_radius_4=30 // switch radius from 4 to dummy LOD level</font></p>
+      <p align="justify">Why we have set switch radius for the last (4-th) LOD 
+        level if we have only 4 LOD levels? In fact it means that switch to the 
+        next 5-th level will occur, but this 5-th level is dummy LOD level and 
+        when distance from camera to the “house01” will reach 30, this object 
+        will not be drawn (it’ll disappear). If we need this object to stay visible 
+        after it will reach 4-th LOD level, we have to set switch radius for the 
+        last (4-th) level to zero. In fact, zero-radius is the infinite switch 
+        radius.<br>
+        Here is another example. Let us suppose that our 3D scene has 4 LOD levels: 
+        high, middle, normal and low. Level designer have to create 4 scenes with 
+        different LOD levels. But object with name “house01” actually has 3 LOD 
+        levels (high, middle, low). Thus, in scene with normal LOD level designer 
+        can skip object “house01”. This will reduce result file size (see 3D MAX 
+        Exporter documentation for more details). We have to denote this fact 
+        in our settings file. To show that an object in current LOD level have 
+        to be drawn as in previous LOD level we need to set the switch radius 
+        for current LOD level equal to the switch radius of previous LOD level. 
+        For our example:</p>
+      <p align="justify"><font face="Courier New, Courier, mono">[house01] // 
+        name of settings group is equal to object’s name<br>
+        f_radius_h=10 // switch radius from High to Middle LOD level<br>
+        f_radius_m=20 // switch radius from Middle to Low LOD level <br>
+        f_radius_n=20 // switch radius for Normal LOD level equal to previous<br>
+        f_radius_l=30 // switch radius for Low LOD level</font></p>
+      <p align="justify">So, let’s create complete LOD settings file for the whole 
+        scene. We have a few objects in the scene and few requirements described 
+        in the table below:</p>
+      <div align="justify">
+        <table width="100%" border="1" cellspacing="0" cellpadding="2">
+          <tr> 
+            <td rowspan="2"><div align="center"><strong>Names of objects</strong></div></td>
+            <td colspan="4"><div align="center"><strong>LOD levels availability/Switch 
+                radiuses</strong></div></td>
+            <td rowspan="2"><div align="center"><strong>Endless visibility</strong></div></td>
+          </tr>
+          <tr> 
+            <td><div align="center"><strong>High</strong></div></td>
+            <td><div align="center"><strong>Middle</strong></div></td>
+            <td><div align="center"><strong>Normal</strong></div></td>
+            <td><div align="center"><strong>Low</strong></div></td>
+          </tr>
+          <tr> 
+            <td><div align="left">house01</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">No</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">Yes</div></td>
+          </tr>
+          <tr> 
+            <td><div align="left">house02</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">No</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">Yes</div></td>
+          </tr>
+          <tr> 
+            <td><div align="left">house03</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">No</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">Yes</div></td>
+          </tr>
+          <tr> 
+            <td><div align="left">tree01</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">No</div></td>
+          </tr>
+          <tr> 
+            <td><div align="left">tree02</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">No</div></td>
+          </tr>
+          <tr> 
+            <td><div align="left">well</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">No</div></td>
+            <td><div align="center">No</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">No</div></td>
+          </tr>
+          <tr> 
+            <td><div align="left">ground</div></td>
+            <td><div align="center">Yes</div></td>
+            <td><div align="center">No</div></td>
+            <td><div align="center">No</div></td>
+            <td><div align="center">No</div></td>
+            <td><div align="center">Yes</div></td>
+          </tr>
+        </table>
+      </div>
+      <p align="justify">Let us suppose that switch radiuses for corresponding 
+        LOD levels (if they are available) for all objects are equal:<br>
+        from High to Middle LOD level – 10 units,<br>
+        from Middle to Normal LOD level – 20 units,<br>
+        from Normal to Low LOD level – 30 units,<br>
+        from Low to Dummy LOD level – 40 units.</p>
+      <p align="justify">Here is complete content of LOD settings file for this 
+        scene:</p>
+      <p align="justify"><font face="Courier New, Courier, mono">[house??]<br>
+        f_sr_high_middle=10<br>
+        f_sr_middle_normal=30<br>
+        f_sr_normal_low=30 // uses previous LOD level<br>
+        f_sr_low_dummy=0 // endless visibility</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono">[tree??]<br>
+        f_sr_high_middle=10<br>
+        f_sr_middle_normal=20<br>
+        f_sr_normal_low=30 <br>
+        f_sr_low_dummy=40 // object will disappear</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono">[well]<br>
+        f_sr_high_middle=30 <br>
+        f_sr_middle_normal=30 // uses previous LOD level<br>
+        f_sr_normal_low=30 // uses previous LOD level<br>
+        f_sr_low_dummy=40 // object will disappear</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono">[well]<br>
+        f_sr_high_middle=0 // always visible in High LOD level<br>
+        f_sr_middle_normal=0<br>
+        f_sr_normal_low=0 <br>
+        f_sr_low_dummy=0</font></p>
+      <p align="justify">And the last feature. When MobileDragon loads LOD settings 
+        from *.dat file, it creates a list of switch radiuses for each object 
+        and then sorts this list by increment. It takes into account that zero-radius 
+        is the largest possible radius. Thus if you’ll make an error and set radiuses 
+        not by increment, MobileDragon will fix it. For example you’ll write the 
+        following:</p>
+      <p align="justify"><font face="Courier New, Courier, mono">[tree??]<br>
+        f_sr_high_middle=20<br>
+        f_sr_middle_normal=10<br>
+        f_sr_normal_low=0 <br>
+        f_sr_low_dummy=30</font></p>
+      <p align="justify">MobileDragon will interpret it as:</p>
+      <p align="justify"><font face="Courier New, Courier, mono">[tree??]<br>
+        f_sr_high_middle=10<br>
+        f_sr_middle_normal=20<br>
+        f_sr_normal_low=30 <br>
+        f_sr_low_dummy=0</font><br>
+      </p>
+
+      <p align="justify">&nbsp;</p> 
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Creating 
+        of Texture Animation settings file:</strong></font></p>
+      <p align="justify">MobileDragon includes special features, which allow to 
+        play and control texture animation. It is a simple realization of texture 
+        animation that based on textures switching. To play texture animation 
+        MobileDragon needs to know the list of textures and delays for each of 
+        them. To create settings file for texture animation we have to use the 
+        INI Compiler application. In this file we have to define file names of 
+        textures and its delays. One settings file can define several texture 
+        animations. The name of settings group will be interpreted as the name 
+        of texture animation. Settings block for one texture animation have to 
+        correspond with following format:</p>
+      <p align="justify"><font face="Courier New, Courier, mono">[animation_name]<br>
+        s_texture1_name=texture1 // name of 1st texture file without extension<br>
+        i_texture1_delay=1000 // delay for 1st texture in user’s units<br>
+        s_texture2_name=texture2 // name of 2nd texture file without extension<br>
+        s_texture2_delay=1000 // delay for 2nd texture in user’s units<br>
+        ... // etc.</font></p>
+      <p align="justify">For example, we need to create two texture animation. 
+        Each of them has 4 frames – 4 textures in series. Now we have to create 
+        the following settings file for these animations.</p>
+      <p align="justify"><font face="Courier New, Courier, mono">[face_animation] 
+        // first texture animation (face animation)<br>
+        s_t1_name=face1 <br>
+        i_t1_delay=1200 <br>
+        s_t2_name=face2 <br>
+        s_t2_delay=1000<br>
+        s_t3_name=face3 <br>
+        s_t3_delay=1100<br>
+        s_t4_name=face4 <br>
+        s_t5_delay=1300</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono">[water_animation] 
+        // second texture animation (water animation)<br>
+        s_t1_name=water_center <br>
+        i_t1_delay=1000 <br>
+        s_t2_name=water_left <br>
+        s_t2_delay=1000<br>
+        s_t3_name=water_center <br>
+        s_t3_delay=1000<br>
+        s_t4_name=water_rigth <br>
+        s_t5_delay=1000</font>
+      </p>
+ <p align="center">&nbsp;</p>
+  	  <p align="center">&nbsp;</p>
+      <p align="center" class="memTemplItemLeft"><font size="1"><strong>Copyright 
+        2005-2006 Herocraft Hitech Co. Ltd. </strong></font></p>
+      
+      </td>
+  </tr>
+</table>
+
+
+</body>
+</html>

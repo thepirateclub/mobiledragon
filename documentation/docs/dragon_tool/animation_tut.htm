@@ -1,0 +1,79 @@
+<html>
+	<head><title>Working with Animations</title></head>
+	<body bgcolor=#ffffff>
+	<table width="1%" border="0">
+	<tr>
+		<td width="1%"><b><FONT SIZE="-1">Dragon&nbsp;Tool User&nbsp;Manual</font></b></td>
+		<td width="100%">&nbsp;</td>
+		<td width="1%"><a href="itm_tutorial.htm"><img src="img/prev.png" border="0" alt="Previous Page"></a></td>
+		<td width="1%"><a href="index.htm"><img src="img/toc.png" border="0" alt="Table of Contents"></a></td>
+		<td width="1%">&nbsp;</td>
+	</tr>
+	<tr>
+		<td align="center" colspan="5"><img src="img/blueline.png"></td>
+	</tr>
+	</table>
+		<h2>Working with Animations</h2>
+		This small tutorial shows how to create and modify animations. Often it's better to make animations
+		using layers, 'cos this helps to save memory.<br>
+		Download a <a href="animation_tut.zip">project</a>, unpack it and load start.xml.<br>
+		Import all sprites "Sprite -> Import" and create an Animation object: "Create -> Animation".
+		We will have one animation object with one frame attached to it and one layer attached
+		to this frame. 	Animation object consist of frame objects and it displays only one of them at
+		a certan time moment.<br>
+		Then we should combine this sprites to create animation frames. Firstly we create draft of animation
+		(only layers and body) and then attach some effects and shadow.<br>
+		Select <i>samuraj_x15_legsL1</i> and <i>samuraj_x15_swordL1</i>	and parent them to a <i>frame0</i>.
+		Right click <i>frame0</i> in the Outliner panel and arrange this layers according to a screenshot.
+		<p>
+						<center><img src="img/anim_1.png"></center>
+		<p>
+ 	  After that copy <i>frame0</i>, remove a body layer from it and attach <i>samuraj_x15_swordL2</i> to
+ 	  this frame. Again, right click on this frame and arrange layers.
+ 	  		<p>
+						<center><img src="img/anim_2.png"></center>
+				<p>
+		Repeat this steps (copy frames, delete and attach layers, arrange them) to make the following sequence:
+		<p>
+						<center><img src="img/anim_3.png"></center>
+		<p>
+		Then we add some effects to animation. Add shadow to every frame and arrange it and add two effects to
+		ephase some frames.
+		<p>
+						<center><img src="img/anim_4.png"></center>
+		<p>
+		Right click on animation and press 'play' button. It would be better to add little pause after
+		stab. Just select the frame where the sword has stopped and change the <b>delay</b> property of
+		this Frame object to 4.<br>
+		You'll probably wish to tune animation and add some extra frames. To change the order of frames
+		use "Edit -> Swap", "Edit -> Move to Front" and "Edit -> Move to Back" commands.<br>
+		The result should look something like that:
+		<p>
+						<center><img src="img/anim_5.gif"></center>
+		<p>
+		May be it would be better for programmers to have an animation layers which are arranged
+		at the origin of coordinates:
+		<p>
+						<center><img src="img/anim_6.png"></center>
+		<p>
+		To move all the layers you can select animation, right click on it in the outliner panel and
+		choose command "Edit -> Select Children" twice. After that all layers of this animation
+		will be selected and you can move them to the origin.<br>
+		<br> 
+		<table width="1%" border="0">
+			<tr>
+				<td align="center" colspan="5"><img src="img/blueline.png"></td>
+			</tr>
+			<tr>
+				<td width="1%"><b><FONT SIZE="-1">Dragon&nbsp;Tool User&nbsp;Manual</font></b></td>
+				<td width="100%">&nbsp;</td>
+				<td width="1%"><a href="itm_tutorial.htm"><img src="img/prev.png" border="0" alt="Previous Page"></a></td>
+				<td width="1%"><a href="index.htm"><img src="img/toc.png" border="0" alt="Table of Contents"></a></td>
+				<td width="1%">&nbsp;</td>
+			</tr>
+		</table>
+			<font size="-1">
+			Copyright 2000-2005 HeroCraft.  All rights reserved.
+			</font>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MDBluetooth"},(0x00000010),1,0,0
+
+
+; S2U information: Added UIQ 2.x as a requisite
+; Supports UIQ 2.x
+;(0x101F617B), 2, 0, 0, {"UIQ20ProductID"}
+(0x101F80BE), 1, 0, 0, {"SonyEricssonP80xPlatformProductID"}
+
+;
+; Files to install
+;
+"\symbian\UIQ_21\epoc32\release\armi\urel\MDBluetooth.app"         			  -"!:\system\apps\MDBluetooth\MDBluetooth.app"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDBluetooth\MDBluetooth.rsc"         -"!:\system\apps\MDBluetooth\MDBluetooth.rsc"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDBluetooth\MDBluetooth.aif"         -"!:\system\apps\MDBluetooth\MDBluetooth.aif"
+
+"..\HSS.DLL"         		-"!:\system\apps\MDBluetooth\HSS.DLL"
+
+"..\..\..\target\uiq\pdbluetooth.dat"         -"!:\system\apps\MDBluetooth\pdbluetooth.dat"
+"..\..\..\target\uiq\pdbluetooth.fat"         -"!:\system\apps\MDBluetooth\pdbluetooth.fat"

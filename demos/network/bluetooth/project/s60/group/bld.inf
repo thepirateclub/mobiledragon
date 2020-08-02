@@ -1,0 +1,9 @@
+
+PRJ_EXPORTS
+
+..\..\..\target\s60\pdbluetooth.dat \Epoc32\Wins\c\system\apps\MDBluetooth\pdbluetooth.dat
+..\..\..\target\s60\pdbluetooth.fat \Epoc32\Wins\c\system\apps\MDBluetooth\pdbluetooth.fat
+
+PRJ_MMPFILES
+
+MDBluetooth.mmp

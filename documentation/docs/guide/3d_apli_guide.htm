@@ -1,0 +1,994 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>MobileDragon 3D API Guide</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta name="keywords" content="MobileDragon, mobile games, game development, 3d mobile games, 2d mobile games, game engine, smartphone, PocketPC, Palm OS, Symbian OS, Windows Mobile, HeroCraft Hitech, games">
+<link href="../reference_manual/doxygen.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<table width="75%" border="0" align="center" cellpadding="2" cellspacing="0"  bgcolor="#868686">
+  <tr>
+    <td width="100%">
+	<table width="100%" border="0"  cellpadding="0" cellspacing="2" bgcolor="#F4F4FB">
+    <tr>
+        <td width="6%"><img src="../../data/mdicon.gif" width="44" height="44" align="right"></td>
+    	  <td width="94%" ><p align="center"><strong><font size="5">MobileDragon 
+              3D API Guide</font></strong></p></td>
+    </tr>
+    </table>
+	</td>
+  </tr>
+</table>
+<p></p>
+
+<table width="75%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td> <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Overview</strong></font></p>
+      <p align="justify">Mobile Dragon 3D API gives the set of functions and classes 
+        for the organization and managements of drawing 3D scenes. This API is 
+        developed in view of features of graphic subsystems of various mobile 
+        platforms and uses the high-speed algorithms optimized for work on “slow” 
+        devices. 3D API represents low-level graphic library which is capable 
+        to draw various graphic primitives like triangles, lines and points. Mobile 
+        Dragon 3D API it is compatible with OpenGL (in the current version software 
+        render is supported only).<br>
+        Support of LOD technology, different types of animation (including joint 
+        and texture animation) and lighting is included in the 3D API. </p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp;</p>
+	  
+	  <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Render3D</strong></font></p>
+	  <p align="justify">The main class which is responsible for drawing is the 
+        Render3D class. This class gives all necessary functions for drawing of 
+        objects, definition of visibility of objects on the screen, cutting off 
+        of hidden objects and many other things. Also this class gives functions 
+        for work with illumination, fog, screen and view ports.<br>
+        An object of Render3D class must be created in every Mobile Dragon 3D 
+        application. When application start, it is necessary to create Render3D 
+        class object and pass it to System class object before main loop of application 
+        will start. <br>
+        The following example shows how to create Render3D class object:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create and store new 3D Render class object.<br>
+        // Here: <br>
+        // system – pointer to the System class object.</font><font face="Courier New, Courier, mono"><br>
+        system-&gt;render3d = render = <font color="#0000FF">new</font> Render3D;</font></p>
+      <p align="justify">Lets take up general Render3D features:</p>
+      <p align="justify"><strong>1) Work with backbuffer</strong><br>
+        There are functions for backbuffer clearing and copying control. Render3D 
+        has different types of clearing:<br>
+        – clear color buffer,<br>
+        – clear depth buffer,<br>
+        – clear stencil buffer.<br>
+        You can specify clearing type by flag.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set clear color.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;SetClearColor(Color(0,0,128,0));</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Clear color buffer and depth buffer of backbuffer.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;Clear(Render_ClearType_ClearColor|Render_ClearType_ClearDepth);</font></p>
+      <p align="justify"><strong>2) Work with Screen and Viewport</strong><br>
+        Render3D allow access to the screen properties.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Get specified width dimension of display.</font><font face="Courier New, Courier, mono"><br>
+        Int w = GetScreenWidth();</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Get specified height dimension of display.</font><font face="Courier New, Courier, mono"><br>
+        Int h = GetScreenHeight();</font></p>
+      <p align="justify">The viewport is a rectangle on the device screen to which 
+        objects are rendered. It is possible to create and use several viewports 
+        by switching between them.<br>
+        The following example shows how to set Viewport for Render3D class object:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Get display width and height.</font><font face="Courier New, Courier, mono"><br>
+        Int w = render-&gt;GetScreenWidth();<br>
+        Int h = render-&gt;GetScreenHeight();</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set render viewport to whole display.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;SetViewport(0,0,w,h);</font></p>
+      <p align="justify"><strong>3) Work with perspective, world ,view and texture 
+        matrices</strong><br>
+        Render3D class allows controlling viewing volume by setting perspective 
+        frustum. The Viewing volume is used for clipping invisible objects (or 
+        their invisible parts) and for vertex projection on the screen.<br>
+        The following example shows how to set Perspective for Render3D class 
+        object:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Get display width and height.</font><font face="Courier New, Courier, mono"><br>
+        Int w = render-&gt;GetScreenWidth();<br>
+        Int h = render-&gt;GetScreenHeight();</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set perspective parameters.</font><font face="Courier New, Courier, mono"><br>
+        Fixed fovy = DegToRad(70);<br>
+        Fixed aspect = Fixed(w)/h;<br>
+        Fixed zNear = F_ONE;<font color="#009900"> // = Fixed(1.0)</font><br>
+        Fixed zFar = 500;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set render perspective.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;SetPerspective(fovy,aspect,zNear,zFar);</font></p>
+      <p align="justify">Also Render3D class provides methods to manipulate world 
+        and view matrices. These matrices are used to compute the model coordinates 
+        into pixel coordinates on the screen. Texture matrix defines how texture 
+        coordinates will be transformed. <br>
+        Matrices in Mobile Dragon 3D API is defined as 4x4 homogenous matrices. 
+        There are special functions in Render3D class to work with matrices. <br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set view identity matrix.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;SetView(&amp;IdentityMatrix4&lt;Fixed&gt;());<br>
+        <br>
+        <font color="#009900">// Create translate matrix by vector (0,1,0).</font><br>
+        Matrix4fx tm = TranslateMatrix4(Vector3fx(0,1,0));<br>
+        <br>
+        <font color="#009900">// Set world matrix in created translate matrix. 
+        </font><br>
+        render-&gt;SetWorld(&amp;tm);</font></p>
+      <p align="justify"><strong>4) Work with material</strong><br>
+        Render3D allow setting material for drawing objects.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set material for object(s) drawing <br>
+        // Here:<br>
+        // mat – Material object.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;SetMaterial(&amp;mat);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Here must be code of object(s) drawing.<br>
+        // ...........<br>
+        // All objects will drew with specified above material.</font></p>
+      <p align="justify"><strong>4) Lighting manage</strong><br>
+        The Render3D class provides functionality for lighting management. Render3D 
+        have list of Lights that affect result object lighting. There is set of 
+        functions to manipulate this list. Software 3D render allow adding unlimited 
+        count of lights, but only maximum 8 from their can be switched ON simultaneously.<br>
+        The following example shows how to add light to the Render3D lights list:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Here:<br>
+        // light – Light class object.</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Add light to the render. </font><font face="Courier New, Courier, mono"><br>
+        render-&gt;AddLight( light );</font></p>
+      <p align="justify"><strong>5) Render mode flags manage</strong><br>
+        Render3D class has set of flags that allow manipulating drawing process 
+        mode. This mode defined as Int value (4 bytes), where every bit means 
+        different mode flag. Render3D has following drawing modes:<br>
+        – drawing triangles from back to front. By default is OFF. <br>
+        – drawing without writing and checking Z-buffer. By default is OFF.<br>
+        – drawing texture with perspective correction. By default is ON.<br>
+        – fast drawing mode, with lower quality. For future OpenGL compatibility. 
+        By default is OFF.<br>
+        – drawing with lighting mode. By default is ON.<br>
+        – drawing with fog mode. By default is ON.<br>
+        – logical pixel operation - COPY. By default is ON.<br>
+        – logical pixel operation - OR. By default is OFF.<br>
+        Render3D class has set of functions for work with these flags.<br>
+        The following example shows how to switch on the texture perspective correction 
+        flag and fog drawing flag:<br>
+        <br>
+        <font color="#009900" face="Courier New, Courier, mono">// Set texture 
+        perspective correction mode ON </font><font face="Courier New, Courier, mono"><br>
+        render-&gt;SetMode(Render_PerspectiveCorrection_Mode);<br>
+        <br>
+        <font color="#009900">// Set fog drawing mode ON</font><br>
+        render-&gt;SetMode(Render_Fog_Mode);</font></p>
+      <p align="justify"><strong>6) Fog control</strong><br>
+        Render3D support scene drawing with using fog mode. Render3D creates and 
+        draw fog itself. Here is set of functions that allow controlling fog parameters 
+        (density, color, mode etc.).<br>
+        Fog has three modes:<br>
+        – linear fog modes,<br>
+        – exponential fog mode,<br>
+        – exponential squared fog.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set fog mode as linear.</font><font face="Courier New, Courier, mono"><br>
+        SetFogMode( Render_FogMode_Linear );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set fog density as Fixed(0.5).</font><font face="Courier New, Courier, mono"><br>
+        SetFogDensity( F_HALF );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set fog start distance.</font><font face="Courier New, Courier, mono"><br>
+        SetFogStart( 50 );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set fog end distance.</font><font face="Courier New, Courier, mono"><br>
+        SetFogEnd( 500 );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set fog color.</font><font face="Courier New, Courier, mono"><br>
+        SetFogColor( Color( 0, 0, 255, 0 ) );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Update fog. Need to call one time after all calls of <br>
+        // SetFogColor(), SetFogMode(), SetFogDensity(), SetFogStart(), SetFogEnd().</font><font face="Courier New, Courier, mono"><br>
+        UpdateFog();</font></p>
+      <p align="justify"><strong>7) Texture manage</strong><br>
+        Render3D provide functionality for texture management. <br>
+        All loading textures stored into list of textures. Render3D don’t load 
+        the same texture twice. All object which has the same texture in material 
+        in fact reference to one loaded texture.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Find specified texture by ASCII name in texture queue. </font><font face="Courier New, Courier, mono"><br>
+        ObjRef&lt;Texture&gt; texture_a = render-&gt;FindTexture( &quot;texture_a&quot; 
+        );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        find specified texture by ASCII name in texture queue <br>
+        // and if not found than load it from resource.</font><font face="Courier New, Courier, mono"><br>
+        ObjRef&lt;Texture&gt; texture_b = render-&gt;LoadTexture( &quot;texture_b&quot; 
+        );</font></p>
+      <p align="justify"><strong>8) Drawing</strong><br>
+        Render 3D allow drawing various primitives: lines, points, triangles. 
+        Object geometry defined as set of triangles which stored in VertexBuffer 
+        class object. Therefore Render3D has set of functions to draw lines list, 
+        points list and VertexBuffer class objects. Also Render3D provide functions 
+        to draw 3D sprites (billboards for example) and check object visibility.<br>
+        The following example shows how to draw VertexBuffer class object:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Clipping flag.</font><font face="Courier New, Courier, mono"><br>
+        Int object3d_clip;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set world transform matrix as identity.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;SetWorldIdentityMatrix();</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Check VertexBuffer (vb) visibility.</font><font face="Courier New, Courier, mono"><br>
+        object3d_clip = render-&gt;IsVisible( vb-&gt;center, vb-&gt;radius );</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        If object is visible – draw them.</font><font face="Courier New, Courier, mono"><br>
+        if( object3d_clip &gt;= 1 )<br>
+        { <br>
+        <font color="#009900">// Set drawing material.</font><br>
+        render-&gt;SetMaterial( &amp;material );<br>
+        <br>
+        <font color="#009900">// Send VertexBuffer (vb) to the draw queue.</font><br>
+        render-&gt;Draw( vb, object3d_clip );<br>
+        <br>
+        <font color="#009900">// Flush all draw queue for drawing.</font><br>
+        render-&gt;Flush();<br>
+        }</font></p>
+      <p align="justify"><strong>9) Other features,</strong> which are described 
+        below in separate issues (for example LOD Management).<br>
+      </p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp; </p>
+ 	  <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Scene 
+        loading</strong></font></p>
+       
+      <p align="justify"> Mobile Dragon API includes class MDMLoad, which provides 
+        functionality for loading 3D scenes and models from Mobile Dragon Model 
+        (MDM) file format.<br>
+        It is necessary to init object of class MDMLoad first by calling <font face="Courier New, Courier, mono">Init()</font> 
+        function. You should init loader independently of type loading scene.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        3D data loader.</font><font face="Courier New, Courier, mono"><br>
+        MDMLoad loader;<br>
+        <br>
+        <font color="#009900">// Init loader.<br>
+        // Here:<br>
+        // “scene\\scene” is file name of MDM file (without extension “MDM”).<br>
+        // render – pointer to the Render3D class object.</font><br>
+        loader.Init(render,&quot;scene\\scene&quot;);</font></p>
+      <p align="justify">It’s possible to use one loader instance to load different 
+        scenes. Every time you call<font face="Courier New, Courier, mono"> Init() 
+        </font>function, loader reset it’s state and can be used again.<br>
+        After we’ve initialize loader, we can call loading function directly. 
+        This is only one function <font face="Courier New, Courier, mono">Load()</font>, 
+        but it has different prototype and realization for every scene types: 
+        static scene, simple animation, joint animation etc.<br>
+        For example:<br>
+        <br>
+        <strong>1) Loading of static scene: </strong><br>
+        If type of loading scene is “static”, than all geometrical objects in 
+        this scenes will be presented as Object3D class objects.</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Define empty list of objects to store loading scene.</font><font face="Courier New, Courier, mono"><br>
+        vector&lt; ObjRef&lt;Basic3D&gt; &gt; o3dlist </font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create loader.</font><font face="Courier New, Courier, mono"><br>
+        MDMLoad mdm_arena;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Init loader.<br>
+        // Here:<br>
+        // “arena\\arena” is file name of MDM file (without extension “MDM”).<br>
+        // render – pointer to the Render3D class object.</font><font face="Courier New, Courier, mono"><br>
+        mdm_arena.Init(render,&quot;arena\\arena&quot;);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Load() function will add loaded objects of scene into list. <br>
+        // Here:<br>
+        // render – pointer to the Render3D class object.</font><font face="Courier New, Courier, mono"><br>
+        mdm_arena.Load(render, o3dlist);</font></p>
+      <p align="justify"><strong>2) Loading of static scene with portals: </strong><br>
+        Static scene may contain portals system. This is aggregate of rooms and 
+        passageways between their (portals). The objects that linked to the room 
+        belong to this room. The objects that linked to the portal belong to two 
+        rooms that linked by this portal.<br>
+        MDMLoader allow loading portals scene and sort all objects in different 
+        lists.<br>
+        – rooms – list of Room class objects.<br>
+        – portals – list of portals.<br>
+        – out_of_portals – list of objects that are not linked to the rooms and 
+        portals.<br>
+        If you want to use portal system in your application, you should copy 
+        content of these lists for future usage.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Define empty list of objects to store loading scene.</font><font face="Courier New, Courier, mono"><br>
+        vector&lt; ObjRef&lt;Basic3D&gt; &gt; o3dlist </font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create loader.</font><font face="Courier New, Courier, mono"><br>
+        MDMLoad mdm_arena;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Init loader.<br>
+        // Here:<br>
+        // “arena\\arena” is file name of MDM file (without extension “MDM”).<br>
+        // render – pointer to the Render3D class object.</font><font face="Courier New, Courier, mono"><br>
+        mdm_arena.Init(render,&quot;arena\\arena&quot;);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Load() function will add loaded objects of scene into list. <br>
+        // Here:<br>
+        // render – pointer to the Render3D class object.</font><font face="Courier New, Courier, mono"><br>
+        mdm_arena.Load(render, o3dlist);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Get portals, rooms and out_of_portals lists.</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        List of rooms.</font><font face="Courier New, Courier, mono"><br>
+        vector&lt; ObjRef&lt;Room&gt; &gt; rooms = mdm_arena.rooms; </font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        List of portals.</font><font face="Courier New, Courier, mono"><br>
+        vector&lt; ObjRef&lt;Portal&gt; &gt; portals = mdm_arena.portals; <br>
+        <font color="#009900">// List of objects not linked to the rooms.</font><br>
+        vector&lt; ObjRef&lt;Basic3D&gt; &gt; out_of_portals = mdm_arena.out_of_portals;</font></p>
+      <p align="justify"> <strong>3) Loading of simple animation scene:</strong><br>
+        If type of loading scene is “simple animation”, than all geometrical objects 
+        in this scenes will be presented as Robot3D class objects.</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Define empty list of objects to store loading scene.</font><font face="Courier New, Courier, mono"><br>
+        vector&lt; ObjRef&lt;Basic3D&gt; &gt; r3dlist </font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create loader.</font><font face="Courier New, Courier, mono"><br>
+        MDMLoad mdm_simple;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Init loader.<br>
+        // Here:<br>
+        // “simple\\simple” is file name of MDM file (without extension “MDM”).<br>
+        // render – pointer to the Render3D class object.</font><font face="Courier New, Courier, mono"><br>
+        mdm_simple.Init(render,&quot;simple\\simple&quot;);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Load() function will add loaded objects of scene into list. <br>
+        // Here:<br>
+        // render – pointer to the Render3D class object.</font><font face="Courier New, Courier, mono"><br>
+        mdm_simple.Load(render, r3dlist);</font></p>
+      <p align="justify"><strong>4) Loading of tweening animation model:</strong></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Here:<br>
+        // render – pointer to the Render3D class object.</font><font face="Courier New, Courier, mono"><br>
+        <br>
+        <font color="#009900">// Construct new animation objects to store animation.</font><br>
+        ObjRef&lt;Actor3DAnimation&gt; actor_animation = Actor3DAnimation::Construct(render);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create loader.</font><font face="Courier New, Courier, mono"><br>
+        MDMLoad mdm_anim;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Init loader by file name of scene.</font><font face="Courier New, Courier, mono"><br>
+        mdm_anim.Init(render, &quot;tweening\\tweening&quot;);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Load animation into Actor3DAnimation class object.</font><font face="Courier New, Courier, mono"><br>
+        mdm_anim.Load(render, actor_animation);</font></p>
+      <p align="justify"><strong>5) Loading of joint animation model:</strong><br>
+        The feature of loading of joint animation is separate loading animation 
+        and details collection. Animation and details collection stored in the 
+        separate objects. <br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create joint animation object. </font><font face="Courier New, Courier, mono"><br>
+        OnjRef&lt;Joint3DAnimation&gt; joint_animation = Joint3DAnimation::Construct(render);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Load joint animation.</font><font face="Courier New, Courier, mono"><br>
+        MDMLoad mdm_joint_anim;<br>
+        mdm_joint_anim.Init(render, &quot;robo_joint\\joint_animation&quot;);<br>
+        mdm_joint_anim.Load(render,joint_animation); </font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create list of joint collection nodes.</font><font face="Courier New, Courier, mono"><br>
+        vector&lt; ObjRef&lt;Joint3DCollectionNode&gt; &gt; joint_collection;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Load join collection.</font><font face="Courier New, Courier, mono"><br>
+        MDMLoad mdm_joint_coll;<br>
+        mdm_joint_coll.Init(render, &quot;robo_joint\\joint_collection&quot;);<br>
+        mdm_joint_coll.Load(render,joint_collection);</font></p>
+      <p align="justify"><strong>6) Loading scenes with dummy objects.</strong><br>
+        If loading scene has dummy objects (dummy box and dummy sphere) than all 
+        this dummies will stored into separate list of dummy objects. You can 
+        directly access to this list.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Define empty list of objects to store loading scene.</font><font face="Courier New, Courier, mono"><br>
+        vector&lt; ObjRef&lt;Basic3D&gt; &gt; o3dlist </font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create loader.</font><font face="Courier New, Courier, mono"><br>
+        MDMLoad mdm_arena;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Init loader.<br>
+        // Here:<br>
+        // “arena\\arena” is file name of MDM file (without extension “MDM”).<br>
+        // render – pointer to the Render3D class object.</font><font face="Courier New, Courier, mono"><br>
+        mdm_arena.Init(render,&quot;arena\\arena&quot;);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Load() function will add loaded objects of scene into list. <br>
+        // Here:<br>
+        // render – pointer to the Render3D class object.</font><font face="Courier New, Courier, mono"><br>
+        mdm_arena.Load(render, o3dlist);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Get list of dummy objects.</font><font face="Courier New, Courier, mono"><br>
+        vector&lt; ObjRef&lt;Basic3D&gt; &gt; dummies = mdm_arena.dummies;</font></p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>LOD Management</strong></font></p>
+      <p align="justify"> The Mobile Dragon 3D API provides functionality for 
+        Levels Of Detail (LOD) management. This technology allows automatically 
+        switching geometry of drawing objects taking into account distance from 
+        camera to these objects. This means that we can draw high quality geometry 
+        if it is near from camera and low quality if it is far from camera. This 
+        will accelerate drawing process in general. The Render3D load LOD settings 
+        from file, which must be distributed with scene<br>
+        First it is necessary to pass reference to the camera into the Render3D 
+        class object:</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Here:<br>
+        // camera – Camera class object.<br>
+        // render – pointer to the Render3D class object.</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono"> 
+        // Pass camera to the render.</font><font face="Courier New, Courier, mono"><br>
+        render-&gt;SetCamera(&amp;camera);</font></p>
+      <p align="justify">The LOD management allows usage of unlimited count of 
+        details levels. Designer should create different scenes with different 
+        LOD. All this scenes must be saved into separate files.<br>
+        3D API uses switch radiuses (personal for every object) to select current 
+        LOD for objects. These radiuses are defined in LOD settings file (it that 
+        should be created with INI Compiler utility). To apply these settings 
+        it is necessary to load all MDM files with different LOD of scene and 
+        after this call <font face="Courier New, Courier, mono">LoadLODSettings()</font> 
+        function of Render3D class object.<br>
+        For example:<br>
+        <br>
+        <font color="#009900" face="Courier New, Courier, mono">// 3D data loader 
+        for high LOD scene.</font><font face="Courier New, Courier, mono"><br>
+        MDMLoad arena_high;<br>
+        <br>
+        <font color="#009900">// Init loader.<br>
+        // Here:<br>
+        // “all_arenas\\arena01_high” is file name of MDM file<br>
+        // (without extension “MDM”).<br>
+        // render – pointer to the Render3D class object.</font><br>
+        arena.Init(render,&quot;all_arenas\\arena01_high&quot;);<br>
+        <br>
+        <font color="#009900">// Load scene.<br>
+        // Here:<br>
+        // o3dlist_high – list of Object3D (geometrical) class objects with high 
+        LOD.<br>
+        // render – pointer to the Render3D class object.</font><br>
+        arena.Load(render, o3dlist_high);<br>
+        <br>
+        <font color="#009900">// 3D data loader for low LOD scene.</font><br>
+        MDMLoad arena_low;<br>
+        <br>
+        <font color="#009900">// Init loader.<br>
+        // Here:<br>
+        // “all_arenas\\arena01_low” is file name of MDM file<br>
+        // (without extension “MDM”).<br>
+        // render – pointer to the Render3D class object.</font><br>
+        arena.Init(render,&quot;all_arenas\\arena01_low&quot;);<br>
+        <br>
+        <font color="#009900">// Load scene.<br>
+        // Here:<br>
+        // o3dlist_low – list of Object3D (geometrical) class objects with low 
+        LOD. <br>
+        // render – pointer to the Render3D class object.</font><br>
+        arena.Load(render, o3dlist_low);</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Now add all list of objects into common vector.<br>
+        // It is necessary to add first object list with high detalization, <br>
+        // next – with lower detalization, next – more lower and so on,<br>
+        // until will added the object list with lowest detalization.<br>
+        // In this case there are only two LOD levels: high and low.</font><br>
+        vector&lt; vector&lt; ObjRef&lt;Object3D&gt; &gt; &gt; all_objects;<br>
+        all_objects.push_back(o3dlist_high); <font color="#009900">// add scene 
+        with high LOD</font><br>
+        all_objects.push_back(o3dlist_low); <font color="#009900">// add scene 
+        with low LOD</font></font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"><br>
+        <font color="#009900">// Now load and apply LOD settings to the loaded 
+        scene.<br>
+        // Here:<br>
+        // render – pointer to the Render3D class object.<br>
+        // “all_arenas\\arena01_lod_sett” is file name of file of <br>
+        // LOD settings (without extension).</font><br>
+        render-&gt;LoadLODSettings(all_objects, &quot;all_arenas\\arena01_lod_sett” 
+        &quot;);</font> </p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp; </p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>VertexBuffer</strong></font></p>
+      <p align="justify"> Render3D allow drawing special data structure named 
+        VertexBuffer. VB describe set of primitives (triangle) and therefore may 
+        define geometry of objects. VB contains array of vertex and indices for 
+        describing surface of object. Also there is stored information about texture 
+        coordinates, vertex and triangle normal.<br>
+        VertexBuffer contents are defined by format of this VB. VB can include:<br>
+        1. Vertex geometrical coordinates;<br>
+        2. Vertex normal;<br>
+        3. Triangle normal;<br>
+        4. Texture UV-coordinates for 2 channels (diffuse texture and lightmap 
+        or some else);<br>
+        5. Vertex light intensity;<br>
+        Also VB’s format defines if VB has linked LOD VB, if VB store index, if 
+        this is packed VB.<br>
+        VB’s format defined as Int value (4 bites), where every bit means, is 
+        corresponding format’s flag on or off.<br>
+        VB allow also recomputing normals, transforming vertex by transformation 
+        matrix.<br>
+        If you want to use VB, you should create and initialize it first. You 
+        should know format, vertex count and index count for this VB to do this. 
+        For example:<br>
+        <br>
+        <font color="#009900" face="Courier New, Courier, mono">// create VertexBuffer</font><font face="Courier New, Courier, mono"><br>
+        ObjRef&lt;VertexBuffer&gt; vb = VertexBuffer::Construct();</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        define format for VertexBuffer</font><br>
+        Int format = VertexBuffer_Format_Vxyz | <font color="#009900">// VB contains 
+        vertex X,Y,Z</font><br>
+        VertexBuffer_Format_Nxyz | <font color="#009900">// VB contains vertex 
+        normals</font><br>
+        VertexBuffer_Format_UV0 | <font color="#009900">// VB contains vertex 
+        UV coordinates</font><br>
+        VertexBuffer_Format_Index; <font color="#009900">// VB contains indices</font></font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        init VertexBuffer</font><br>
+        vb-&gt;Init( format, vertex_count_, index_count_ );</font></p>
+      <p align="justify">The code above creates new VertexBuffer and allocates 
+        memory for vertex and indices.</p>
+      <p align="justify"> Also Vertex Buffer class has set of function, that allow 
+        to:<br>
+        1) Get common geometry info (vertex count, index count, max vertex and 
+        index count).<br>
+        For example:<br>
+        <font face="Courier New, Courier, mono"><br>
+        <font color="#009900">// Get maximum VB’s vertex count.<br>
+        // This is count of vertex for which memory was allocated when we call 
+        Init().</font><br>
+        Int max_vertex_count = vb-&gt;GetMaxVertexCount();</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Get current VB’s vertex count.<br>
+        // This is count of real used vertexes. </font><br>
+        Int vertex_count = vb-&gt;GetVertexCount(); </font><br>
+        <br>
+        2) Work with VB format.<br>
+        For example:</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Get format of VB.</font><font face="Courier New, Courier, mono"><br>
+        Int format = vb-&gt;GetFormat();</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Chect if VB has vertex normals.</font><br>
+        if(vb-&gt;CheckFormat(VertexBuffer_Format_Nxyz))<br>
+        {<br>
+        <font color="#009900">// VB has vertex normals.</font><br>
+        }<br>
+        else<br>
+        {<br>
+        <font color="#009900">// VB hasn’t vertex normals.</font><br>
+        }</font></p>
+      <p align="justify">3) Access to the Axis Aligned Bounding Box (AABB). Every 
+        VB has own axis aligned bounding box and bounding sphere. You can access 
+        to its values.<br>
+        For example:<br>
+        <font face="Courier New, Courier, mono"><br>
+        <font color="#009900">// Get VB’s bounding box</font><br>
+        AABB box = vb-&gt;GetAAB();<br>
+        <font color="#009900"><br>
+        // Get radius of VB’s bounding sphere.</font><br>
+        Fixed radius = vb-&gt;GetRadius(); </font></p>
+      <p align="justify">4) Access control.<br>
+        Every time you want to write or read VB’s content (vertexes, normals, 
+        indices), you should lock this VB first. This prevent VB from drawing 
+        during changing it’s content. To do this, you must call <font face="Courier New, Courier, mono">Lock()</font> 
+        function with flag in parameter, that define for what purpose you have 
+        lock the VB. After you have change the VB’s content, you should to unlock 
+        this VB by calling <font face="Courier New, Courier, mono">UnLock()</font> 
+        function. You may create Lock/UnLock section inside another Lock/UnLock 
+        section. VB has counter of calling of <font face="Courier New, Courier, mono">Lock()</font> 
+        and <font face="Courier New, Courier, mono">UnLock()</font> functions: 
+        every calling of <font face="Courier New, Courier, mono">Lock()</font> 
+        function increment locks-counter, and every calling of <font face="Courier New, Courier, mono">UnLock()</font> 
+        function decrement this counter. When last <font face="Courier New, Courier, mono">UnLock()</font> 
+        function will called (locks-counter becomes 0-value) and all VB’s changes 
+        will take effect, and this VB can be drew.<br>
+        For example:</p>
+      <p align="justify"> <font face="Courier New, Courier, mono">void func_1()<br>
+        {<br>
+        <font color="#009900">// Lock VB for reading. This is first calling of 
+        Lock() function.</font><br>
+        vb-&gt;Lock(VertexBuffer_LockType_Read);</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Here must be VB’s content reading code.<br>
+        // ................. </font></font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono"> 
+        // Call another function.</font><font face="Courier New, Courier, mono"><br>
+        func_2();</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Unlock VB. This is second and last calling of UnLock() function.</font><br>
+        vb-&gt;UnLock();<br>
+        }</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> void func_2()<br>
+        {<br>
+        <font color="#009900">// Lock VB for writing. This is second calling of 
+        Lock() function.</font><br>
+        vb-&gt;Lock(VertexBuffer_LockType_Write);<br>
+        <br>
+        <font color="#009900">// Here must be VB’s content writing code...<br>
+        // .................</font></font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Unlock VB. This is first calling of UnLock() function.</font><br>
+        vb-&gt;UnLock();<br>
+        }</font></p>
+      <p align="justify">5) Write and Read Content.<br>
+        After you have lock VB for reading or writing access, you can read or 
+        write VB’s content. There is set functions to do this.<br>
+        For example:<br>
+        <br>
+        <font color="#009900" face="Courier New, Courier, mono">// Create new 
+        VB.</font><font face="Courier New, Courier, mono"><br>
+        vb = VertexBuffer::Construct();<br>
+        <font color="#009900"><br>
+        // Define format for VB.</font><br>
+        Int format = VertexBuffer_Format_Vxyz | <br>
+        VertexBuffer_Format_UV0 | <br>
+        VertexBuffer_Format_Index;<br>
+        <br>
+        <font color="#009900">// Initialize VB.</font><br>
+        vb-&gt;Init( format, 4, 6 );<br>
+        <br>
+        <font color="#009900">// Lock VB for Writing.</font><br>
+        vb-&gt;Lock( VertexBuffer_LockType_Write );<br>
+        <br>
+        Fixed uv[2]; <font color="#009900">// UV-coordinates.</font><br>
+        Fixed vxyz[3]; <font color="#009900">// X,Y,Z – coordinates.</font><br>
+        Int index; <font color="#009900">// Index counter</font><br>
+        <br>
+        uv[0]=0;<br>
+        uv[1]=0;<br>
+        <br>
+        vxyz[0] = 10.0;<br>
+        vxyz[1] = 20.0;<br>
+        vxyz[3] = 30.0;</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> for(index = 
+        0; index &lt; 4; index++)<br>
+        {<br>
+        <font color="#009900">// Write UV0.</font><br>
+        vb-&gt;WriteUV0( index, uv );</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Write XYZ.</font><br>
+        vb-&gt;WriteVxyz( index, vxyz );<br>
+        }<br>
+        <br>
+        index = 0;<br>
+        <br>
+        <font color="#009900">// Write inices.</font><br>
+        vb-&gt;Index(index+2) = 0;<br>
+        vb-&gt;Index(index+1) = 1;<br>
+        vb-&gt;Index(index) = 2;<br>
+        <br>
+        vb-&gt;Index(index+5) = 2;<br>
+        vb-&gt;Index(index+4) = 3;<br>
+        vb-&gt;Index(index+3) = 0;<br>
+        <br>
+        <font color="#009900">// Unlock VB.</font><br>
+        vb-&gt;UnLock();</font></p>
+      <p align="justify">6) LOD manage.<br>
+        VB can contain link to another VB and switch radius for this VB. This 
+        is LOD VB that contains the same geometry only in lower level of details. 
+        When Render3D will draw VB, it will get distance between object and camera, 
+        and select necessary VB from hierarchy of LOD VB of base VB. There is 
+        set of function to work with LOD VBs.<br>
+        For example:</p>
+      <p align="justify"> <font color="#009900" face="Courier New, Courier, mono">// 
+        Set switch radius for LOD VB.</font><font face="Courier New, Courier, mono"><br>
+        lod_vb-&gt;SetLODSwitchRadius( 30 );<br>
+        <font color="#009900"><br>
+        // Link LOD VB to the base VB.</font><br>
+        base_vb-&gt;AddLODVB( lod_vb );<br>
+        <font color="#009900"><br>
+        // Set switch radius for base VB.</font><br>
+        base_vb-&gt;SetLODSwitchRadius( 15 );</font><br>
+        <br>
+        The code above means that when distance from camera to the object (which 
+        contains these VBs) will be lower than 15, Render3D will draw base VB, 
+        when distance from camera to the object will be between 15 and 30, Render3D 
+        will draw linked LOD VB, and when distance from camera to the object will 
+        be greater than 30, Render3D will draw no VB (object will disappear).</p>
+      <p align="justify">7) Other operations.<br>
+        This is copy, transform, update normal operations. Every from these operations 
+        has Lock/UnLock section inside itself, you don’t need to include this 
+        section to call these functions.<br>
+        For example:<br>
+        <font face="Courier New, Courier, mono"><br>
+        <font color="#009900">// Copy only XYZ vertex coordinates and triangles 
+        normals from src_vb to dest_vb</font><br>
+        dest_vb-&gt;Copy(*src_vb, VertexBuffer_Format_Vxyz | VertexBuffer_Format_TriNxyz);</font></p>
+      <p align="justify"><font face="Courier New, Courier, mono"> <font color="#009900">// 
+        Transform VB content by transformation matrix (tm).</font><br>
+        dest_vb-&gt;Transform(&amp;tm);</font></p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Common 
+        features for 3D objects:</strong></font></p>
+      <p align="justify"> Mobile Dragon 3D API provides few classes for work with 
+        objects which relate to 3D objects category: static, dynamic, animated, 
+        lighting and dummy objects. All of these classes are inherited from one 
+        common class Basic3D. Basic3D class is abstract and provides common functionality 
+        for 3D objects. </p>
+      <p align="justify">Every 3D class has own unique ClassID. All 3D classes 
+        has <font face="Courier New, Courier, mono">GetClassID() </font>function 
+        that return ClassID for each of them. All 3D objects can be included into 
+        hierarchy of objects. Every object has parent reference and some classes 
+        have list of children also. Therefore transformations of 3D objects are 
+        computed taking into account all transformations of their parents. Thus 
+        Basic3D class provides functionality for 3D objects transformation control. 
+        It’s necessary to call <font face="Courier New, Courier, mono">UpdateTransform()</font> 
+        function after you set new transformation to the 3D object to ensure that 
+        this transformation will be composed of parent transformations and it 
+        will affect on children transformations. You always can get result transformation 
+        for 3D object by calling of <font face="Courier New, Courier, mono">GetResultTransform()</font> 
+        function and get parent reference by calling <font face="Courier New, Courier, mono">GetParent() 
+        </font>function.<br>
+        Also Basic3D class has <font face="Courier New, Courier, mono">Draw()</font> 
+        function that send object to the draw queue. </p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp; </p>
+
+	  <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Static 
+        objects:</strong></font></p>
+      <p align="justify"> For work with static geometrical object Mobile Dragon 
+        3D API provides Object3D class. This class provides functionality for 
+        manipulation and drawing of static geometrical objects. Static geometrical 
+        object is object, which has constant geometry computed in world coordinates. 
+        It’s useful to present objects, which don’t move or transform during application 
+        processing. For example: ground, building, sky, constructions. For loading 
+        of static objects use the static scene loading method. See conformable 
+        issue for more details.<br>
+        General features of Object3D class object:<br>
+        1) Is inherited from Basic3D class.<br>
+        2) Has own VertexBuffer class object.<br>
+        This VB contains object’s geometry where vertexes have world coordinates.<br>
+        3) Has own material, including texture reference.<br>
+        4) Has parent and children references.<br>
+        5) Has relative transformation matrix.<br>
+        Used if we need to apply additional transformation to the object (for 
+        example, translate it). </p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp;</p>
+ 	  <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Dynamic 
+        object:</strong></font></p>
+      <p align="justify"> For work with geometrical object, which can be dynamic 
+        transformed Mobile Dragon 3D API provides Robot3D class. This class provides 
+        functionality for manipulation and drawing of dynamic geometrical objects. 
+        Dynamic geometrical object is object that has constant geometry computed 
+        in local model coordinates, but for result transformation of this object 
+        used relative transformation matrix of this objects. Model that is constructed 
+        from these dynamic objects has own hierarchy, where all nodes are linked. 
+        Every node has relative transformation matrix that transforms this node 
+        relatively its parent. Root nodes of this model have transformation matrix 
+        that transform their relatively world coordinate system center. Also every 
+        node in this model has its own transformation matrix. Thus result transformation 
+        matrix of every node is computed as product of parent result transformation 
+        matrix (if current node has parent node), node relative transformation 
+        matrix and node own transformation matrix. This result matrix transform 
+        model in world space. </p>
+      <p align="justify">These dynamic objects are useful to present objects (models) 
+        in which some parts (nodes) can be animated by using of transformation 
+        matrix. For example: tank model (we can turn tower and gun), helicopter 
+        (we can turn propeller) etc. For loading of dynamic objects use the static 
+        scene loading method. See conformable issue for more details.<br>
+        General features of Robot3D class object:<br>
+        1) Is inherited from Object3D class. Therefore it has all features of 
+        this Object3D class.<br>
+        2) Has relative and own transformation matrices. </p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp;</p>
+	  
+   	  <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Simple 
+        animated model:</strong></font></p>
+      <p align="justify" > For work with simple animated model Mobile Dragon 3D 
+        API provides set of classes: Actor3D, Actor3DNode, Actor3DAnimation, Actor3DAnimationNode. 
+        Classes Actor3D and Actor3DNode are inherited from Basic3D class and present 
+        3D objects. Class Actor3D includes list of Actor3DNode class objects. 
+        This class provides functionality for manipulation and drawing of simple 
+        animated model. Simple animated model is the animated model whose geometry 
+        stored only in the key frames (export from 3D Max) and geometry in the 
+        intermediate frames computes by morphing (tweening) method. It’s useful 
+        to present objects, which move or transform during application processing 
+        and their nodes bend and don’t have clear-cut edges at the same time. 
+        For example: people, animals.</p>
+      <p align="justify" > In fact Actor3D class is container to store and play 
+        animation. Directly animation stored in the Actor3DAnimation class objects. 
+        Actor3DAnimation class provides functionality for loading and storing 
+        animation for simple animated model. It contains list of key frames exported 
+        from 3D Max and list of geometry objects (presented as Actor3DAnimationNode 
+        class objects) in these key frames.</p>
+      <p align="justify" >Therefore Actor3D and Actor3DAnimation classes are necessary 
+        to create and manipulate complete simple animation model.<br>
+        For loading of simple animated model use the loading of tweening animation 
+        model method. See conformable issue for more details.<br>
+        Loaded animation stored into Actor3DAnimation class objects. To create 
+        Actor3D class object and to create complete animated model we need to 
+        initialize this object first.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Here:<br>
+        // render – pointer to the Render3D class object.<br>
+        <br>
+        // Construct new animation objects to store animation.</font><font face="Courier New, Courier, mono"><br>
+        ObjRef&lt;Actor3DAnimation&gt; actor_animation = Actor3DAnimation::Construct(render);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create loader.</font><font face="Courier New, Courier, mono"><br>
+        MDMLoad mdm_anim;</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Init loader by file name of scene.</font><font face="Courier New, Courier, mono"><br>
+        mdm_anim.Init(render, &quot;tweening\\tweening&quot;);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Load animation into Actor3DAnimation class object.</font><font face="Courier New, Courier, mono"><br>
+        mdm_anim.Load(render, actor_animation);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create and initialize Actor3D class object.</font><font face="Courier New, Courier, mono"><br>
+        actor = Actor3D::Construct(render);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Init Actor3D class object by loaded animation.</font><font face="Courier New, Courier, mono"><br>
+        actor-&gt;Create(actor_animation);</font></p>
+      <p align="justify">After we have created simple animated model, we can manipulate 
+        this model and play animation. Actor3D class allows animation playing 
+        with different speed and in different directions (forward or backward). 
+        It’s necessary update animation phase in every call of game main loop 
+        by calling of <font face="Courier New, Courier, mono">Set()</font> function.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Here:</font><font face="Courier New, Courier, mono"><br>
+        <font color="#009900">// actor_animation – Actor3DAnimation class object.</font></font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set animated model in the time = 0 and set loop play on.</font><font face="Courier New, Courier, mono"><br>
+        actor-&gt;Set(actor_animation,0,1);</font></p>
+      <p align="justify">Actor3D class will store all parameters of <font face="Courier New, Courier, mono">Set()</font> 
+        function from last calling of this function. Thus we can update animation 
+        by calling <font face="Courier New, Courier, mono">Play()</font> function, 
+        which take only animation time increment as parameter.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Play animation. <br>
+        // Play() function will increment current animation time on it’s parametr 
+        value.<br>
+        // Thus calling Play(par) is equal calling: <br>
+        // Set(&lt;current_animation&gt;,&lt;current_time&gt; + par, &lt;current_loop_flag&gt;);</font><font face="Courier New, Courier, mono"><br>
+        actor-&gt;Play(200);</font></p>
+      <p align="justify">General features of Actor3D class object:<br>
+        1) Is inherited from Basic3D class.<br>
+        2) Has list of Actor3DNode class objects.<br>
+        3) Has transformation matrix to transform whole model.<br>
+        4) Has set of function for animation playing.</p>
+      <p align="justify">General features of Actor3DNode class object:<br>
+        1) Is inherited from Basic3D class.<br>
+        2) Present node of Actor3D model.<br>
+        3) Has own material, including texture reference.<br>
+        4) Is linked to the parent Actor3D class object.<br>
+        5) May have linked objects.<br>
+        6) Has relative transformation matrix to transform possible linked object.</p>
+      <p align="justify">General features of Actor3DAnimation class object:<br>
+        1) Contains list of key frames of animation.<br>
+        2) Contains list of Actor3DAnimationNode class objects.</p>
+      <p align="justify">General features of Actor3DAnimationNode class object:<br>
+        1) Contains list of transformation matrices in all key frames.<br>
+        2) Contains list of VertexBuffer class objects which describes geometry 
+        of this node in every key frame. </p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify">&nbsp;</p>
+      <p align="justify" class="memTemplItemLeft"><font size="3"><strong>Joint 
+        animated model</strong></font></p>
+      <p align="justify"> For work with joint animated model Mobile Dragon 3D 
+        API provides set of classes: Joint3D, Joint3DNode, Joint3DAnimation, Joint3DAnimationNode. 
+        Class Joint3D is inherited from Basic3D class, and class Joint3DNode is 
+        inherited from Object3D class and presents 3D object. Class Joint3D includes 
+        list of Joint3DNode and Robot3D class objects. This class provides functionality 
+        for manipulation and drawing of joint animated model. Joint animated model 
+        has list of transformation matrix for every animation key frame. It must 
+        be constructed from set of details which are presented by geometrical 
+        objects (Joint3DNode). It’s possible to construct joint animated model 
+        from different sets of details and use only one joint animation for animating 
+        whole model. It’s useful to present objects, which move or transform during 
+        application processing and their nodes don’t bend and have clear-cut edges. 
+        For example: robots which can be constructed from different sets of details 
+        and may use one common animation.<br>
+        In fact Joint3D class is container to store sets of details and play animation. 
+        Directly animation stored in the Joint3DAnimation class objects. Joint3DAnimation 
+        class provides functionality for loading and storing animation for joint 
+        animated model. It contains list of key frames exported from 3D Max and 
+        list of Joint3DAnimationNode class objects. In one’s turn Joint3DAnimationNode 
+        class contains list of transformation matrices for every node from details 
+        collection in every key frame. Thus joint animation is set of transformation 
+        matrices for whole animated model in every key frame.<br>
+        Therefore Joint3D, Joint3DAnimation and Joint3DNode classes are necessary 
+        to create and manipulate complete joint animation model.<br>
+        For loading of joint animated model use the loading of joint animation 
+        model method. See conformable issue for more details.<br>
+        Loaded animation stored into Joint3DAnimation class objects and loaded 
+        detail collection stored into the list of Joint3DNode class objects.<br>
+        To create Joint3D class object and to create complete animated model we 
+        need to initialize this object first.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create joint animation object.</font><font face="Courier New, Courier, mono"><br>
+        joint_animation = Joint3DAnimation::Construct(render);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Load joint animation.</font><font face="Courier New, Courier, mono"><br>
+        MDMLoad mdm_joint_anim;<br>
+        mdm_joint_anim.Init(render, &quot;robo_joint\\joint_animation&quot;);<br>
+        mdm_joint_anim.Load(render,joint_animation); </font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Load details collection.</font><font face="Courier New, Courier, mono"><br>
+        MDMLoad mdm_joint_coll;<br>
+        mdm_joint_coll.Init(render, &quot;robo_joint\\joint_collection&quot;);<br>
+        mdm_joint_coll.Load(render,joint_collection); </font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Create and initialize joint model.</font><font face="Courier New, Courier, mono"><br>
+        joint_model = Joint3D::Construct(render);</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Attach all nodes from collection.</font><font face="Courier New, Courier, mono"><br>
+        joint_model-&gt;Create(joint_collection);</font></p>
+      <p align="justify">After we have created joint animated model, we can manipulate 
+        this model and play animation. Joint3D class allows animation playing 
+        with different speed and in different directions (forward or backward). 
+        It’s necessary update animation phase in every call of game main loop 
+        by calling of <font face="Courier New, Courier, mono">Set()</font> function.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Here:<br>
+        // joint_animation – Joint3DAnimation class object.</font></p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Set animated model in the time = 0 and set loop play on.</font><font face="Courier New, Courier, mono"><br>
+        joint_model-&gt;Set(joint_animation,0,1);</font></p>
+      <p align="justify"><br>
+        Joint3D class will store all parameters of <font face="Courier New, Courier, mono">Set()</font> 
+        function from last calling of this function. Thus we can update animation 
+        by calling <font face="Courier New, Courier, mono">Play()</font> function, 
+        which take only animation time increment as parameter.<br>
+        For example:</p>
+      <p align="justify"><font color="#009900" face="Courier New, Courier, mono">// 
+        Play animation. <br>
+        // Play() function will increment current animation time on it’s parametr 
+        value.<br>
+        // Thus calling Play(par) is equal calling: <br>
+        // Set(&lt;current_animation&gt;,&lt;current_time&gt; + par, &lt;current_loop_flag&gt;);</font><font face="Courier New, Courier, mono"><br>
+        joint_model-&gt;Play(200);</font></p>
+      <p align="justify">General features of Joint3D class object:<br>
+        1) Is inherited from Basic3D class.<br>
+        2) Has list of Joint3DNode class objects.<br>
+        3) Has list of Robot3D class objects which present nodes of model.<br>
+        4) Has transformation matrix to transform whole model.<br>
+        5) Has set of function for animation playing.</p>
+      <p align="justify">General features of Joint3DNode class object:<br>
+        1) Is inherited from Object3D class.<br>
+        2) Present node of collection of details.<br>
+        3) Has list of joints which define relative transformation for other details 
+        that are linked to the current detail.</p>
+      <p align="justify">General features of Joint3DAnimation class object:<br>
+        1) Contains list of key frames of animation.<br>
+        2) Contains list of Joint3DAnimationNode class objects.</p>
+      <p align="justify">General features of Joint3DAnimationNode class object:<br>
+        1) Contains list of transformation matrices in all key frames for every 
+        node of model. </p>
+       <p align="center">&nbsp;</p>
+  	  <p align="center">&nbsp;</p>
+      <p align="center" class="memTemplItemLeft"><font size="1"><strong>Copyright 
+        2005-2006 Herocraft Hitech Co. Ltd. </strong></font></p></td>
+  </tr>
+</table>
+
+
+</body>
+</html>

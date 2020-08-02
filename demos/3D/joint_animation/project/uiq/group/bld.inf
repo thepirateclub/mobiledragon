@@ -1,0 +1,9 @@
+
+PRJ_EXPORTS
+
+..\..\..\target\uiq\pdjoint.dat \Epoc32\Wins\c\system\apps\MDJoint\pdjoint.dat
+..\..\..\target\uiq\pdjoint.fat \Epoc32\Wins\c\system\apps\MDJoint\pdjoint.fat
+
+PRJ_MMPFILES
+
+MDJoint.mmp

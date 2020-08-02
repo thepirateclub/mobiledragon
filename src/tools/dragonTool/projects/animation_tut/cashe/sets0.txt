@@ -1,0 +1,8 @@
+set_0;256;7;
+sprites\/samuraj_x15_swordL1.png;1;1;28;26;
+sprites\/samuraj_x15_swordL3.png;31;1;33;22;
+sprites\/samuraj_x15_legsL2.png;31;25;11;14;
+sprites\\fx_2.png;44;25;10;20;
+sprites\/samuraj_x15_swordL2.png;66;1;25;25;
+sprites\/samuraj_x15_legsL1.png;93;16;22;14;
+sprites\\fx_1.png;93;1;26;13;

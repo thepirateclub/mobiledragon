@@ -1,0 +1,9 @@
+
+PRJ_EXPORTS
+
+..\..\..\target\uiq\pdportal.dat \Epoc32\Wins\c\system\apps\MDPortals\pdportal.dat
+..\..\..\target\uiq\pdportal.fat \Epoc32\Wins\c\system\apps\MDPortals\pdportal.fat
+
+PRJ_MMPFILES
+
+MDPortals.mmp

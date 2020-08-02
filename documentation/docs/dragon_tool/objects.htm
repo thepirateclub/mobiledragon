@@ -1,0 +1,228 @@
+<html>
+	<head><title>Scene objects</title></head>
+	<body bgcolor=#ffffff>
+	<table width="1%" border="0">
+	<tr>
+		<td width="1%"><b><FONT SIZE="-1">Dragon&nbsp;Tool User&nbsp;Manual</font></b></td>
+		<td width="100%">&nbsp;</td>
+		<td width="1%"><a href="basic.htm"><img src="img/prev.png" border="0" alt="Previous Page"></a></td>
+		<td width="1%"><a href="index.htm"><img src="img/toc.png" border="0" alt="Table of Contents"></a></td>
+		<td width="1%"><a href="interface.htm"><img src="img/next.png" border="0" alt="Next Page"></a></td>
+	</tr>
+	<tr>
+		<td align="center" colspan="5"><img src="img/blueline.png"></td>
+	</tr>
+	</table>
+	
+		<h2>Scene objects</h2>
+			Dragon Tool is a kind of a constructor. Working with it you create objects, adjust their properties
+			and combine them. Objects are also called 'nodes' or 'tree nodes'. Node to which another node is attached is called 'parent' of attached node and
+			an attached node is called 'child' node.
+		<p>
+			<center><img src="img/node.png">
+		<p>
+			<i>'Palette' node is a parent of a 'stone' node. 'Stone' node is a child of
+			a 'palette' node.</i></center>
+		<p>
+			The value of object property is set in the Property Editor.
+		<h3><a name = "property_types">Property Types</a></h3>
+			Each property can be one of a following types:
+		<ul>
+			<li>integer number (int). Example: <i>1, -4, 0, 3.</i>
+			<li>numbers with floating point (float). Example: <i>1.5, 0.3, 0.6.</i>
+			<li>numbers with high preceision (double). Example: <i>0.000002.</i>
+			<li>String. Example: <i>bullet, status_bar.</i>
+			<li>boolean values (boolean). Example: <i>true, false.</i>
+			<li>Objects. Some objects need references to other objects (for example, an IndexedTileMap needs
+				a reference to a palette). This reference is defined in the following format:
+				<p><i>|node1|node2|referenceNode</i>
+				<p>where <i>referenceNode</i> is the reference, and node2 is a parent of referenceNode,
+				node1 is a parent of a node2.
+		<p>
+			<center><img src="img/node_path.png">
+		<p>
+			<i>The path to the 'panelTile' node is '|panel|panelTile'.</i></center>
+		<p>
+			Some properties can be only read, but not set (for example, the width of the image). Every object
+			has at least two properties: <b>name</b> and <b>visible</b>. <b>Name</b> of
+			the object should consist of numbers and english letters. (It's possible to give an non-english letters
+			in object names, but such names wouldn't be exported to mobile dragon.) <b>Visible</b> property defines whether or not
+			Dragon Tool should draw this object and it's children.
+		<p>
+			Dragon Tool supports following types of objects:
+			
+		<h3><a name="sprite">Sprite</a></h3>
+		<blockquote>
+			Sprite is just a bitmap (or a picture) that is loaded into the program. It takes a picture from
+			the png file and draws it on screen. When png file changes then sprite image updates automaticaly.
+			Sprite has following set of properties:
+		<table border="0" width="100%">
+		<tr><td valign="top"><b>path</b> (string)<td>Relative path to the bitmap file. For
+					examle: <i>sprites/bullet.png</i>. All png files should be stored
+					inside the 'sprites' project folder or it's subfolders.
+		<tr><td valign="top"><b>width</b>&nbsp;(integer,&nbsp;read&nbsp;only)<td>Width of the image.
+		<tr><td valign="top"><b>height</b>&nbsp;(integer,&nbsp;read&nbsp;only)<td>Height of the image.
+		<tr><td valign="top"><b>showMatte</b> (boolean)<td>When this option is on all sprites in the
+			scene show display it's transparent color as magenta.
+		</table>
+		</blockquote>
+		
+		<h3><a name="transform">Transform</a></h3>
+		<blockquote>
+			Transform object defines location, rotation, scale, transparency and Z order of the attached objects.
+			It has following properties:
+		<table border="0" width="100%">
+		<tr><td valign="top"><b>translateX</b> (double)<td>X coord of the object.
+		<tr><td valign="top"><b>translateY</b> (double)<td>Y coord of the object.
+		<tr><td valign="top"><b>ZOrder</b> (integer)<td>Z order of the transform. Objects with
+			higher value of Z order will be painted over objects with lower values.
+		<tr><td valign="top"><b>rotation</b> (double)<td>Rotation angle. [POSITIVE and NEGATIVE angles].
+		<tr><td valign="top"><b>displayPivot</b> (boolean)<td>Check to display a pivot point. Pivot point is a point around
+			which object is rotated.
+		<tr><td valign="top"><b>scaleX</b> (double)<td>Scale of the object on x axis (1 = 100% = no scale).
+		<tr><td valign="top"><b>scaleX</b> (double)<td>Scale of the object on y axis.
+		<tr><td valign="top"><b>opacity</b> (float)<td>Opacity of the object. Can vary from 0 (transparent) to 1 (opaque).
+		</table>
+		<p>
+		</blockquote>
+		
+		<h3><a name="dummy">Dummy</a></h3>
+		<blockquote>
+			Dummy is a simliest object in the programm. It has only two properties: <b>name</b> and <b>visible</b>.
+			It usually used just for grouping a set of objects or as a container for custom properties.
+		</blockquote>
+		
+		<h3><a name="grid">Grid</a></h3>
+		<blockquote>
+			Grid object is used to adjust a grid color/snapping. It's created every time you make a new project.
+			Most part of it's properties is the same as a Transform properties. But some of them have slightly
+			different meaning.
+		<table border="0" width="100%">
+		<tr><td valign="top"><b>showHomeGrid</b> (boolean)<td>Check it to display a small home grid.
+		<tr><td valign="top"><b>gridWidth</b> (double)<td>Size (or step) of the grid (x axis).
+		<tr><td valign="top"><b>gridHeight</b> (double)<td>Size (or step) of the grid (y axis).
+		<tr><td valign="top"><b>checkerOpacity</b> (float)<td>Opacity of the checker texture. Doesn't affect
+			on the small home grid. (if you wish to hide it - uncheck the
+			<b>visible</b> property).
+		</table>
+		</blockquote>
+				
+		<h3><a name="polygon">Polygon</a></h3>
+		<blockquote>
+			Polygon is a shape that is defined by a set of <a href="object.htm#point">Points</a> which
+			should be attached to this object. Polygon is used for defining a custom tile map cell shape.
+		</blockquote>
+		
+		<h3><a name="point">Point</a></h3>
+		<blockquote>
+			Points define a shape of a polygon.
+		</blockquote>
+		
+		<h3><a name="square_cell">Square Cell</a></h3>
+		<blockquote>
+			Cell is an object that is used together with tile maps.
+	<table border="0" width="100%">
+  	<tr><td align="center" colspan="5"><img src="img/cell_square.png"></td></tr>
+		<tr><td align="left" valign="top"><b>size</b> (integer)<td>Size of the cell (in pixels).
+	</table>
+		</blockquote>
+		
+		<h3><a name="iso_cell">Isometric Cell</a></h3>
+		<blockquote>
+	<table border="0" width="100%">
+  	<tr><td align="center" colspan="5"><img src="img/cell_iso.png"></td></tr>
+		<tr><td valign="top"><b>size</b> (integer)<td align="left">Size of the cell (in pixels).</td></tr>
+		<tr><td valign="top"><b>aspectRatio</b> (float)<td align="left">How distorted the cell is.</td></tr>
+	</table>
+		</blockquote>
+		
+		<h3><a name="cell">Cell</a></h3>
+		<blockquote>
+			It is consists of three objects: a polygon, which defines
+			it's shape and two points. This points affect the layout of the cells in the map.
+			First point defines a location of the next cell in the row, second - location of the next cell in the column.
+			There is an <a href="quickstart.htm#step4">expample</a> in the <a href="quickstart.htm">
+			Quick Start</a> section and a <a href="itm_tutorial.htm">Working with IndexedTileMap</a>
+			tutorial that shows a role of a cell.
+			<table border="0" width="100%">
+			<tr><td align="center" colspan="5"><img src="img/cell_free.png"></td></tr>
+			</table>
+		</blockquote>
+		
+		<h3><a name="tile_map">TileMap</a></h3>
+		<blockquote>
+			This object (as says it's name) is a tile map. Size of the map is defined by
+			<b>rowCount</b> and <b>columnCount</b> properties. Also you can turn on <b>showCells</b> property to
+			display cells of the map. The <b>cell</b> property stores a path to a cell which is used in
+			current tile map.
+		</blockquote>
+		
+		<h3><a name="indexed_tile_map">IndexedTileMap</a></h3>
+		<blockquote>
+			The best analogue of an IndexedTileMap is a indexed image (for examle a GIF bitmap). Such image has
+			a color palette and a data, which store only indexes of colors in this color palette. The same is with
+			IndexedTileMap. It has a set of objects as a palette and a data which refer to idexes of this objects.
+			See an <a href="quickstart.htm#step4">expample</a> in the
+			<a href="quickstart.htm">Quick Start</a> section and a tutorial <a href="itm_tutorial.htm">Working
+			with IndexedTilMap</a>.
+			<p>
+				IndexedTileMap properties:
+		<table border="0" width="100%">
+			<tr><td valign="top"><b>palette</b> (object)<td>Palette node which is used in this map. This node is defined
+				in the <a href="">Tree Path format</a>.
+		</table>
+		</blockquote>
+		
+		<h3><a name="time">Time</a></h3>
+		<blockquote>
+			Time object is created every time you make a new project. It has a property <b>frameNum</b> which
+			is a frame number for all animations in the scene. When you press Play button on the player panel
+			<b>frameNum</b> increases with 30 frames per second.
+		</blockquote>
+			
+		<h3><a name="animation">Animation</a></h3>
+		<blockquote>
+			Animation object has the same properties as a <a href="objects.htm#transform">Transform</a> object.
+			The difference is that Animation object can have only <a href="objects.htm#frame">Frame</a>
+			objects as it's children. Also it can display only one frame (the index of this frame is defined
+			by a Time object).
+		</blockquote>
+			
+		<h3><a name="frame">Frame</a></h3>
+		<blockquote>
+			Frame objects should be attached only to the animation objects. Their purpose is to define <b>delay</b>
+			during wich this frame will be shown. See <a href="animation_tut.htm">Working with Animation</a> tutorial
+			to see Frame objects in action.
+		</blockquote>
+			
+		<h3><a name="tiles_exporter">TilesExporter</a></h3>
+		<blockquote>
+			TilesExporter object created only once when you choose "DragonTool -> Export Res" command. In this
+			object you can adjust output settings of the resource files.
+		<table border="0" width="100%">
+			<tr><td valign="top"><b>border</b> (integer)<td>Defines empty space between sprites in the
+												output image (in pixels).
+			<tr><td valign="top"><b>imageSize</b> (integer)<td>Size of the output image (in pixels).
+			<tr><td valign="top"><b>outDir</b> (string)<td>Output directory where resource files are written.
+		</table>
+		</blockquote>
+		
+		<br>
+		<br>
+		<table width="1%" border="0">
+			<tr>
+				<td align="center" colspan="5"><img src="img/blueline.png"></td>
+			</tr>
+			<tr>
+				<td width="1%"><b><FONT SIZE="-1">Dragon&nbsp;Tool User&nbsp;Manual</font></b></td>
+				<td width="100%">&nbsp;</td>
+				<td width="1%"><a href="basic.htm"><img src="img/prev.png" border="0" alt="Previous Page"></a></td>
+				<td width="1%"><a href="index.htm"><img src="img/toc.png" border="0" alt="Table of Contents"></a></td>
+				<td width="1%"><a href="interface.htm"><img src="img/next.png" border="0" alt="Next Page"></a></td>
+			</tr>
+		</table>
+			<font size="-1">
+			Copyright 2000-2005 HeroCraft.  All rights reserved.
+			</font>
+	</body>
+</html>

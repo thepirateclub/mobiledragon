@@ -1,0 +1,9 @@
+
+PRJ_EXPORTS
+
+..\..\..\target\uiq\pdparticles.dat \Epoc32\Wins\c\system\apps\MDParticles\pdparticles.dat
+..\..\..\target\uiq\pdparticles.fat \Epoc32\Wins\c\system\apps\MDParticles\pdparticles.fat
+
+PRJ_MMPFILES
+
+MDParticles.mmp

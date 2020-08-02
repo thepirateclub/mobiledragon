@@ -1,0 +1,26 @@
+
+;Languages
+&EN
+
+;
+; UID is the app's UID
+;
+#{"MDPortals"},(0x00000003),1,0,0
+
+
+; S2U information: Added UIQ 2.x as a requisite
+; Supports UIQ 2.x
+;(0x101F617B), 2, 0, 0, {"UIQ20ProductID"}
+(0x101F80BE), 1, 0, 0, {"SonyEricssonP80xPlatformProductID"}
+
+;
+; Files to install
+;
+"\symbian\UIQ_21\epoc32\release\armi\urel\MDPortals.app"         			  -"!:\system\apps\MDPortals\MDPortals.app"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDPortals\MDPortals.rsc"         -"!:\system\apps\MDPortals\MDPortals.rsc"
+"\symbian\UIQ_21\epoc32\data\z\system\apps\MDPortals\MDPortals.aif"         -"!:\system\apps\MDPortals\MDPortals.aif"
+
+"..\HSS.DLL"         		-"!:\system\apps\MDPortals\HSS.DLL"
+
+"..\..\..\target\uiq\pdportal.dat"         -"!:\system\apps\MDPortals\pdportal.dat"
+"..\..\..\target\uiq\pdportal.fat"         -"!:\system\apps\MDPortals\pdportal.fat"
